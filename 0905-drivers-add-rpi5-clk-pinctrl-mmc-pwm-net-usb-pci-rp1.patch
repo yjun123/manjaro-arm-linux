@@ -1,6 +1,6 @@
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/clk/bcm/clk-raspberrypi.c linux-6.9-rc5/drivers/clk/bcm/clk-raspberrypi.c
---- linux-6.9-rc5/drivers/clk/bcm/clk-raspberrypi.c	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/clk/bcm/clk-raspberrypi.c	2024-04-25 18:24:34.650294157 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/clk/bcm/clk-raspberrypi.c linux-6.10-rc3/drivers/clk/bcm/clk-raspberrypi.c
+--- linux-6.10-rc3/drivers/clk/bcm/clk-raspberrypi.c	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/clk/bcm/clk-raspberrypi.c	2024-06-15 18:58:06.978018730 +0200
 @@ -34,6 +34,7 @@
  	[RPI_FIRMWARE_M2MC_CLK_ID]	= "m2mc",
  	[RPI_FIRMWARE_PIXEL_BVB_CLK_ID]	= "pixel-bvb",
@@ -20,9 +20,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  };
  
  /*
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/clk/clk-rp1.c linux-6.9-rc5/drivers/clk/clk-rp1.c
---- linux-6.9-rc5/drivers/clk/clk-rp1.c	1970-01-01 01:00:00.000000000 +0100
-+++ linux-6.9-rc5/drivers/clk/clk-rp1.c	2024-04-25 18:24:34.650294157 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/clk/clk-rp1.c linux-6.10-rc3/drivers/clk/clk-rp1.c
+--- linux-6.10-rc3/drivers/clk/clk-rp1.c	1970-01-01 01:00:00.000000000 +0100
++++ linux-6.10-rc3/drivers/clk/clk-rp1.c	2024-06-15 18:58:06.978018730 +0200
 @@ -0,0 +1,2085 @@
 +// SPDX-License-Identifier: GPL-2.0+
 +/*
@@ -2109,9 +2109,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
 +MODULE_AUTHOR("Naushir Patuck <naush@raspberrypi.com>");
 +MODULE_DESCRIPTION("RP1 clock driver");
 +MODULE_LICENSE("GPL");
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/clk/clk-rp1-sdio.c linux-6.9-rc5/drivers/clk/clk-rp1-sdio.c
---- linux-6.9-rc5/drivers/clk/clk-rp1-sdio.c	1970-01-01 01:00:00.000000000 +0100
-+++ linux-6.9-rc5/drivers/clk/clk-rp1-sdio.c	2024-04-25 18:24:34.650294157 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/clk/clk-rp1-sdio.c linux-6.10-rc3/drivers/clk/clk-rp1-sdio.c
+--- linux-6.10-rc3/drivers/clk/clk-rp1-sdio.c	1970-01-01 01:00:00.000000000 +0100
++++ linux-6.10-rc3/drivers/clk/clk-rp1-sdio.c	2024-06-15 18:58:06.978018730 +0200
 @@ -0,0 +1,600 @@
 +// SPDX-License-Identifier: GPL-2.0-or-later
 +/*
@@ -2713,9 +2713,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
 +MODULE_AUTHOR("Liam Fraser <liam@raspberrypi.com>");
 +MODULE_DESCRIPTION("RP1 SDIO clock driver");
 +MODULE_LICENSE("GPL");
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/clk/Kconfig linux-6.9-rc5/drivers/clk/Kconfig
---- linux-6.9-rc5/drivers/clk/Kconfig	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/clk/Kconfig	2024-04-25 18:24:34.650294157 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/clk/Kconfig linux-6.10-rc3/drivers/clk/Kconfig
+--- linux-6.10-rc3/drivers/clk/Kconfig	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/clk/Kconfig	2024-06-15 18:58:06.978018730 +0200
 @@ -88,6 +88,19 @@
  	  These multi-function devices have two fixed-rate oscillators, clocked at 32KHz each.
  	  Clkout1 is always on, Clkout2 can off by control register.
@@ -2736,9 +2736,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  config COMMON_CLK_HI655X
  	tristate "Clock driver for Hi655x" if EXPERT
  	depends on (MFD_HI655X_PMIC || COMPILE_TEST)
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/clk/Makefile linux-6.9-rc5/drivers/clk/Makefile
---- linux-6.9-rc5/drivers/clk/Makefile	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/clk/Makefile	2024-04-25 18:24:34.650294157 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/clk/Makefile linux-6.10-rc3/drivers/clk/Makefile
+--- linux-6.10-rc3/drivers/clk/Makefile	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/clk/Makefile	2024-06-15 18:58:06.978018730 +0200
 @@ -58,6 +58,8 @@
  obj-$(CONFIG_COMMON_CLK_PWM)		+= clk-pwm.o
  obj-$(CONFIG_CLK_QORIQ)			+= clk-qoriq.o
@@ -2748,9 +2748,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  obj-$(CONFIG_COMMON_CLK_HI655X)		+= clk-hi655x.o
  obj-$(CONFIG_COMMON_CLK_S2MPS11)	+= clk-s2mps11.o
  obj-$(CONFIG_COMMON_CLK_SCMI)           += clk-scmi.o
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/dma/bcm2835-dma.c linux-6.9-rc5/drivers/dma/bcm2835-dma.c
---- linux-6.9-rc5/drivers/dma/bcm2835-dma.c	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/dma/bcm2835-dma.c	2024-04-25 18:24:34.656960823 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/dma/bcm2835-dma.c linux-6.10-rc3/drivers/dma/bcm2835-dma.c
+--- linux-6.10-rc3/drivers/dma/bcm2835-dma.c	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/dma/bcm2835-dma.c	2024-06-15 18:58:06.981352063 +0200
 @@ -36,6 +36,7 @@
  
  #define BCM2835_DMA_MAX_DMA_CHAN_SUPPORTED 14
@@ -4051,9 +4051,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  		if (rc)
  			goto err_no_dma;
  	}
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/dma/dw-axi-dmac/dw-axi-dmac.h linux-6.9-rc5/drivers/dma/dw-axi-dmac/dw-axi-dmac.h
---- linux-6.9-rc5/drivers/dma/dw-axi-dmac/dw-axi-dmac.h	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/dma/dw-axi-dmac/dw-axi-dmac.h	2024-04-25 18:24:34.653627490 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/dma/dw-axi-dmac/dw-axi-dmac.h linux-6.10-rc3/drivers/dma/dw-axi-dmac/dw-axi-dmac.h
+--- linux-6.10-rc3/drivers/dma/dw-axi-dmac/dw-axi-dmac.h	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/dma/dw-axi-dmac/dw-axi-dmac.h	2024-06-15 18:58:06.981352063 +0200
 @@ -101,6 +101,7 @@
  
  	struct virt_dma_desc		vd;
@@ -4062,9 +4062,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	u32				completed_blocks;
  	u32				length;
  	u32				period_len;
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c linux-6.9-rc5/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
---- linux-6.9-rc5/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c	2024-04-25 18:24:34.653627490 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c linux-6.10-rc3/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c
+--- linux-6.10-rc3/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/dma/dw-axi-dmac/dw-axi-dmac-platform.c	2024-06-15 18:58:06.981352063 +0200
 @@ -12,6 +12,7 @@
  #include <linux/device.h>
  #include <linux/dmaengine.h>
@@ -4110,16 +4110,16 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	for (i = 0; i < chip->dw->hdata->nr_channels; i++) {
  		axi_chan_irq_disable(&chip->dw->chan[i], DWAXIDMAC_IRQ_ALL);
  		axi_chan_disable(&chip->dw->chan[i]);
-@@ -328,7 +351,7 @@
+@@ -329,7 +352,7 @@
  static void axi_desc_put(struct axi_dma_desc *desc)
  {
  	struct axi_dma_chan *chan = desc->chan;
--	int count = atomic_read(&chan->descs_allocated);
+-	int count = desc->nr_hw_descs;
 +	u32 count = desc->hw_desc_count;
  	struct axi_dma_hw_desc *hw_desc;
  	int descs_put;
  
-@@ -350,6 +373,48 @@
+@@ -351,6 +374,48 @@
  	axi_desc_put(vd_to_axi_desc(vdesc));
  }
  
@@ -4168,7 +4168,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  static enum dma_status
  dma_chan_tx_status(struct dma_chan *dchan, dma_cookie_t cookie,
  		  struct dma_tx_state *txstate)
-@@ -359,10 +424,7 @@
+@@ -360,10 +425,7 @@
  	enum dma_status status;
  	u32 completed_length;
  	unsigned long flags;
@@ -4179,7 +4179,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  
  	status = dma_cookie_status(dchan, cookie, txstate);
  	if (status == DMA_COMPLETE || !txstate)
-@@ -371,16 +433,31 @@
+@@ -372,16 +434,31 @@
  	spin_lock_irqsave(&chan->vc.lock, flags);
  
  	vdesc = vchan_find_desc(&chan->vc, cookie);
@@ -4218,7 +4218,16 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  
  	return status;
  }
-@@ -568,7 +645,7 @@
+@@ -435,8 +512,6 @@
+ 		return;
+ 	}
+ 
+-	axi_dma_enable(chan->chip);
+-
+ 	config.dst_multblk_type = DWAXIDMAC_MBLK_TYPE_LL;
+ 	config.src_multblk_type = DWAXIDMAC_MBLK_TYPE_LL;
+ 	config.tt_fc = DWAXIDMAC_TT_FC_MEM_TO_MEM_DMAC;
+@@ -569,7 +644,7 @@
  	unsigned long reg_value, val;
  
  	if (!chip->apb_regs) {
@@ -4227,7 +4236,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  		return;
  	}
  
-@@ -672,18 +749,25 @@
+@@ -673,18 +748,25 @@
  	switch (chan->direction) {
  	case DMA_MEM_TO_DEV:
  		reg_width = __ffs(chan->config.dst_addr_width);
@@ -4255,7 +4264,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  			DWAXIDMAC_CH_CTL_L_INC << CH_CTL_L_DST_INC_POS |
  			DWAXIDMAC_CH_CTL_L_NOINC << CH_CTL_L_SRC_INC_POS;
  		block_ts = len >> reg_width;
-@@ -719,9 +803,6 @@
+@@ -720,9 +802,6 @@
  	}
  
  	hw_desc->lli->block_ts_lo = cpu_to_le32(block_ts - 1);
@@ -4265,7 +4274,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	hw_desc->lli->ctl_lo = cpu_to_le32(ctllo);
  
  	set_desc_src_master(hw_desc);
-@@ -816,6 +897,8 @@
+@@ -817,6 +896,8 @@
  		src_addr += segment_len;
  	}
  
@@ -4274,7 +4283,17 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	llp = desc->hw_desc[0].llp;
  
  	/* Managed transfer list */
-@@ -895,6 +978,8 @@
+@@ -882,6 +963,9 @@
+ 		mem = sg_dma_address(sg);
+ 		len = sg_dma_len(sg);
+ 		num_segments = DIV_ROUND_UP(sg_dma_len(sg), axi_block_len);
++		if (!num_segments)
++			continue;
++
+ 		segment_len = DIV_ROUND_UP(sg_dma_len(sg), num_segments);
+ 
+ 		do {
+@@ -896,6 +980,8 @@
  		} while (len >= segment_len);
  	}
  
@@ -4283,7 +4302,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	/* Set end-of-link to the last link descriptor of list */
  	set_desc_last(&desc->hw_desc[num_sgs - 1]);
  
-@@ -1002,6 +1087,8 @@
+@@ -1003,6 +1089,8 @@
  		num++;
  	}
  
@@ -4292,7 +4311,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	/* Set end-of-link to the last link descriptor of list */
  	set_desc_last(&desc->hw_desc[num - 1]);
  	/* Managed transfer list */
-@@ -1050,7 +1137,7 @@
+@@ -1051,7 +1139,7 @@
  static void axi_chan_list_dump_lli(struct axi_dma_chan *chan,
  				   struct axi_dma_desc *desc_head)
  {
@@ -4301,7 +4320,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	int i;
  
  	for (i = 0; i < count; i++)
-@@ -1093,11 +1180,11 @@
+@@ -1094,11 +1182,11 @@
  
  static void axi_chan_block_xfer_complete(struct axi_dma_chan *chan)
  {
@@ -4314,7 +4333,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	u64 llp;
  	int i;
  
-@@ -1119,6 +1206,7 @@
+@@ -1120,6 +1208,7 @@
  	if (chan->cyclic) {
  		desc = vd_to_axi_desc(vd);
  		if (desc) {
@@ -4322,7 +4341,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  			llp = lo_hi_readq(chan->chan_regs + CH_LLP);
  			for (i = 0; i < count; i++) {
  				hw_desc = &desc->hw_desc[i];
-@@ -1399,6 +1487,10 @@
+@@ -1397,6 +1486,10 @@
  
  	chip->dw->hdata->nr_masters = tmp;
  
@@ -4333,9 +4352,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	ret = device_property_read_u32(dev, "snps,data-width", &tmp);
  	if (ret)
  		return ret;
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/gpu/drm/vc4/vc4_vec.c linux-6.9-rc5/drivers/gpu/drm/vc4/vc4_vec.c
---- linux-6.9-rc5/drivers/gpu/drm/vc4/vc4_vec.c	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/gpu/drm/vc4/vc4_vec.c	2024-04-25 18:24:34.653627490 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/gpu/drm/vc4/vc4_vec.c linux-6.10-rc3/drivers/gpu/drm/vc4/vc4_vec.c
+--- linux-6.10-rc3/drivers/gpu/drm/vc4/vc4_vec.c	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/gpu/drm/vc4/vc4_vec.c	2024-06-15 18:58:06.981352063 +0200
 @@ -503,6 +503,8 @@
  
  	drm_object_attach_property(&connector->base, prop, VC4_VEC_TV_MODE_NTSC);
@@ -4345,10 +4364,10 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	drm_connector_attach_encoder(connector, &vec->encoder.base);
  
  	return 0;
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/hwmon/Kconfig linux-6.9-rc5/drivers/hwmon/Kconfig
---- linux-6.9-rc5/drivers/hwmon/Kconfig	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/hwmon/Kconfig	2024-04-25 18:24:34.650294157 +0200
-@@ -2476,6 +2476,13 @@
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/hwmon/Kconfig linux-6.10-rc3/drivers/hwmon/Kconfig
+--- linux-6.10-rc3/drivers/hwmon/Kconfig	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/hwmon/Kconfig	2024-06-15 18:58:06.981352063 +0200
+@@ -2502,6 +2502,13 @@
  	  sensors monitor various telemetry data of different components on the
  	  card, e.g. board temperature, FPGA core temperature/voltage/current.
  
@@ -4362,10 +4381,10 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  if ACPI
  
  comment "ACPI drivers"
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/hwmon/Makefile linux-6.9-rc5/drivers/hwmon/Makefile
---- linux-6.9-rc5/drivers/hwmon/Makefile	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/hwmon/Makefile	2024-04-25 18:24:34.650294157 +0200
-@@ -188,6 +188,7 @@
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/hwmon/Makefile linux-6.10-rc3/drivers/hwmon/Makefile
+--- linux-6.10-rc3/drivers/hwmon/Makefile	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/hwmon/Makefile	2024-06-15 18:58:06.981352063 +0200
+@@ -189,6 +189,7 @@
  obj-$(CONFIG_SENSORS_PT5161L)	+= pt5161l.o
  obj-$(CONFIG_SENSORS_PWM_FAN)	+= pwm-fan.o
  obj-$(CONFIG_SENSORS_RASPBERRYPI_HWMON)	+= raspberrypi-hwmon.o
@@ -4373,9 +4392,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  obj-$(CONFIG_SENSORS_SBTSI)	+= sbtsi_temp.o
  obj-$(CONFIG_SENSORS_SBRMI)	+= sbrmi.o
  obj-$(CONFIG_SENSORS_SCH56XX_COMMON)+= sch56xx-common.o
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/hwmon/rp1-adc.c linux-6.9-rc5/drivers/hwmon/rp1-adc.c
---- linux-6.9-rc5/drivers/hwmon/rp1-adc.c	1970-01-01 01:00:00.000000000 +0100
-+++ linux-6.9-rc5/drivers/hwmon/rp1-adc.c	2024-04-25 18:24:34.650294157 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/hwmon/rp1-adc.c linux-6.10-rc3/drivers/hwmon/rp1-adc.c
+--- linux-6.10-rc3/drivers/hwmon/rp1-adc.c	1970-01-01 01:00:00.000000000 +0100
++++ linux-6.10-rc3/drivers/hwmon/rp1-adc.c	2024-06-15 18:58:06.981352063 +0200
 @@ -0,0 +1,307 @@
 +// SPDX-License-Identifier: GPL-2.0+
 +/*
@@ -4684,9 +4703,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
 +MODULE_DESCRIPTION("RP1 ADC driver");
 +MODULE_AUTHOR("Phil Elwell <phil@raspberrypi.com>");
 +MODULE_LICENSE("GPL");
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/i2c/busses/i2c-designware-core.h linux-6.9-rc5/drivers/i2c/busses/i2c-designware-core.h
---- linux-6.9-rc5/drivers/i2c/busses/i2c-designware-core.h	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/i2c/busses/i2c-designware-core.h	2024-04-25 18:24:34.653627490 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/i2c/busses/i2c-designware-core.h linux-6.10-rc3/drivers/i2c/busses/i2c-designware-core.h
+--- linux-6.10-rc3/drivers/i2c/busses/i2c-designware-core.h	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/i2c/busses/i2c-designware-core.h	2024-06-15 18:58:06.981352063 +0200
 @@ -122,7 +122,9 @@
  
  #define DW_IC_ERR_TX_ABRT			0x1
@@ -4697,9 +4716,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  
  #define DW_IC_COMP_PARAM_1_SPEED_MODE_HIGH	(BIT(2) | BIT(3))
  #define DW_IC_COMP_PARAM_1_SPEED_MODE_MASK	GENMASK(3, 2)
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/i2c/busses/i2c-designware-master.c linux-6.9-rc5/drivers/i2c/busses/i2c-designware-master.c
---- linux-6.9-rc5/drivers/i2c/busses/i2c-designware-master.c	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/i2c/busses/i2c-designware-master.c	2024-04-25 18:24:34.653627490 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/i2c/busses/i2c-designware-master.c linux-6.10-rc3/drivers/i2c/busses/i2c-designware-master.c
+--- linux-6.10-rc3/drivers/i2c/busses/i2c-designware-master.c	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/i2c/busses/i2c-designware-master.c	2024-06-15 18:58:06.981352063 +0200
 @@ -229,6 +229,10 @@
  		ic_tar = DW_IC_TAR_10BITADDR_MASTER;
  	}
@@ -4744,10 +4763,10 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  
  	dev->master_cfg = DW_IC_CON_MASTER | DW_IC_CON_SLAVE_DISABLE |
  			  DW_IC_CON_RESTART_EN;
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/i2c/busses/i2c-designware-platdrv.c linux-6.9-rc5/drivers/i2c/busses/i2c-designware-platdrv.c
---- linux-6.9-rc5/drivers/i2c/busses/i2c-designware-platdrv.c	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/i2c/busses/i2c-designware-platdrv.c	2024-04-25 18:24:34.650294157 +0200
-@@ -132,9 +132,18 @@
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/i2c/busses/i2c-designware-platdrv.c linux-6.10-rc3/drivers/i2c/busses/i2c-designware-platdrv.c
+--- linux-6.10-rc3/drivers/i2c/busses/i2c-designware-platdrv.c	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/i2c/busses/i2c-designware-platdrv.c	2024-06-15 18:58:06.981352063 +0200
+@@ -133,9 +133,18 @@
  	return 0;
  }
  
@@ -4766,7 +4785,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  
  	switch (dev->flags & MODEL_MASK) {
  	case MODEL_MSCC_OCELOT:
-@@ -146,6 +155,15 @@
+@@ -147,6 +156,15 @@
  		break;
  	}
  
@@ -4782,9 +4801,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	return 0;
  }
  
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/irqchip/irq-bcm2712-mip.c linux-6.9-rc5/drivers/irqchip/irq-bcm2712-mip.c
---- linux-6.9-rc5/drivers/irqchip/irq-bcm2712-mip.c	1970-01-01 01:00:00.000000000 +0100
-+++ linux-6.9-rc5/drivers/irqchip/irq-bcm2712-mip.c	2024-04-25 18:24:34.653627490 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/irqchip/irq-bcm2712-mip.c linux-6.10-rc3/drivers/irqchip/irq-bcm2712-mip.c
+--- linux-6.10-rc3/drivers/irqchip/irq-bcm2712-mip.c	1970-01-01 01:00:00.000000000 +0100
++++ linux-6.10-rc3/drivers/irqchip/irq-bcm2712-mip.c	2024-06-15 18:58:06.981352063 +0200
 @@ -0,0 +1,284 @@
 +// SPDX-License-Identifier: GPL-2.0-only
 +/*
@@ -5070,9 +5089,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
 +}
 +
 +IRQCHIP_DECLARE(bcm_mip, "brcm,bcm2712-mip-intc", mip_of_msi_init);
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/irqchip/irq-brcmstb-l2.c linux-6.9-rc5/drivers/irqchip/irq-brcmstb-l2.c
---- linux-6.9-rc5/drivers/irqchip/irq-brcmstb-l2.c	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/irqchip/irq-brcmstb-l2.c	2024-04-25 18:24:34.650294157 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/irqchip/irq-brcmstb-l2.c linux-6.10-rc3/drivers/irqchip/irq-brcmstb-l2.c
+--- linux-6.10-rc3/drivers/irqchip/irq-brcmstb-l2.c	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/irqchip/irq-brcmstb-l2.c	2024-06-15 18:58:06.981352063 +0200
 @@ -51,6 +51,16 @@
  	.cpu_mask_clear		= 0x0C
  };
@@ -5090,7 +5109,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  /* L2 intc private data structure */
  struct brcmstb_l2_intc_data {
  	struct irq_domain *domain;
-@@ -288,11 +298,18 @@
+@@ -299,11 +309,18 @@
  	return brcmstb_l2_intc_of_init(np, parent, &l2_lvl_intc_init);
  }
  
@@ -5109,9 +5128,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  IRQCHIP_PLATFORM_DRIVER_END(brcmstb_l2)
  MODULE_DESCRIPTION("Broadcom STB generic L2 interrupt controller");
  MODULE_LICENSE("GPL v2");
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/irqchip/Kconfig linux-6.9-rc5/drivers/irqchip/Kconfig
---- linux-6.9-rc5/drivers/irqchip/Kconfig	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/irqchip/Kconfig	2024-04-25 18:24:34.653627490 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/irqchip/Kconfig linux-6.10-rc3/drivers/irqchip/Kconfig
+--- linux-6.10-rc3/drivers/irqchip/Kconfig	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/irqchip/Kconfig	2024-06-15 18:58:06.981352063 +0200
 @@ -111,6 +111,14 @@
  	bool
  	select IRQ_DOMAIN
@@ -5127,9 +5146,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  config BCM6345_L1_IRQ
  	bool
  	select GENERIC_IRQ_CHIP
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/irqchip/Makefile linux-6.9-rc5/drivers/irqchip/Makefile
---- linux-6.9-rc5/drivers/irqchip/Makefile	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/irqchip/Makefile	2024-04-25 18:24:34.653627490 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/irqchip/Makefile linux-6.10-rc3/drivers/irqchip/Makefile
+--- linux-6.10-rc3/drivers/irqchip/Makefile	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/irqchip/Makefile	2024-06-15 18:58:06.981352063 +0200
 @@ -62,6 +62,7 @@
  obj-$(CONFIG_XILINX_INTC)		+= irq-xilinx-intc.o
  obj-$(CONFIG_IRQ_CROSSBAR)		+= irq-crossbar.o
@@ -5138,9 +5157,15 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  obj-$(CONFIG_BCM6345_L1_IRQ)		+= irq-bcm6345-l1.o
  obj-$(CONFIG_BCM7038_L1_IRQ)		+= irq-bcm7038-l1.o
  obj-$(CONFIG_BCM7120_L2_IRQ)		+= irq-bcm7120-l2.o
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/mfd/bcm2835-pm.c linux-6.9-rc5/drivers/mfd/bcm2835-pm.c
---- linux-6.9-rc5/drivers/mfd/bcm2835-pm.c	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/mfd/bcm2835-pm.c	2024-04-25 18:24:34.650294157 +0200
+@@ -124,3 +125,5 @@
+ obj-$(CONFIG_APPLE_AIC)			+= irq-apple-aic.o
+ obj-$(CONFIG_MCHP_EIC)			+= irq-mchp-eic.o
+ obj-$(CONFIG_SUNPLUS_SP7021_INTC)	+= irq-sp7021-intc.o
++
++KBUILD_CFLAGS += "-Wno-incompatible-pointer-types"
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/mfd/bcm2835-pm.c linux-6.10-rc3/drivers/mfd/bcm2835-pm.c
+--- linux-6.10-rc3/drivers/mfd/bcm2835-pm.c	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/mfd/bcm2835-pm.c	2024-06-15 18:58:06.981352063 +0200
 @@ -69,12 +69,30 @@
  	return 0;
  }
@@ -5195,9 +5220,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  static struct platform_driver bcm2835_pm_driver = {
  	.probe		= bcm2835_pm_probe,
  	.driver = {
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/mfd/Kconfig linux-6.9-rc5/drivers/mfd/Kconfig
---- linux-6.9-rc5/drivers/mfd/Kconfig	2024-04-25 18:37:15.473630034 +0200
-+++ linux-6.9-rc5/drivers/mfd/Kconfig	2024-04-25 18:24:34.650294157 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/mfd/Kconfig linux-6.10-rc3/drivers/mfd/Kconfig
+--- linux-6.10-rc3/drivers/mfd/Kconfig	2024-06-15 18:59:29.088016959 +0200
++++ linux-6.10-rc3/drivers/mfd/Kconfig	2024-06-15 18:58:06.981352063 +0200
 @@ -2315,6 +2315,17 @@
  	  additional drivers must be enabled in order to use the functionality
  	  of the device.
@@ -5216,18 +5241,18 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  config MFD_RSMU_I2C
  	tristate "Renesas Synchronization Management Unit with I2C"
  	depends on I2C && OF
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/mfd/Makefile linux-6.9-rc5/drivers/mfd/Makefile
---- linux-6.9-rc5/drivers/mfd/Makefile	2024-04-25 18:37:15.473630034 +0200
-+++ linux-6.9-rc5/drivers/mfd/Makefile	2024-04-25 18:24:34.650294157 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/mfd/Makefile linux-6.10-rc3/drivers/mfd/Makefile
+--- linux-6.10-rc3/drivers/mfd/Makefile	2024-06-15 18:59:29.088016959 +0200
++++ linux-6.10-rc3/drivers/mfd/Makefile	2024-06-15 18:58:06.981352063 +0200
 @@ -285,3 +285,5 @@
- rsmu-spi-objs			:= rsmu_core.o rsmu_spi.o
- obj-$(CONFIG_MFD_RSMU_I2C)	+= rsmu-i2c.o
- obj-$(CONFIG_MFD_RSMU_SPI)	+= rsmu-spi.o
+ 
+ +obj-$(CONFIG_MFD_RSMU_I2C)	+= rsmu_i2c.o rsmu_core.o
+ obj-$(CONFIG_MFD_RSMU_SPI)	+= rsmu_spi.o rsmu_core.o
 +
 +obj-$(CONFIG_MFD_RP1)		+= rp1.o
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/mfd/rp1.c linux-6.9-rc5/drivers/mfd/rp1.c
---- linux-6.9-rc5/drivers/mfd/rp1.c	1970-01-01 01:00:00.000000000 +0100
-+++ linux-6.9-rc5/drivers/mfd/rp1.c	2024-04-25 18:24:34.650294157 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/mfd/rp1.c linux-6.10-rc3/drivers/mfd/rp1.c
+--- linux-6.10-rc3/drivers/mfd/rp1.c	1970-01-01 01:00:00.000000000 +0100
++++ linux-6.10-rc3/drivers/mfd/rp1.c	2024-06-15 18:58:06.981352063 +0200
 @@ -0,0 +1,367 @@
 +// SPDX-License-Identifier: GPL-2.0
 +/*
@@ -5596,10 +5621,10 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
 +MODULE_AUTHOR("Phil Elwell <phil@raspberrypi.com>");
 +MODULE_DESCRIPTION("RP1 wrapper");
 +MODULE_LICENSE("GPL");
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/mmc/host/Kconfig linux-6.9-rc5/drivers/mmc/host/Kconfig
---- linux-6.9-rc5/drivers/mmc/host/Kconfig	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/mmc/host/Kconfig	2024-04-25 18:24:34.650294157 +0200
-@@ -1017,7 +1017,9 @@
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/mmc/host/Kconfig linux-6.10-rc3/drivers/mmc/host/Kconfig
+--- linux-6.10-rc3/drivers/mmc/host/Kconfig	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/mmc/host/Kconfig	2024-06-15 18:58:06.981352063 +0200
+@@ -1018,7 +1018,9 @@
  	tristate "Broadcom SDIO/SD/MMC support"
  	depends on ARCH_BRCMSTB || BMIPS_GENERIC || COMPILE_TEST
  	depends on MMC_SDHCI_PLTFM
@@ -5609,9 +5634,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	default ARCH_BRCMSTB || BMIPS_GENERIC
  	help
  	  This selects support for the SDIO/SD/MMC Host Controller on
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/mmc/host/sdhci-brcmstb.c linux-6.9-rc5/drivers/mmc/host/sdhci-brcmstb.c
---- linux-6.9-rc5/drivers/mmc/host/sdhci-brcmstb.c	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/mmc/host/sdhci-brcmstb.c	2024-04-25 18:24:34.650294157 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/mmc/host/sdhci-brcmstb.c linux-6.10-rc3/drivers/mmc/host/sdhci-brcmstb.c
+--- linux-6.10-rc3/drivers/mmc/host/sdhci-brcmstb.c	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/mmc/host/sdhci-brcmstb.c	2024-06-15 18:58:06.981352063 +0200
 @@ -12,6 +12,8 @@
  #include <linux/of.h>
  #include <linux/bitops.h>
@@ -6056,9 +6081,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	/*
  	 * Supply the existing CAPS, but clear the UHS modes. This
  	 * will allow these modes to be specified by device tree
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/mmc/host/sdhci.c linux-6.9-rc5/drivers/mmc/host/sdhci.c
---- linux-6.9-rc5/drivers/mmc/host/sdhci.c	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/mmc/host/sdhci.c	2024-04-25 18:24:34.650294157 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/mmc/host/sdhci.c linux-6.10-rc3/drivers/mmc/host/sdhci.c
+--- linux-6.10-rc3/drivers/mmc/host/sdhci.c	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/mmc/host/sdhci.c	2024-06-15 18:58:06.981352063 +0200
 @@ -3048,6 +3048,15 @@
  	spin_unlock_irqrestore(&host->lock, flags);
  }
@@ -6083,7 +6108,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  };
  
  /*****************************************************************************\
-@@ -4575,6 +4585,15 @@
+@@ -4581,6 +4591,15 @@
  	    !(host->quirks2 & SDHCI_QUIRK2_BROKEN_DDR50))
  		mmc->caps |= MMC_CAP_UHS_DDR50;
  
@@ -6099,10 +6124,10 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	/* Does the host need tuning for SDR50? */
  	if (host->caps1 & SDHCI_USE_SDR50_TUNING)
  		host->flags |= SDHCI_SDR50_NEEDS_TUNING;
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/mmc/host/sdhci.h linux-6.9-rc5/drivers/mmc/host/sdhci.h
---- linux-6.9-rc5/drivers/mmc/host/sdhci.h	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/mmc/host/sdhci.h	2024-04-25 18:24:34.650294157 +0200
-@@ -486,6 +486,11 @@
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/mmc/host/sdhci.h linux-6.10-rc3/drivers/mmc/host/sdhci.h
+--- linux-6.10-rc3/drivers/mmc/host/sdhci.h	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/mmc/host/sdhci.h	2024-06-15 18:58:06.981352063 +0200
+@@ -487,6 +487,11 @@
  /* Issue CMD and DATA reset together */
  #define SDHCI_QUIRK2_ISSUE_CMD_DAT_RESET_TOGETHER	(1<<19)
  
@@ -6114,7 +6139,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	int irq;		/* Device IRQ */
  	void __iomem *ioaddr;	/* Mapped address */
  	phys_addr_t mapbase;	/* physical address base */
-@@ -668,6 +673,7 @@
+@@ -669,6 +674,7 @@
  	void	(*request_done)(struct sdhci_host *host,
  				struct mmc_request *mrq);
  	void    (*dump_vendor_regs)(struct sdhci_host *host);
@@ -6122,10 +6147,10 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  };
  
  #ifdef CONFIG_MMC_SDHCI_IO_ACCESSORS
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/mmc/host/sdhci-of-dwcmshc.c linux-6.9-rc5/drivers/mmc/host/sdhci-of-dwcmshc.c
---- linux-6.9-rc5/drivers/mmc/host/sdhci-of-dwcmshc.c	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/mmc/host/sdhci-of-dwcmshc.c	2024-04-25 18:24:34.650294157 +0200
-@@ -743,7 +743,10 @@
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/mmc/host/sdhci-of-dwcmshc.c linux-6.10-rc3/drivers/mmc/host/sdhci-of-dwcmshc.c
+--- linux-6.10-rc3/drivers/mmc/host/sdhci-of-dwcmshc.c	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/mmc/host/sdhci-of-dwcmshc.c	2024-06-15 18:58:06.981352063 +0200
+@@ -951,7 +951,10 @@
  	.quirks = SDHCI_QUIRK_CAP_CLOCK_BASE_BROKEN |
  		  SDHCI_QUIRK_BROKEN_TIMEOUT_VAL,
  	.quirks2 = SDHCI_QUIRK2_PRESET_VALUE_BROKEN |
@@ -6137,9 +6162,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  };
  
  static const struct sdhci_pltfm_data sdhci_dwcmshc_th1520_pdata = {
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/net/ethernet/cadence/macb.h linux-6.9-rc5/drivers/net/ethernet/cadence/macb.h
---- linux-6.9-rc5/drivers/net/ethernet/cadence/macb.h	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/net/ethernet/cadence/macb.h	2024-04-25 18:24:34.650294157 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/net/ethernet/cadence/macb.h linux-6.10-rc3/drivers/net/ethernet/cadence/macb.h
+--- linux-6.10-rc3/drivers/net/ethernet/cadence/macb.h	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/net/ethernet/cadence/macb.h	2024-06-15 18:58:06.981352063 +0200
 @@ -85,6 +85,8 @@
  #define GEM_PBUFRXCUT		0x0044 /* RX Partial Store and Forward */
  #define GEM_JML			0x0048 /* Jumbo Max Length */
@@ -6203,9 +6228,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	/* AT91RM9200 transmit queue (1 on wire + 1 queued) */
  	struct macb_tx_skb	rm9200_txq[2];
  	unsigned int		max_tx_length;
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/net/ethernet/cadence/macb_main.c linux-6.9-rc5/drivers/net/ethernet/cadence/macb_main.c
---- linux-6.9-rc5/drivers/net/ethernet/cadence/macb_main.c	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/net/ethernet/cadence/macb_main.c	2024-04-25 18:24:34.650294157 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/net/ethernet/cadence/macb_main.c linux-6.10-rc3/drivers/net/ethernet/cadence/macb_main.c
+--- linux-6.10-rc3/drivers/net/ethernet/cadence/macb_main.c	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/net/ethernet/cadence/macb_main.c	2024-06-15 18:58:06.981352063 +0200
 @@ -40,6 +40,9 @@
  #include <linux/firmware/xlnx-zynqmp.h>
  #include "macb.h"
@@ -6471,9 +6496,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	.driver		= {
  		.name		= "macb",
  		.of_match_table	= of_match_ptr(macb_dt_ids),
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/pci/controller/pcie-brcmstb.c linux-6.9-rc5/drivers/pci/controller/pcie-brcmstb.c
---- linux-6.9-rc5/drivers/pci/controller/pcie-brcmstb.c	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/pci/controller/pcie-brcmstb.c	2024-04-25 18:24:34.653627490 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/pci/controller/pcie-brcmstb.c linux-6.10-rc3/drivers/pci/controller/pcie-brcmstb.c
+--- linux-6.10-rc3/drivers/pci/controller/pcie-brcmstb.c	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/pci/controller/pcie-brcmstb.c	2024-06-15 18:58:06.984685396 +0200
 @@ -14,6 +14,7 @@
  #include <linux/irqchip/chained_irq.h>
  #include <linux/irqdomain.h>
@@ -7387,9 +7412,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	}
  
  	bridge->ops = pcie->type == BCM7425 ? &brcm7425_pcie_ops : &brcm_pcie_ops;
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/phy/broadcom/Kconfig linux-6.9-rc5/drivers/phy/broadcom/Kconfig
---- linux-6.9-rc5/drivers/phy/broadcom/Kconfig	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/phy/broadcom/Kconfig	2024-04-25 18:24:34.653627490 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/phy/broadcom/Kconfig linux-6.10-rc3/drivers/phy/broadcom/Kconfig
+--- linux-6.10-rc3/drivers/phy/broadcom/Kconfig	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/phy/broadcom/Kconfig	2024-06-15 18:58:06.984685396 +0200
 @@ -93,7 +93,7 @@
  
  config PHY_BRCM_USB
@@ -7399,9 +7424,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	depends on OF
  	select GENERIC_PHY
  	select SOC_BRCMSTB if ARCH_BRCMSTB
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/phy/broadcom/phy-brcm-usb.c linux-6.9-rc5/drivers/phy/broadcom/phy-brcm-usb.c
---- linux-6.9-rc5/drivers/phy/broadcom/phy-brcm-usb.c	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/phy/broadcom/phy-brcm-usb.c	2024-04-25 18:24:34.653627490 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/phy/broadcom/phy-brcm-usb.c linux-6.10-rc3/drivers/phy/broadcom/phy-brcm-usb.c
+--- linux-6.10-rc3/drivers/phy/broadcom/phy-brcm-usb.c	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/phy/broadcom/phy-brcm-usb.c	2024-06-15 18:58:06.984685396 +0200
 @@ -75,7 +75,7 @@
  };
  
@@ -7441,9 +7466,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  		.compatible = "brcm,brcmstb-usb-phy",
  		.data = &chip_info_7445,
  	},
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/phy/broadcom/phy-brcm-usb-init.h linux-6.9-rc5/drivers/phy/broadcom/phy-brcm-usb-init.h
---- linux-6.9-rc5/drivers/phy/broadcom/phy-brcm-usb-init.h	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/phy/broadcom/phy-brcm-usb-init.h	2024-04-25 18:24:34.653627490 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/phy/broadcom/phy-brcm-usb-init.h linux-6.10-rc3/drivers/phy/broadcom/phy-brcm-usb-init.h
+--- linux-6.10-rc3/drivers/phy/broadcom/phy-brcm-usb-init.h	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/phy/broadcom/phy-brcm-usb-init.h	2024-06-15 18:58:06.984685396 +0200
 @@ -70,12 +70,14 @@
  	const struct brcm_usb_init_ops *ops;
  	struct regmap *syscon_piarbctl;
@@ -7459,9 +7484,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  
  static inline u32 brcm_usb_readl(void __iomem *addr)
  {
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/phy/broadcom/phy-brcm-usb-init-synopsys.c linux-6.9-rc5/drivers/phy/broadcom/phy-brcm-usb-init-synopsys.c
---- linux-6.9-rc5/drivers/phy/broadcom/phy-brcm-usb-init-synopsys.c	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/phy/broadcom/phy-brcm-usb-init-synopsys.c	2024-04-25 18:24:34.653627490 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/phy/broadcom/phy-brcm-usb-init-synopsys.c linux-6.10-rc3/drivers/phy/broadcom/phy-brcm-usb-init-synopsys.c
+--- linux-6.10-rc3/drivers/phy/broadcom/phy-brcm-usb-init-synopsys.c	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/phy/broadcom/phy-brcm-usb-init-synopsys.c	2024-06-15 18:58:06.984685396 +0200
 @@ -335,6 +335,36 @@
  	usb_init_common(params);
  }
@@ -7546,9 +7571,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
 +	params->ops = &bcm2712_ops;
 +	params->suspend_with_clocks = true;
 +}
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/pinctrl/bcm/Kconfig linux-6.9-rc5/drivers/pinctrl/bcm/Kconfig
---- linux-6.9-rc5/drivers/pinctrl/bcm/Kconfig	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/pinctrl/bcm/Kconfig	2024-04-25 18:24:34.650294157 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/pinctrl/bcm/Kconfig linux-6.10-rc3/drivers/pinctrl/bcm/Kconfig
+--- linux-6.10-rc3/drivers/pinctrl/bcm/Kconfig	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/pinctrl/bcm/Kconfig	2024-06-15 18:58:06.984685396 +0200
 @@ -3,6 +3,16 @@
  # Broadcom pinctrl drivers
  #
@@ -7566,9 +7591,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  config PINCTRL_BCM281XX
  	bool "Broadcom BCM281xx pinctrl driver"
  	depends on OF && (ARCH_BCM_MOBILE || COMPILE_TEST)
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/pinctrl/bcm/Makefile linux-6.9-rc5/drivers/pinctrl/bcm/Makefile
---- linux-6.9-rc5/drivers/pinctrl/bcm/Makefile	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/pinctrl/bcm/Makefile	2024-04-25 18:24:34.650294157 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/pinctrl/bcm/Makefile linux-6.10-rc3/drivers/pinctrl/bcm/Makefile
+--- linux-6.10-rc3/drivers/pinctrl/bcm/Makefile	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/pinctrl/bcm/Makefile	2024-06-15 18:58:06.984685396 +0200
 @@ -1,6 +1,7 @@
  # SPDX-License-Identifier: GPL-2.0
  # Broadcom pinctrl support
@@ -7577,9 +7602,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  obj-$(CONFIG_PINCTRL_BCM281XX)		+= pinctrl-bcm281xx.o
  obj-$(CONFIG_PINCTRL_BCM2835)		+= pinctrl-bcm2835.o
  obj-$(CONFIG_PINCTRL_BCM4908)		+= pinctrl-bcm4908.o
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/pinctrl/bcm/pinctrl-bcm2712.c linux-6.9-rc5/drivers/pinctrl/bcm/pinctrl-bcm2712.c
---- linux-6.9-rc5/drivers/pinctrl/bcm/pinctrl-bcm2712.c	1970-01-01 01:00:00.000000000 +0100
-+++ linux-6.9-rc5/drivers/pinctrl/bcm/pinctrl-bcm2712.c	2024-04-25 18:24:34.650294157 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/pinctrl/bcm/pinctrl-bcm2712.c linux-6.10-rc3/drivers/pinctrl/bcm/pinctrl-bcm2712.c
+--- linux-6.10-rc3/drivers/pinctrl/bcm/pinctrl-bcm2712.c	1970-01-01 01:00:00.000000000 +0100
++++ linux-6.10-rc3/drivers/pinctrl/bcm/pinctrl-bcm2712.c	2024-06-15 18:58:06.984685396 +0200
 @@ -0,0 +1,1216 @@
 +// SPDX-License-Identifier: GPL-2.0+
 +/*
@@ -8797,10 +8822,10 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
 +	},
 +};
 +builtin_platform_driver(bcm2712_pinctrl_driver);
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/pinctrl/Kconfig linux-6.9-rc5/drivers/pinctrl/Kconfig
---- linux-6.9-rc5/drivers/pinctrl/Kconfig	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/pinctrl/Kconfig	2024-04-25 18:24:34.650294157 +0200
-@@ -554,6 +554,13 @@
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/pinctrl/Kconfig linux-6.10-rc3/drivers/pinctrl/Kconfig
+--- linux-6.10-rc3/drivers/pinctrl/Kconfig	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/pinctrl/Kconfig	2024-06-15 18:58:06.984685396 +0200
+@@ -565,6 +565,13 @@
  	  each pin. This driver can also be built as a module called
  	  pinctrl-mlxbf3.
  
@@ -8814,20 +8839,20 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  source "drivers/pinctrl/actions/Kconfig"
  source "drivers/pinctrl/aspeed/Kconfig"
  source "drivers/pinctrl/bcm/Kconfig"
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/pinctrl/Makefile linux-6.9-rc5/drivers/pinctrl/Makefile
---- linux-6.9-rc5/drivers/pinctrl/Makefile	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/pinctrl/Makefile	2024-04-25 18:24:34.650294157 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/pinctrl/Makefile linux-6.10-rc3/drivers/pinctrl/Makefile
+--- linux-6.10-rc3/drivers/pinctrl/Makefile	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/pinctrl/Makefile	2024-06-15 18:58:06.984685396 +0200
 @@ -45,6 +45,7 @@
  obj-$(CONFIG_PINCTRL_PISTACHIO)	+= pinctrl-pistachio.o
  obj-$(CONFIG_PINCTRL_RK805)	+= pinctrl-rk805.o
  obj-$(CONFIG_PINCTRL_ROCKCHIP)	+= pinctrl-rockchip.o
 +obj-$(CONFIG_PINCTRL_RP1)	+= pinctrl-rp1.o
+ obj-$(CONFIG_PINCTRL_SCMI)	+= pinctrl-scmi.o
  obj-$(CONFIG_PINCTRL_SINGLE)	+= pinctrl-single.o
  obj-$(CONFIG_PINCTRL_ST) 	+= pinctrl-st.o
- obj-$(CONFIG_PINCTRL_STMFX) 	+= pinctrl-stmfx.o
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/pinctrl/pinctrl-rp1.c linux-6.9-rc5/drivers/pinctrl/pinctrl-rp1.c
---- linux-6.9-rc5/drivers/pinctrl/pinctrl-rp1.c	1970-01-01 01:00:00.000000000 +0100
-+++ linux-6.9-rc5/drivers/pinctrl/pinctrl-rp1.c	2024-04-25 18:24:34.650294157 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/pinctrl/pinctrl-rp1.c linux-6.10-rc3/drivers/pinctrl/pinctrl-rp1.c
+--- linux-6.10-rc3/drivers/pinctrl/pinctrl-rp1.c	1970-01-01 01:00:00.000000000 +0100
++++ linux-6.10-rc3/drivers/pinctrl/pinctrl-rp1.c	2024-06-15 18:58:06.984685396 +0200
 @@ -0,0 +1,1571 @@
 +// SPDX-License-Identifier: GPL-2.0
 +/*
@@ -10400,9 +10425,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
 +	},
 +};
 +builtin_platform_driver(rp1_pinctrl_driver);
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/pmdomain/bcm/bcm2835-power.c linux-6.9-rc5/drivers/pmdomain/bcm/bcm2835-power.c
---- linux-6.9-rc5/drivers/pmdomain/bcm/bcm2835-power.c	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/pmdomain/bcm/bcm2835-power.c	2024-04-25 18:24:34.650294157 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/pmdomain/bcm/bcm2835-power.c linux-6.10-rc3/drivers/pmdomain/bcm/bcm2835-power.c
+--- linux-6.10-rc3/drivers/pmdomain/bcm/bcm2835-power.c	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/pmdomain/bcm/bcm2835-power.c	2024-06-15 18:58:06.984685396 +0200
 @@ -79,6 +79,7 @@
  #define PM_IMAGE			0x108
  #define PM_GRAFX			0x10c
@@ -10463,10 +10488,10 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	}
  
  	power->pd_xlate.domains = devm_kcalloc(dev,
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/pwm/Kconfig linux-6.9-rc5/drivers/pwm/Kconfig
---- linux-6.9-rc5/drivers/pwm/Kconfig	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/pwm/Kconfig	2024-04-25 18:24:34.650294157 +0200
-@@ -483,6 +483,15 @@
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/pwm/Kconfig linux-6.10-rc3/drivers/pwm/Kconfig
+--- linux-6.10-rc3/drivers/pwm/Kconfig	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/pwm/Kconfig	2024-06-15 18:58:06.984685396 +0200
+@@ -479,6 +479,15 @@
  	  Enable Raspberry Pi firmware controller PWM bus used to control the
  	  official RPI PoE hat
  
@@ -10482,10 +10507,10 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  config PWM_RCAR
  	tristate "Renesas R-Car PWM support"
  	depends on ARCH_RENESAS || COMPILE_TEST
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/pwm/Makefile linux-6.9-rc5/drivers/pwm/Makefile
---- linux-6.9-rc5/drivers/pwm/Makefile	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/pwm/Makefile	2024-04-25 18:24:34.650294157 +0200
-@@ -44,6 +44,7 @@
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/pwm/Makefile linux-6.10-rc3/drivers/pwm/Makefile
+--- linux-6.10-rc3/drivers/pwm/Makefile	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/pwm/Makefile	2024-06-15 18:58:06.984685396 +0200
+@@ -43,6 +43,7 @@
  obj-$(CONFIG_PWM_PCA9685)	+= pwm-pca9685.o
  obj-$(CONFIG_PWM_PXA)		+= pwm-pxa.o
  obj-$(CONFIG_PWM_RASPBERRYPI_POE)	+= pwm-raspberrypi-poe.o
@@ -10493,10 +10518,10 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  obj-$(CONFIG_PWM_RCAR)		+= pwm-rcar.o
  obj-$(CONFIG_PWM_RENESAS_TPU)	+= pwm-renesas-tpu.o
  obj-$(CONFIG_PWM_ROCKCHIP)	+= pwm-rockchip.o
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/pwm/pwm-rp1.c linux-6.9-rc5/drivers/pwm/pwm-rp1.c
---- linux-6.9-rc5/drivers/pwm/pwm-rp1.c	1970-01-01 01:00:00.000000000 +0100
-+++ linux-6.9-rc5/drivers/pwm/pwm-rp1.c	2024-04-25 18:24:34.650294157 +0200
-@@ -0,0 +1,200 @@
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/pwm/pwm-rp1.c linux-6.10-rc3/drivers/pwm/pwm-rp1.c
+--- linux-6.10-rc3/drivers/pwm/pwm-rp1.c	1970-01-01 01:00:00.000000000 +0100
++++ linux-6.10-rc3/drivers/pwm/pwm-rp1.c	2024-06-15 14:47:40.561219910 +0200
+@@ -0,0 +1,188 @@
 +// SPDX-License-Identifier: GPL-2.0
 +/*
 + * pwm-rp1.c
@@ -10533,15 +10558,13 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
 +#define PWM_MODE_MASK		GENMASK(1, 0)
 +
 +struct rp1_pwm {
-+	struct pwm_chip chip;
-+	struct device *dev;
 +	void __iomem *base;
 +	struct clk *clk;
 +};
 +
 +static inline struct rp1_pwm *to_rp1_pwm(struct pwm_chip *chip)
 +{
-+	return container_of(chip, struct rp1_pwm, chip);
++	return pwmchip_get_drvdata(chip);
 +}
 +
 +static void rp1_pwm_apply_config(struct pwm_chip *chip, struct pwm_device *pwm)
@@ -10582,18 +10605,18 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
 +	u32 value;
 +
 +	if (!clk_rate) {
-+		dev_err(pc->dev, "failed to get clock rate\n");
++		dev_err(&chip->dev, "failed to get clock rate\n");
 +		return -EINVAL;
 +	}
 +
 +	/* set period */
-+	clk_period = DIV_ROUND_CLOSEST_ULL(NSEC_PER_SEC, clk_rate);
++	clk_period = DIV_ROUND_CLOSEST(NSEC_PER_SEC, clk_rate);
 +
-+	writel(DIV_ROUND_CLOSEST_ULL(state->duty_cycle, clk_period),
++	writel(DIV_ROUND_CLOSEST(state->duty_cycle, clk_period),
 +	       pc->base + PWM_DUTY(pwm->hwpwm));
 +
 +	/* set duty cycle */
-+	writel(DIV_ROUND_CLOSEST_ULL(state->period, clk_period),
++	writel(DIV_ROUND_CLOSEST(state->period, clk_period),
 +	       pc->base + PWM_RANGE(pwm->hwpwm));
 +
 +	/* set polarity */
@@ -10625,38 +10648,30 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
 +
 +static int rp1_pwm_probe(struct platform_device *pdev)
 +{
++	struct pwm_chip *chip;
 +	struct rp1_pwm *pc;
-+	struct resource *res;
 +	int ret;
 +
-+	pc = devm_kzalloc(&pdev->dev, sizeof(*pc), GFP_KERNEL);
-+	if (!pc)
-+		return -ENOMEM;
++	chip = devm_pwmchip_alloc(&pdev->dev, 4, sizeof(*pc));
 +
-+	pc->dev = &pdev->dev;
++	if (IS_ERR(chip))
++		return PTR_ERR(chip);
 +
-+	res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-+	pc->base = devm_ioremap_resource(&pdev->dev, res);
++	pc = to_rp1_pwm(chip);
++
++	pc->base = devm_platform_ioremap_resource(pdev, 0);
 +	if (IS_ERR(pc->base))
 +		return PTR_ERR(pc->base);
 +
-+	pc->clk = devm_clk_get(&pdev->dev, NULL);
++	pc->clk = devm_clk_get_enabled(&pdev->dev, NULL);
 +	if (IS_ERR(pc->clk))
 +		return dev_err_probe(&pdev->dev, PTR_ERR(pc->clk),
 +				     "clock not found\n");
 +
-+	ret = clk_prepare_enable(pc->clk);
-+	if (ret)
-+		return ret;
++	chip->ops = &rp1_pwm_ops;
++	chip->of_xlate = of_pwm_xlate_with_flags;
 +
-+	pc->chip.dev = &pdev->dev;
-+	pc->chip.ops = &rp1_pwm_ops;
-+	pc->chip.npwm = 4;
-+	pc->chip.of_xlate = of_pwm_xlate_with_flags;
-+
-+	platform_set_drvdata(pdev, pc);
-+
-+	ret = pwmchip_add(&pc->chip);
++	ret = devm_pwmchip_add(&pdev->dev, chip);
 +	if (ret < 0)
 +		goto add_fail;
 +
@@ -10672,8 +10687,6 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
 +	struct rp1_pwm *pc = platform_get_drvdata(pdev);
 +
 +	clk_disable_unprepare(pc->clk);
-+
-+	pwmchip_remove(&pc->chip);
 +
 +	return 0;
 +}
@@ -10697,10 +10710,10 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
 +MODULE_AUTHOR("Naushir Patuck <naush@raspberrypi.com");
 +MODULE_DESCRIPTION("RP1 PWM driver");
 +MODULE_LICENSE("GPL");
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/spi/spi-dw-core.c linux-6.9-rc5/drivers/spi/spi-dw-core.c
---- linux-6.9-rc5/drivers/spi/spi-dw-core.c	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/spi/spi-dw-core.c	2024-04-25 18:24:34.650294157 +0200
-@@ -239,8 +239,11 @@
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/spi/spi-dw-core.c linux-6.10-rc3/drivers/spi/spi-dw-core.c
+--- linux-6.10-rc3/drivers/spi/spi-dw-core.c	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/spi/spi-dw-core.c	2024-06-15 18:58:06.984685396 +0200
+@@ -240,8 +240,11 @@
  	 */
  	if (irq_status & DW_SPI_INT_TXEI) {
  		dw_writer(dws);
@@ -10713,7 +10726,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	}
  
  	return IRQ_HANDLED;
-@@ -367,8 +370,11 @@
+@@ -368,8 +371,11 @@
  
  	dws->transfer_handler = dw_spi_transfer_handler;
  
@@ -10727,9 +10740,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	dw_spi_umask_intr(dws, imask);
  }
  
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/spi/spi-dw-mmio.c linux-6.9-rc5/drivers/spi/spi-dw-mmio.c
---- linux-6.9-rc5/drivers/spi/spi-dw-mmio.c	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/spi/spi-dw-mmio.c	2024-04-25 18:24:34.650294157 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/spi/spi-dw-mmio.c linux-6.10-rc3/drivers/spi/spi-dw-mmio.c
+--- linux-6.10-rc3/drivers/spi/spi-dw-mmio.c	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/spi/spi-dw-mmio.c	2024-06-15 18:58:06.984685396 +0200
 @@ -20,6 +20,7 @@
  #include <linux/property.h>
  #include <linux/regmap.h>
@@ -10738,7 +10751,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  
  #include "spi-dw.h"
  
-@@ -337,8 +338,11 @@
+@@ -341,8 +342,11 @@
  	dws->paddr = mem->start;
  
  	dws->irq = platform_get_irq(pdev, 0);
@@ -10752,10 +10765,10 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  
  	dwsmmio->clk = devm_clk_get_enabled(&pdev->dev, NULL);
  	if (IS_ERR(dwsmmio->clk))
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/usb/dwc3/core.c linux-6.9-rc5/drivers/usb/dwc3/core.c
---- linux-6.9-rc5/drivers/usb/dwc3/core.c	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/usb/dwc3/core.c	2024-04-25 18:24:34.653627490 +0200
-@@ -1176,6 +1176,24 @@
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/usb/dwc3/core.c linux-6.10-rc3/drivers/usb/dwc3/core.c
+--- linux-6.10-rc3/drivers/usb/dwc3/core.c	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/usb/dwc3/core.c	2024-06-15 18:58:06.984685396 +0200
+@@ -1255,6 +1255,24 @@
  	}
  }
  
@@ -10780,7 +10793,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  /**
   * dwc3_core_init - Low-level initialization of DWC3 Core
   * @dwc: Pointer to our controller context structure
-@@ -1256,6 +1274,8 @@
+@@ -1320,6 +1338,8 @@
  
  	dwc3_set_incr_burst_type(dwc);
  
@@ -10789,7 +10802,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	ret = dwc3_phy_power_on(dwc);
  	if (ret)
  		goto err_exit_phy;
-@@ -1342,6 +1362,24 @@
+@@ -1409,6 +1429,24 @@
  		dwc3_writel(dwc->regs, DWC3_LLUCTL, reg);
  	}
  
@@ -10814,7 +10827,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	return 0;
  
  err_power_off_phy:
-@@ -1485,6 +1523,7 @@
+@@ -1573,6 +1611,7 @@
  	u8			tx_thr_num_pkt_prd = 0;
  	u8			tx_max_burst_prd = 0;
  	u8			tx_fifo_resize_max_num;
@@ -10822,7 +10835,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	const char		*usb_psy_name;
  	int			ret;
  
-@@ -1507,6 +1546,9 @@
+@@ -1595,6 +1634,9 @@
  	 */
  	tx_fifo_resize_max_num = 6;
  
@@ -10832,7 +10845,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	dwc->maximum_speed = usb_get_maximum_speed(dev);
  	dwc->max_ssp_rate = usb_get_maximum_ssp_rate(dev);
  	dwc->dr_mode = usb_get_dr_mode(dev);
-@@ -1628,6 +1670,9 @@
+@@ -1716,6 +1758,9 @@
  	dwc->dis_split_quirk = device_property_read_bool(dev,
  				"snps,dis-split-quirk");
  
@@ -10842,7 +10855,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	dwc->lpm_nyet_threshold = lpm_nyet_threshold;
  	dwc->tx_de_emphasis = tx_de_emphasis;
  
-@@ -1645,6 +1690,8 @@
+@@ -1733,6 +1778,8 @@
  	dwc->tx_thr_num_pkt_prd = tx_thr_num_pkt_prd;
  	dwc->tx_max_burst_prd = tx_max_burst_prd;
  
@@ -10851,7 +10864,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	dwc->imod_interval = 0;
  
  	dwc->tx_fifo_resize_max_num = tx_fifo_resize_max_num;
-@@ -1934,6 +1981,12 @@
+@@ -2072,6 +2119,12 @@
  
  	dwc3_get_properties(dwc);
  
@@ -10864,10 +10877,10 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	dwc->reset = devm_reset_control_array_get_optional_shared(dev);
  	if (IS_ERR(dwc->reset)) {
  		ret = PTR_ERR(dwc->reset);
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/usb/dwc3/core.h linux-6.9-rc5/drivers/usb/dwc3/core.h
---- linux-6.9-rc5/drivers/usb/dwc3/core.h	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/usb/dwc3/core.h	2024-04-25 18:24:34.653627490 +0200
-@@ -187,6 +187,9 @@
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/usb/dwc3/core.h linux-6.10-rc3/drivers/usb/dwc3/core.h
+--- linux-6.10-rc3/drivers/usb/dwc3/core.h	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/usb/dwc3/core.h	2024-06-15 18:58:06.984685396 +0200
+@@ -194,6 +194,9 @@
  #define DWC3_GSBUSCFG0_INCRBRSTENA	(1 << 0) /* undefined length enable */
  #define DWC3_GSBUSCFG0_INCRBRST_MASK	0xff
  
@@ -10877,7 +10890,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  /* Global Debug LSP MUX Select */
  #define DWC3_GDBGLSPMUX_ENDBC		BIT(15)	/* Host only */
  #define DWC3_GDBGLSPMUX_HOSTSELECT(n)	((n) & 0x3fff)
-@@ -1068,6 +1071,7 @@
+@@ -1077,6 +1080,7 @@
   * @tx_max_burst_prd: max periodic ESS transmit burst size
   * @tx_fifo_resize_max_num: max number of fifos allocated during txfifo resize
   * @clear_stall_protocol: endpoint number that requires a delayed status phase
@@ -10885,7 +10898,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
   * @hsphy_interface: "utmi" or "ulpi"
   * @connected: true when we're connected to a host, false otherwise
   * @softconnect: true when gadget connect is called, false when disconnect runs
-@@ -1306,6 +1310,7 @@
+@@ -1318,6 +1322,7 @@
  	u8			tx_max_burst_prd;
  	u8			tx_fifo_resize_max_num;
  	u8			clear_stall_protocol;
@@ -10893,10 +10906,10 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  
  	const char		*hsphy_interface;
  
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/usb/dwc3/host.c linux-6.9-rc5/drivers/usb/dwc3/host.c
---- linux-6.9-rc5/drivers/usb/dwc3/host.c	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/drivers/usb/dwc3/host.c	2024-04-25 18:35:44.486963070 +0200
-@@ -105,10 +105,12 @@
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/drivers/usb/dwc3/host.c linux-6.10-rc3/drivers/usb/dwc3/host.c
+--- linux-6.10-rc3/drivers/usb/dwc3/host.c	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/drivers/usb/dwc3/host.c	2024-06-15 18:58:06.984685396 +0200
+@@ -126,10 +126,12 @@
  
  int dwc3_host_init(struct dwc3 *dwc)
  {
@@ -10909,7 +10922,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  
  	/*
  	 * Some platforms need to power off all Root hub ports immediately after DWC3 set to host
-@@ -120,7 +122,12 @@
+@@ -141,7 +143,12 @@
  	if (irq < 0)
  		return irq;
  
@@ -10923,9 +10936,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/drivers/
  	if (!xhci) {
  		dev_err(dwc->dev, "couldn't allocate xHCI device\n");
  		return -ENOMEM;
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/include/dt-bindings/clock/rp1.h linux-6.9-rc5/include/dt-bindings/clock/rp1.h
---- linux-6.9-rc5/include/dt-bindings/clock/rp1.h	1970-01-01 01:00:00.000000000 +0100
-+++ linux-6.9-rc5/include/dt-bindings/clock/rp1.h	2024-04-25 18:24:34.650294157 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/include/dt-bindings/clock/rp1.h linux-6.10-rc3/include/dt-bindings/clock/rp1.h
+--- linux-6.10-rc3/include/dt-bindings/clock/rp1.h	1970-01-01 01:00:00.000000000 +0100
++++ linux-6.10-rc3/include/dt-bindings/clock/rp1.h	2024-06-15 18:58:06.984685396 +0200
 @@ -0,0 +1,52 @@
 +/* SPDX-License-Identifier: GPL-2.0-only */
 +/*
@@ -10979,9 +10992,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/include/
 +#define RP1_CLK_DPI			40
 +#define RP1_CLK_MIPI0_DPI		41
 +#define RP1_CLK_MIPI1_DPI		42
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/include/dt-bindings/mfd/rp1.h linux-6.9-rc5/include/dt-bindings/mfd/rp1.h
---- linux-6.9-rc5/include/dt-bindings/mfd/rp1.h	1970-01-01 01:00:00.000000000 +0100
-+++ linux-6.9-rc5/include/dt-bindings/mfd/rp1.h	2024-04-25 18:24:34.650294157 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/include/dt-bindings/mfd/rp1.h linux-6.10-rc3/include/dt-bindings/mfd/rp1.h
+--- linux-6.10-rc3/include/dt-bindings/mfd/rp1.h	1970-01-01 01:00:00.000000000 +0100
++++ linux-6.10-rc3/include/dt-bindings/mfd/rp1.h	2024-06-15 18:58:06.984685396 +0200
 @@ -0,0 +1,235 @@
 +/* SPDX-License-Identifier: GPL-2.0 */
 +/*
@@ -11218,9 +11231,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/include/
 +#define RP1_DMA_PIO_CH3_RX 0x3f
 +
 +#endif
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/include/linux/rp1_platform.h linux-6.9-rc5/include/linux/rp1_platform.h
---- linux-6.9-rc5/include/linux/rp1_platform.h	1970-01-01 01:00:00.000000000 +0100
-+++ linux-6.9-rc5/include/linux/rp1_platform.h	2024-04-25 18:24:34.650294157 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/include/linux/rp1_platform.h linux-6.10-rc3/include/linux/rp1_platform.h
+--- linux-6.10-rc3/include/linux/rp1_platform.h	1970-01-01 01:00:00.000000000 +0100
++++ linux-6.10-rc3/include/linux/rp1_platform.h	2024-06-15 18:58:06.984685396 +0200
 @@ -0,0 +1,20 @@
 +/* SPDX-License-Identifier: GPL-2.0 */
 +/*
@@ -11242,9 +11255,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/include/
 +void rp1_get_platform(u32 *chip_id, u32 *platform);
 +
 +#endif
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/include/soc/bcm2835/raspberrypi-firmware.h linux-6.9-rc5/include/soc/bcm2835/raspberrypi-firmware.h
---- linux-6.9-rc5/include/soc/bcm2835/raspberrypi-firmware.h	2024-04-21 21:35:54.000000000 +0200
-+++ linux-6.9-rc5/include/soc/bcm2835/raspberrypi-firmware.h	2024-04-25 18:24:34.650294157 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/include/soc/bcm2835/raspberrypi-firmware.h linux-6.10-rc3/include/soc/bcm2835/raspberrypi-firmware.h
+--- linux-6.10-rc3/include/soc/bcm2835/raspberrypi-firmware.h	2024-06-09 23:19:43.000000000 +0200
++++ linux-6.10-rc3/include/soc/bcm2835/raspberrypi-firmware.h	2024-06-15 18:58:06.984685396 +0200
 @@ -152,6 +152,7 @@
  	RPI_FIRMWARE_M2MC_CLK_ID,
  	RPI_FIRMWARE_PIXEL_BVB_CLK_ID,
@@ -11253,12 +11266,3 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/include/
  	RPI_FIRMWARE_NUM_CLK_ID,
  };
  
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc7/drivers/irqchip/Makefile linux-6.9-rc7/drivers/irqchip/Makefile
---- linux-6.9-rc7/drivers/irqchip/Makefile	2024-05-10 17:34:59.590417663 +0200
-+++ linux-6.9-rc7/drivers/irqchip/Makefile	2024-05-10 17:26:59.300416054 +0200
-@@ -122,3 +122,5 @@
- obj-$(CONFIG_APPLE_AIC)			+= irq-apple-aic.o
- obj-$(CONFIG_MCHP_EIC)			+= irq-mchp-eic.o
- obj-$(CONFIG_SUNPLUS_SP7021_INTC)	+= irq-sp7021-intc.o
-+
-+KBUILD_CFLAGS += "-Wno-incompatible-pointer-types"

@@ -1,17 +1,17 @@
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.1/arch/arm64/boot/dts/allwinner/Makefile linux-6.9.1/arch/arm64/boot/dts/allwinner/Makefile
---- linux-6.9.1/arch/arm64/boot/dts/allwinner/Makefile	2024-05-17 18:12:22.282867168 +0200
-+++ linux-6.9.1/arch/arm64/boot/dts/allwinner/Makefile	2024-05-17 18:09:37.526199939 +0200
-@@ -54,6 +54,7 @@
- dtb-$(CONFIG_ARCH_SUNXI) += sun50i-h616-tanix-tx6s.dtb
- dtb-$(CONFIG_ARCH_SUNXI) += sun50i-h616-tanix-tx6s-axp313.dtb
- dtb-$(CONFIG_ARCH_SUNXI) += sun50i-h313-x96-q.dtb
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/arch/arm64/boot/dts/allwinner/Makefile linux-6.10-rc3/arch/arm64/boot/dts/allwinner/Makefile
+--- linux-6.10-rc3/arch/arm64/boot/dts/allwinner/Makefile	2024-06-15 14:11:31.977933181 +0200
++++ linux-6.10-rc3/arch/arm64/boot/dts/allwinner/Makefile	2024-06-15 14:10:31.661267818 +0200
+@@ -43,6 +43,7 @@
+ dtb-$(CONFIG_ARCH_SUNXI) += sun50i-h6-tanix-tx6-a.dtb
+ dtb-$(CONFIG_ARCH_SUNXI) += sun50i-h6-tanix-tx6-mini.dtb
+ dtb-$(CONFIG_ARCH_SUNXI) += sun50i-h313-tanix-tx1.dtb
 +dtb-$(CONFIG_ARCH_SUNXI) += sun50i-h313-x96-q-v5.1.dtb
- dtb-$(CONFIG_ARCH_SUNXI) += sun50i-h313-x96-q-lpddr3.dtb
- dtb-$(CONFIG_ARCH_SUNXI) += sun50i-h618-vontar-h618.dtb
- dtb-$(CONFIG_ARCH_SUNXI) += sun50i-h618-orangepi-zero2w.dtb
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.1/arch/arm64/boot/dts/allwinner/sun50i-h313-x96-q-v5.1.dts linux-6.9.1/arch/arm64/boot/dts/allwinner/sun50i-h313-x96-q-v5.1.dts
---- linux-6.9.1/arch/arm64/boot/dts/allwinner/sun50i-h313-x96-q-v5.1.dts	1970-01-01 01:00:00.000000000 +0100
-+++ linux-6.9.1/arch/arm64/boot/dts/allwinner/sun50i-h313-x96-q-v5.1.dts	2024-05-17 18:10:37.226200157 +0200
+ dtb-$(CONFIG_ARCH_SUNXI) += sun50i-h616-bigtreetech-cb1-manta.dtb
+ dtb-$(CONFIG_ARCH_SUNXI) += sun50i-h616-bigtreetech-pi.dtb
+ dtb-$(CONFIG_ARCH_SUNXI) += sun50i-h616-tanix-tx6s.dtb
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/arch/arm64/boot/dts/allwinner/sun50i-h313-x96-q-v5.1.dts linux-6.10-rc3/arch/arm64/boot/dts/allwinner/sun50i-h313-x96-q-v5.1.dts
+--- linux-6.10-rc3/arch/arm64/boot/dts/allwinner/sun50i-h313-x96-q-v5.1.dts	1970-01-01 01:00:00.000000000 +0100
++++ linux-6.10-rc3/arch/arm64/boot/dts/allwinner/sun50i-h313-x96-q-v5.1.dts	2024-06-15 14:09:52.774601995 +0200
 @@ -0,0 +1,327 @@
 +// SPDX-License-Identifier: (GPL-2.0+ or MIT)
 +/*

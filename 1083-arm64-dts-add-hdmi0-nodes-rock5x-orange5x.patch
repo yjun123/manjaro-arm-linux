@@ -59,9 +59,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.2/arch/arm64
  #include <dt-bindings/gpio/gpio.h>
  #include <dt-bindings/leds/common.h>
 +#include <dt-bindings/soc/rockchip,vop2.h>
- #include <dt-bindings/usb/pd.h>
  #include "rk3588.dtsi"
  
+ / {
 @@ -927,3 +928,37 @@
  &usb_host2_xhci {
  	status = "okay";
