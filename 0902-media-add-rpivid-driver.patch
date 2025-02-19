@@ -74,7 +74,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.8-rc5/drivers/
 diff --speed-large-files --no-dereference --minimal -Naur linux-6.8-rc5/drivers/staging/media/rpivid/rpivid.c linux-6.8-rc5/drivers/staging/media/rpivid/rpivid.c
 --- linux-6.8-rc5/drivers/staging/media/rpivid/rpivid.c	1970-01-01 01:00:00.000000000 +0100
 +++ linux-6.8-rc5/drivers/staging/media/rpivid/rpivid.c	2024-02-24 13:42:43.282781652 +0100
-@@ -0,0 +1,429 @@
+@@ -0,0 +1,427 @@
 +// SPDX-License-Identifier: GPL-2.0
 +/*
 + * Raspberry Pi HEVC driver
@@ -464,7 +464,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.8-rc5/drivers/
 +	return ret;
 +}
 +
-+static int rpivid_remove(struct platform_device *pdev)
++static void rpivid_remove(struct platform_device *pdev)
 +{
 +	struct rpivid_dev *dev = platform_get_drvdata(pdev);
 +
@@ -479,8 +479,6 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.8-rc5/drivers/
 +	v4l2_device_unregister(&dev->v4l2_dev);
 +
 +	rpivid_hw_remove(dev);
-+
-+	return 0;
 +}
 +
 +static const struct of_device_id rpivid_dt_match[] = {

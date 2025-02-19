@@ -13,7 +13,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.5.7/arch/arm64
 diff --speed-large-files --no-dereference --minimal -Naur linux-6.5.7/arch/arm64/boot/dts/rockchip/rk3399-orangepi-4.dts linux-6.5.7/arch/arm64/boot/dts/rockchip/rk3399-orangepi-4.dts
 --- linux-6.5.7/arch/arm64/boot/dts/rockchip/rk3399-orangepi-4.dts	1970-01-01 01:00:00.000000000 +0100
 +++ linux-6.5.7/arch/arm64/boot/dts/rockchip/rk3399-orangepi-4.dts	2023-10-17 10:23:21.140013054 +0200
-@@ -0,0 +1,1018 @@
+@@ -0,0 +1,1017 @@
 +/*
 + * SPDX-License-Identifier: (GPL-2.0+ or MIT)
 + * Author: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
@@ -27,7 +27,6 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.5.7/arch/arm64
 +#include <dt-bindings/pwm/pwm.h>
 +#include <dt-bindings/usb/pd.h>
 +#include "rk3399.dtsi"
-+#include "rk3399-opp.dtsi"
 +
 +/ {
 +	model = "OrangePi 4";
@@ -273,7 +272,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.5.7/arch/arm64
 +		led@1 {
 +			gpios = <&gpio0 11 GPIO_ACTIVE_HIGH>;
 +			label = "sd_card_led";
-+			linux,default-trigger = "mmc0";
++			linux,default-trigger = "disk-activity";
 +			linux,default-trigger-delay-ms = <0>;
 +		};
 +	};
@@ -1035,7 +1034,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.5.7/arch/arm64
 diff --speed-large-files --no-dereference --minimal -Naur linux-6.5.7/arch/arm64/boot/dts/rockchip/rk3399-orangepi-4-lts.dts linux-6.5.7/arch/arm64/boot/dts/rockchip/rk3399-orangepi-4-lts.dts
 --- linux-6.5.7/arch/arm64/boot/dts/rockchip/rk3399-orangepi-4-lts.dts	1970-01-01 01:00:00.000000000 +0100
 +++ linux-6.5.7/arch/arm64/boot/dts/rockchip/rk3399-orangepi-4-lts.dts	2023-10-17 10:23:04.756679671 +0200
-@@ -0,0 +1,1119 @@
+@@ -0,0 +1,1118 @@
 +/*
 + * SPDX-License-Identifier: (GPL-2.0+ or MIT)
 + * Author: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
@@ -1049,7 +1048,6 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.5.7/arch/arm64
 +#include <dt-bindings/pwm/pwm.h>
 +#include <dt-bindings/usb/pd.h>
 +#include "rk3399.dtsi"
-+#include "rk3399-opp.dtsi"
 +
 +/ {
 +	model = "OrangePi 4 LTS";
@@ -1295,7 +1293,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.5.7/arch/arm64
 +		led@1 {
 +			gpios = <&gpio0 11 GPIO_ACTIVE_HIGH>;
 +			label = "sd_card_led";
-+			linux,default-trigger = "mmc0";
++			linux,default-trigger = "disk-activity";
 +			linux,default-trigger-delay-ms = <0>;
 +		};
 +	};

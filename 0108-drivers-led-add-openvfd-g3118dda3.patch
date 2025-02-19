@@ -5249,7 +5249,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/drivers/mi
 diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/drivers/misc/openvfd/openvfd_drv.c linux-6.9.3/drivers/misc/openvfd/openvfd_drv.c
 --- linux-6.9.3/drivers/misc/openvfd/openvfd_drv.c	1970-01-01 01:00:00.000000000 +0100
 +++ linux-6.9.3/drivers/misc/openvfd/openvfd_drv.c	2024-06-09 10:56:34.991405544 +0200
-@@ -0,0 +1,1043 @@
+@@ -0,0 +1,1042 @@
 +/*
 + * Open VFD Driver
 + *
@@ -6197,7 +6197,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/drivers/mi
 +	return state;
 +}
 +
-+static int openvfd_driver_remove(struct platform_device *pdev)
++static void openvfd_driver_remove(struct platform_device *pdev)
 +{
 +	set_power(0);
 +#if defined(CONFIG_HAS_EARLYSUSPEND) || defined(CONFIG_AMLOGIC_LEGACY_EARLY_SUSPEND)
@@ -6224,7 +6224,6 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/drivers/mi
 +	kfree(pdata);
 +	pdata = NULL;
 +#endif
-+	return 0;
 +}
 +
 +static void openvfd_driver_shutdown(struct platform_device *dev)

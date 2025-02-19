@@ -13,9 +13,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.6/arch/arm64/b
  		iommus = <&vdec_mmu>;
  		power-domains = <&power RK3328_PD_VIDEO>;
  	};
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.6/arch/arm64/boot/dts/rockchip/rk3399.dtsi linux-6.6/arch/arm64/boot/dts/rockchip/rk3399.dtsi
---- linux-6.6/arch/arm64/boot/dts/rockchip/rk3399.dtsi	2023-11-04 23:21:18.503354173 +0100
-+++ linux-6.6/arch/arm64/boot/dts/rockchip/rk3399.dtsi	2023-11-04 23:14:04.896686024 +0100
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.6/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi linux-6.6/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi
+--- linux-6.6/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi	2023-11-04 23:21:18.503354173 +0100
++++ linux-6.6/arch/arm64/boot/dts/rockchip/rk3399-base.dtsi	2023-11-04 23:14:04.896686024 +0100
 @@ -1395,6 +1395,11 @@
  		clock-names = "axi", "ahb", "cabac", "core";
  		iommus = <&vdec_mmu>;

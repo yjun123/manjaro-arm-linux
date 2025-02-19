@@ -1,6 +1,6 @@
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_bsp/aic_bsp_driver.c linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_bsp/aic_bsp_driver.c
---- linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_bsp/aic_bsp_driver.c	2024-06-14 17:14:47.571328551 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_bsp/aic_bsp_driver.c	2024-06-14 17:11:15.167999788 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_bsp/aic_bsp_driver.c linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_bsp/aic_bsp_driver.c
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_bsp/aic_bsp_driver.c	2024-11-03 17:06:15.410016386 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_bsp/aic_bsp_driver.c	2024-11-03 17:04:11.540015950 +0100
 @@ -472,7 +472,7 @@
  #endif
  
@@ -32,9 +32,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
      		continue;
      	}
  
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_bsp/aic_bsp_main.c linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_bsp/aic_bsp_main.c
---- linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_bsp/aic_bsp_main.c	2024-06-14 17:14:47.571328551 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_bsp/aic_bsp_main.c	2024-06-14 17:11:15.167999788 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_bsp/aic_bsp_main.c linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_bsp/aic_bsp_main.c
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_bsp/aic_bsp_main.c	2024-11-03 17:06:15.410016386 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_bsp/aic_bsp_main.c	2024-11-03 17:04:11.540015950 +0100
 @@ -15,7 +15,8 @@
  #define DRV_AUTHOR            "AICSemi"
  #define DRV_VERS_MOD          "1.0"
@@ -45,9 +45,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
  
  static struct platform_device *aicbsp_pdev;
  
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_btlpm/lpm.c linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_btlpm/lpm.c
---- linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_btlpm/lpm.c	2024-06-14 17:14:47.577995218 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_btlpm/lpm.c	2024-06-14 17:11:15.167999788 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_btlpm/lpm.c linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_btlpm/lpm.c
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_btlpm/lpm.c	2024-11-03 17:06:15.420016386 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_btlpm/lpm.c	2024-11-03 17:04:11.540015950 +0100
 @@ -769,6 +769,16 @@
  }
  #endif
@@ -106,9 +106,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
  err0:
  	devm_kfree(dev, bsi);
  
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/aicwf_sdio.c linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/aicwf_sdio.c
---- linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/aicwf_sdio.c	2024-06-14 17:14:47.581328550 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/aicwf_sdio.c	2024-06-14 17:11:15.167999788 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/aicwf_sdio.c linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/aicwf_sdio.c
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/aicwf_sdio.c	2024-11-03 17:06:15.423349720 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/aicwf_sdio.c	2024-11-03 17:04:11.540015950 +0100
 @@ -529,15 +529,15 @@
  
  	if(vid == SDIO_VENDOR_ID_AIC8801 && did == SDIO_DEVICE_ID_AIC8801){
@@ -128,9 +128,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
  		return 0;
  	}else{
  		return -1;
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/Makefile linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/Makefile
---- linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/Makefile	2024-06-14 17:14:47.584661884 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/Makefile	2024-06-14 17:11:15.167999788 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/Makefile linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/Makefile
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/Makefile	2024-11-03 17:06:15.423349720 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/Makefile	2024-11-03 17:04:11.540015950 +0100
 @@ -132,7 +132,7 @@
  
  # extra DEBUG config
@@ -149,9 +149,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
  # FW ARCH:
  ccflags-$(CONFIG_RWNX_SDM) += -DCONFIG_RWNX_SDM
  ccflags-$(CONFIG_RWNX_TL4) += -DCONFIG_RWNX_TL4
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_main.c linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_main.c
---- linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_main.c	2024-06-14 17:14:47.587995217 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_main.c	2024-06-14 17:11:15.167999788 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_main.c linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_main.c
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_main.c	2024-11-03 17:06:15.426683053 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_main.c	2024-11-03 17:04:11.540015950 +0100
 @@ -510,7 +510,8 @@
  
  
@@ -229,9 +229,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
  	.change_bss = rwnx_cfg80211_change_bss,
  #if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 17, 0) || defined(CONFIG_WPA3_FOR_OLD_KERNEL)
  	.external_auth = rwnx_cfg80211_external_auth,
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_mod_params.c linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_mod_params.c
---- linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_mod_params.c	2024-06-14 17:14:47.587995217 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_mod_params.c	2024-06-14 17:11:15.167999788 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_mod_params.c linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_mod_params.c
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_mod_params.c	2024-11-03 17:06:15.430016386 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_mod_params.c	2024-11-03 17:04:11.540015950 +0100
 @@ -1546,9 +1546,6 @@
          // function, that needs to be called after wiphy registration
          memcpy(country_code, default_ccode, sizeof(default_ccode));
@@ -284,9 +284,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
      }
       rtnl_unlock();
  #endif
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_platform.c linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_platform.c
---- linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_platform.c	2024-06-14 17:14:47.591328551 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_platform.c	2024-06-14 17:11:15.167999788 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_platform.c linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_platform.c
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_platform.c	2024-11-03 17:06:15.430016386 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_platform.c	2024-11-03 17:04:11.540015950 +0100
 @@ -271,7 +271,7 @@
  #endif
  
@@ -296,9 +296,30 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
  
  static int rwnx_load_firmware(u32 **fw_buf, const char *name, struct device *device)
  {
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_version.h linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_version.h
---- linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_version.h	2024-06-14 17:14:47.591328551 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_version.h	2024-06-14 17:11:15.167999788 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_radar.c linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_radar.c
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_radar.c	2024-11-03 17:06:15.430016386 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_radar.c	2024-11-03 16:42:50.616678220 +0100
+@@ -1399,7 +1399,7 @@
+ 					#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 14, 0)
+ 					   &ctxt->chan_def,
+ 					#endif
+-					   NL80211_RADAR_CAC_FINISHED, GFP_KERNEL);
++					   NL80211_RADAR_CAC_FINISHED, GFP_KERNEL, 0);
+ 	rwnx_send_apm_stop_cac_req(rwnx_hw, radar->cac_vif);
+ 	rwnx_chanctx_unlink(radar->cac_vif);
+ 
+@@ -1499,7 +1499,7 @@
+ 						#if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 14, 0)
+ 						   &ctxt->chan_def,
+ 						#endif
+-						   NL80211_RADAR_CAC_ABORTED, GFP_KERNEL);
++						   NL80211_RADAR_CAC_ABORTED, GFP_KERNEL, 0);
+ 		rwnx_chanctx_unlink(radar->cac_vif);
+ 	}
+ 
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_version.h linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_version.h
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_version.h	2024-11-03 17:06:15.433349720 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/aic8800_fdrv/rwnx_version.h	2024-11-03 17:04:11.540015950 +0100
 @@ -6,7 +6,7 @@
  static inline void rwnx_print_version(void)
  {
@@ -308,18 +329,18 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
  }
  
  #endif /* _RWNX_VERSION_H_ */
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_sdio/.gitignore linux-6.9.4/drivers/net/wireless/aic8800_sdio/.gitignore
---- linux-6.9.4/drivers/net/wireless/aic8800_sdio/.gitignore	2024-06-14 17:14:47.594661884 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_sdio/.gitignore	1970-01-01 01:00:00.000000000 +0100
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/.gitignore linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/.gitignore
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/.gitignore	2024-11-03 17:06:15.433349720 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/.gitignore	1970-01-01 01:00:00.000000000 +0100
 @@ -1,5 +0,0 @@
 -*.symvers
 -*.order
 -*.symvers.cmd
 -*.order.cmd
 -.tmp_versions/
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_sdio/Kconfig linux-6.9.4/drivers/net/wireless/aic8800_sdio/Kconfig
---- linux-6.9.4/drivers/net/wireless/aic8800_sdio/Kconfig	2024-06-14 17:14:47.594661884 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_sdio/Kconfig	2024-06-14 17:11:15.167999788 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/Kconfig linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/Kconfig
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/Kconfig	2024-11-03 17:06:15.433349720 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/Kconfig	2024-11-03 17:04:11.540015950 +0100
 @@ -1,18 +1,17 @@
 -config AIC_WLAN_SUPPORT
 -	bool "AIC wireless Support"
@@ -347,9 +368,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
 +source "drivers/net/wireless/aic8800_sdio/aic8800_fdrv/Kconfig"
 +source "drivers/net/wireless/aic8800_sdio/aic8800_btlpm/Kconfig"
  endif
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_sdio/Makefile linux-6.9.4/drivers/net/wireless/aic8800_sdio/Makefile
---- linux-6.9.4/drivers/net/wireless/aic8800_sdio/Makefile	2024-06-14 17:14:47.594661884 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_sdio/Makefile	2024-06-14 17:12:56.437997615 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/Makefile linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/Makefile
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/Makefile	2024-11-03 17:06:15.433349720 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_sdio/Makefile	2024-11-03 17:04:11.543349283 +0100
 @@ -1,12 +1,10 @@
  CONFIG_AIC8800_BTLPM_SUPPORT := m
  CONFIG_AIC8800_WLAN_SUPPORT := m

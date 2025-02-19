@@ -1107,8 +1107,8 @@ index 9633371929d8..446da2967b6a 100644
  	/* Combine adjacent blocks for performance */
  	k = 0;
 -	for_each_sg(scatterlist, sg, dma_buffers, i) {
--		u32 len = sg_dma_len(sg);
--		u32 addr = sg_dma_address(sg);
+-		unsigned int len = sg_dma_len(sg);
+-		dma_addr_t addr = sg_dma_address(sg);
 -
 -		/* Note: addrs is the address + page_count - 1
 -		 * The firmware expects blocks after the first to be page-
@@ -1124,7 +1124,7 @@ index 9633371929d8..446da2967b6a 100644
 -				(((len + PAGE_SIZE - 1) >> PAGE_SHIFT) - 1);
 +	if (g_use_36bit_addrs) {
 +		for_each_sg(scatterlist, sg, dma_buffers, i) {
-+			u32 len = sg_dma_len(sg);
++			unsigned int len = sg_dma_len(sg);
 +			u64 addr = sg_dma_address(sg);
 +			u32 page_id = (u32)((addr >> 4) & ~0xff);
 +			u32 sg_pages = (len + PAGE_SIZE - 1) >> PAGE_SHIFT;
@@ -1158,8 +1158,8 @@ index 9633371929d8..446da2967b6a 100644
 +		}
 +	} else {
 +		for_each_sg(scatterlist, sg, dma_buffers, i) {
-+			u32 len = sg_dma_len(sg);
-+			u32 addr = sg_dma_address(sg);
++			unsigned int len = sg_dma_len(sg);
++			dma_addr_t addr = sg_dma_address(sg);
 +			u32 new_pages = (len + PAGE_SIZE - 1) >> PAGE_SHIFT;
 +
 +			/* Note: addrs is the address + page_count - 1

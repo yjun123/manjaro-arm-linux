@@ -1,6 +1,6 @@
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/aicwf_compat_8800d80.c linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/aicwf_compat_8800d80.c
---- linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/aicwf_compat_8800d80.c	2024-06-14 16:52:10.901357710 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/aicwf_compat_8800d80.c	2024-06-14 16:38:16.618042303 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/aicwf_compat_8800d80.c linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/aicwf_compat_8800d80.c
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/aicwf_compat_8800d80.c	2024-11-03 17:46:40.306691530 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/aicwf_compat_8800d80.c	2024-11-03 17:44:39.690024460 +0100
 @@ -35,7 +35,7 @@
      char *filename = FW_USERCONFIG_NAME_8800D80;
  
@@ -10,9 +10,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
  #endif
  
      AICWFDBG(LOGINFO, "userconfig file path:%s \r\n", filename);
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/aicwf_tcp_ack.c linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/aicwf_tcp_ack.c
---- linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/aicwf_tcp_ack.c	2024-06-14 16:52:10.901357710 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/aicwf_tcp_ack.c	2024-06-14 16:38:16.621375637 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/aicwf_tcp_ack.c linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/aicwf_tcp_ack.c
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/aicwf_tcp_ack.c	2024-11-03 17:46:40.306691530 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/aicwf_tcp_ack.c	2024-11-03 17:44:39.690024460 +0100
 @@ -66,7 +66,7 @@
  	struct tcp_ack_info *ack_info;
  	struct tcp_ack_manage *ack_m = &priv->ack_m;
@@ -31,9 +31,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
  					break;
  				default:
  					drop = 2;
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/.gitignore linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/.gitignore
---- linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/.gitignore	2024-06-14 16:52:10.901357710 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/.gitignore	1970-01-01 01:00:00.000000000 +0100
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/.gitignore linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/.gitignore
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/.gitignore	2024-11-03 17:46:40.310024863 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/.gitignore	1970-01-01 01:00:00.000000000 +0100
 @@ -1,10 +0,0 @@
 -*.o
 -*.ko
@@ -45,9 +45,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
 -*.mod
 -*.mod.c
 -*.mod.cmd
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/Makefile linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/Makefile
---- linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/Makefile	2024-06-14 16:52:10.904691044 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/Makefile	2024-06-14 16:38:16.624708970 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/Makefile linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/Makefile
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/Makefile	2024-11-03 17:46:40.310024863 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/Makefile	2024-11-03 17:44:39.690024460 +0100
 @@ -5,7 +5,7 @@
  RWNX_VERS_NUM := 6.4.3.0
  
@@ -66,9 +66,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
  BR_NAME = br0
  
  obj-$(CONFIG_AIC8800_WLAN_SUPPORT) := $(MODULE_NAME).o
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_main.c linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_main.c
---- linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_main.c	2024-06-14 16:52:10.908024377 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_main.c	2024-06-14 16:38:16.628042304 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_main.c linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_main.c
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_main.c	2024-11-03 17:46:40.313358197 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_main.c	2024-11-03 17:36:57.173356171 +0100
 @@ -521,7 +521,7 @@
  struct semaphore aicwf_deinit_sem;
  atomic_t aicwf_deinit_atomic;
@@ -131,7 +131,21 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
      if (!buf)
          return -ENOMEM;
  
-@@ -5955,7 +5968,7 @@
+@@ -5801,10 +5814,9 @@
+ static
+ int rwnx_cfg80211_start_radar_detection(struct wiphy *wiphy,
+                                         struct net_device *dev,
+-                                        struct cfg80211_chan_def *chandef
+-                                    #if (LINUX_VERSION_CODE >= KERNEL_VERSION(3, 15, 0))
+-                                        , u32 cac_time_ms
+-                                    #endif
++                                        struct cfg80211_chan_def *chandef,
++                                        u32 cac_time_ms,
++                                        int id
+                                         )
+ {
+     struct rwnx_hw *rwnx_hw = wiphy_priv(wiphy);
+@@ -5955,7 +5967,7 @@
      } else {
          INIT_WORK(&csa->work, rwnx_csa_finish);
  #if LINUX_VERSION_CODE >= HIGH_KERNEL_VERSION4
@@ -140,7 +154,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
  #elif LINUX_VERSION_CODE >= HIGH_KERNEL_VERSION2
          cfg80211_ch_switch_started_notify(dev, &csa->chandef, 0, params->count, false);
  #elif LINUX_VERSION_CODE >= KERNEL_VERSION(5, 11, 0)
-@@ -9229,7 +9242,7 @@
+@@ -9229,7 +9241,7 @@
  }
  
  
@@ -149,7 +163,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
  extern int aicwf_vendor_init(struct wiphy *wiphy);
  int rwnx_cfg80211_init(struct rwnx_plat *rwnx_plat, void **platform_data)
  {
-@@ -9239,7 +9252,7 @@
+@@ -9239,7 +9251,7 @@
      struct wiphy *wiphy;
      struct rwnx_vif *vif;
      int i;
@@ -158,7 +172,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
      struct mm_get_fw_version_cfm fw_version;
      u8_l mac_addr_efuse[ETH_ALEN];
  #ifndef USE_5G
-@@ -9261,11 +9274,8 @@
+@@ -9261,11 +9273,8 @@
          nx_remote_sta_max = NX_REMOTE_STA_MAX_FOR_OLD_IC;
  }
  
@@ -172,7 +186,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
  //#endif
      /* create a new wiphy for use with cfg80211 */
      AICWFDBG(LOGINFO, "%s sizeof(struct rwnx_hw):%d \r\n", __func__, (int)sizeof(struct rwnx_hw));
-@@ -9338,7 +9348,7 @@
+@@ -9338,7 +9347,7 @@
      rwnx_hwq_init(rwnx_hw);
  
  #ifdef CONFIG_PREALLOC_TXQ
@@ -181,7 +195,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
  #endif
  
      for (i = 0; i < NX_NB_TXQ; i++) {
-@@ -9506,11 +9516,11 @@
+@@ -9506,11 +9515,11 @@
      {
          memcpy(init_conf.mac_addr, mac_addr_efuse, ETH_ALEN);
      }else{
@@ -198,9 +212,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
  
      memcpy(wiphy->perm_addr, init_conf.mac_addr, ETH_ALEN);
  
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_mod_params.c linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_mod_params.c
---- linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_mod_params.c	2024-06-14 16:52:10.908024377 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_mod_params.c	2024-06-14 16:38:16.628042304 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_mod_params.c linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_mod_params.c
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_mod_params.c	2024-11-03 17:46:40.313358197 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_mod_params.c	2024-11-03 17:44:39.690024460 +0100
 @@ -1582,7 +1582,10 @@
                 "\n\n%s: CAUTION: USING PERMISSIVE CUSTOM REGULATORY RULES\n\n",
                 __func__);
@@ -238,9 +252,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
      }
       rtnl_unlock();
  #endif
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_platform.c linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_platform.c
---- linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_platform.c	2024-06-14 16:52:10.911357710 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_platform.c	2024-06-14 16:38:16.631375637 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_platform.c linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_platform.c
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_platform.c	2024-11-03 17:46:40.316691530 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_platform.c	2024-11-03 17:44:39.690024460 +0100
 @@ -284,7 +284,7 @@
  #endif
  
@@ -250,9 +264,30 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
  
  static int rwnx_load_firmware(u32 **fw_buf, const char *name, struct device *device)
  {
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_rx.c linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_rx.c
---- linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_rx.c	2024-06-14 16:52:10.911357710 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_rx.c	2024-06-14 16:38:16.631375637 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_radar.c linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_radar.c
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_radar.c	2024-11-03 17:46:40.316691530 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_radar.c	2024-11-03 17:24:32.916686808 +0100
+@@ -1399,7 +1399,7 @@
+                     #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 14, 0)
+                        &ctxt->chan_def,
+                     #endif
+-                       NL80211_RADAR_CAC_FINISHED, GFP_KERNEL);
++                       NL80211_RADAR_CAC_FINISHED, GFP_KERNEL, 0);
+     rwnx_send_apm_stop_cac_req(rwnx_hw, radar->cac_vif);
+     rwnx_chanctx_unlink(radar->cac_vif);
+ 
+@@ -1499,7 +1499,7 @@
+                         #if LINUX_VERSION_CODE >= KERNEL_VERSION(3, 14, 0)
+                            &ctxt->chan_def,
+                         #endif
+-                           NL80211_RADAR_CAC_ABORTED, GFP_KERNEL);
++                           NL80211_RADAR_CAC_ABORTED, GFP_KERNEL, 0);
+         rwnx_chanctx_unlink(radar->cac_vif);
+     }
+ 
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_rx.c linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_rx.c
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_rx.c	2024-11-03 17:46:40.316691530 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_rx.c	2024-11-03 17:44:39.690024460 +0100
 @@ -465,7 +465,7 @@
      if (amsdu) {
          int count;
@@ -262,9 +297,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
  
          count = skb_queue_len(&list);
          if (count > ARRAY_SIZE(rwnx_hw->stats.amsdus_rx))
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_tx.c linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_tx.c
---- linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_tx.c	2024-06-14 16:52:10.914691044 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_tx.c	2024-06-14 16:38:16.631375637 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_tx.c linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_tx.c
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_tx.c	2024-11-03 17:46:40.320024863 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_tx.c	2024-11-03 17:44:39.690024460 +0100
 @@ -2213,9 +2213,9 @@
  
      /* Update txq and HW queue credits */
@@ -278,9 +313,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
  #ifdef CREATE_TRACE_POINTS
          trace_mgmt_cfm(sw_txhdr->rwnx_vif->vif_index,
                         (sw_txhdr->rwnx_sta) ? sw_txhdr->rwnx_sta->sta_idx : 0xFF,
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_utils.c linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_utils.c
---- linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_utils.c	2024-06-14 16:52:10.914691044 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_utils.c	2024-06-14 16:38:16.634708970 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_utils.c linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_utils.c
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_utils.c	2024-11-03 17:46:40.320024863 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic8800_fdrv/rwnx_utils.c	2024-11-03 17:44:39.690024460 +0100
 @@ -15,8 +15,8 @@
  #include "ipc_host.h"
  
@@ -304,9 +339,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
  	
      return 0;
  }
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/aicbluetooth.c linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/aicbluetooth.c
---- linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/aicbluetooth.c	2024-06-14 16:52:10.914691044 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/aicbluetooth.c	2024-06-14 16:38:16.634708970 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/aicbluetooth.c linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/aicbluetooth.c
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/aicbluetooth.c	2024-11-03 17:46:40.320024863 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/aicbluetooth.c	2024-11-03 17:44:39.690024460 +0100
 @@ -195,7 +195,7 @@
  }
  
@@ -385,9 +420,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
  
  	if (size <= 0) {
  		printk("wrong size of firmware file\n");
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/aicbluetooth_cmds.c linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/aicbluetooth_cmds.c
---- linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/aicbluetooth_cmds.c	2024-06-14 16:52:10.914691044 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/aicbluetooth_cmds.c	2024-06-14 16:38:16.634708970 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/aicbluetooth_cmds.c linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/aicbluetooth_cmds.c
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/aicbluetooth_cmds.c	2024-11-03 17:46:40.320024863 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/aicbluetooth_cmds.c	2024-11-03 17:44:39.690024460 +0100
 @@ -180,9 +180,9 @@
      struct rwnx_cmd *cur;
  
@@ -401,9 +436,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
      list_for_each_entry(cur, &cmd_mgr->cmds, list) {
          cmd_dump(cur);
      }
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/aic_bluetooth_main.c linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/aic_bluetooth_main.c
---- linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/aic_bluetooth_main.c	2024-06-14 16:52:10.914691044 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/aic_bluetooth_main.c	2024-06-14 16:38:16.634708970 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/aic_bluetooth_main.c linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/aic_bluetooth_main.c
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/aic_bluetooth_main.c	2024-11-03 17:46:40.320024863 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/aic_bluetooth_main.c	2024-11-03 17:44:39.690024460 +0100
 @@ -20,7 +20,7 @@
  char paringid[100];
  int n_para = 1;
@@ -413,9 +448,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
  int flash_erase_len = 0x400000;
  uint32_t ad_data_filter_mask = 0;
  uint32_t gpio_num = 2;//default select gpiob2 for fw_wakeup_host
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/aic_compat_8800d80.c linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/aic_compat_8800d80.c
---- linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/aic_compat_8800d80.c	2024-06-14 16:52:10.914691044 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/aic_compat_8800d80.c	2024-06-14 16:38:16.634708970 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/aic_compat_8800d80.c linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/aic_compat_8800d80.c
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/aic_compat_8800d80.c	2024-11-03 17:46:40.320024863 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/aic_compat_8800d80.c	2024-11-03 17:44:39.690024460 +0100
 @@ -93,19 +93,19 @@
      }
      aic_patch_addr = rd_patch_addr + 8;
@@ -439,9 +474,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
      aic_patch_str_base = rd_patch_addr_cfm.memdata;
  
      if ((ret = rwnx_send_dbg_mem_write_req(usb_dev, AIC_PATCH_ADDR(magic_num), AIC_PATCH_MAGIG_NUM))) {
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/aicwf_txq_prealloc.c linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/aicwf_txq_prealloc.c
---- linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/aicwf_txq_prealloc.c	2024-06-14 16:52:10.914691044 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/aicwf_txq_prealloc.c	2024-06-14 16:38:16.634708970 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/aicwf_txq_prealloc.c linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/aicwf_txq_prealloc.c
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/aicwf_txq_prealloc.c	2024-11-03 17:46:40.320024863 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/aicwf_txq_prealloc.c	2024-11-03 17:44:39.690024460 +0100
 @@ -10,7 +10,7 @@
  struct prealloc_txq prealloc_txq;
  #define MAX_TXQ_SIZE 100 * 1024
@@ -458,9 +493,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
 -EXPORT_SYMBOL(aicwf_prealloc_txq_alloc);
 +EXPORT_SYMBOL(aicwf_usb_prealloc_txq_alloc);
  
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/aicwf_usb.c linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/aicwf_usb.c
---- linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/aicwf_usb.c	2024-06-14 16:52:10.914691044 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/aicwf_usb.c	2024-06-14 16:38:16.634708970 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/aicwf_usb.c linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/aicwf_usb.c
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/aicwf_usb.c	2024-11-03 17:46:40.320024863 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/aicwf_usb.c	2024-11-03 17:44:39.690024460 +0100
 @@ -233,7 +233,7 @@
          return;
      }
@@ -470,9 +505,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
          return;
  }
  
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/.gitignore linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/.gitignore
---- linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/.gitignore	2024-06-14 16:52:10.914691044 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_usb/aic_load_fw/.gitignore	1970-01-01 01:00:00.000000000 +0100
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/.gitignore linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/.gitignore
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/.gitignore	2024-11-03 17:46:40.320024863 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_usb/aic_load_fw/.gitignore	1970-01-01 01:00:00.000000000 +0100
 @@ -1,11 +0,0 @@
 -*.o
 -*.ko
@@ -485,18 +520,18 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
 -*.mod.c*
 -
 -.tmp_versions/
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_usb/.gitignore linux-6.9.4/drivers/net/wireless/aic8800_usb/.gitignore
---- linux-6.9.4/drivers/net/wireless/aic8800_usb/.gitignore	2024-06-14 16:52:10.918024377 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_usb/.gitignore	1970-01-01 01:00:00.000000000 +0100
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_usb/.gitignore linux-6.12-rc5/drivers/net/wireless/aic8800_usb/.gitignore
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_usb/.gitignore	2024-11-03 17:46:40.323358197 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_usb/.gitignore	1970-01-01 01:00:00.000000000 +0100
 @@ -1,5 +0,0 @@
 -*.symvers
 -*.order
 -*.symvers.cmd
 -*.order.cmd
 -.tmp_versions/
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_usb/Kconfig linux-6.9.4/drivers/net/wireless/aic8800_usb/Kconfig
---- linux-6.9.4/drivers/net/wireless/aic8800_usb/Kconfig	2024-06-14 16:52:10.918024377 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_usb/Kconfig	2024-06-14 16:38:16.634708970 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_usb/Kconfig linux-6.12-rc5/drivers/net/wireless/aic8800_usb/Kconfig
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_usb/Kconfig	2024-11-03 17:46:40.323358197 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_usb/Kconfig	2024-11-03 17:44:39.690024460 +0100
 @@ -1,10 +1,10 @@
 -config AIC_WLAN_SUPPORT
 -	bool "AIC wireless Support"
@@ -514,9 +549,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/ne
 +source "drivers/net/wireless/aic8800_usb/aic8800_fdrv/Kconfig"
 +source "drivers/net/wireless/aic8800_usb/aic_load_fw/Kconfig"
  endif
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.4/drivers/net/wireless/aic8800_usb/Makefile linux-6.9.4/drivers/net/wireless/aic8800_usb/Makefile
---- linux-6.9.4/drivers/net/wireless/aic8800_usb/Makefile	2024-06-14 16:52:10.918024377 +0200
-+++ linux-6.9.4/drivers/net/wireless/aic8800_usb/Makefile	2024-06-14 16:38:16.634708970 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc5/drivers/net/wireless/aic8800_usb/Makefile linux-6.12-rc5/drivers/net/wireless/aic8800_usb/Makefile
+--- linux-6.12-rc5/drivers/net/wireless/aic8800_usb/Makefile	2024-11-03 17:46:40.323358197 +0100
++++ linux-6.12-rc5/drivers/net/wireless/aic8800_usb/Makefile	2024-11-03 17:44:39.690024460 +0100
 @@ -59,12 +59,12 @@
  install:
  	mkdir -p $(MODDESTDIR)
