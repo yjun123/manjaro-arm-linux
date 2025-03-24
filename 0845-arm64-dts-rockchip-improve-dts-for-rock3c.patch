@@ -1,6 +1,6 @@
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.11/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts linux-6.11/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts
---- linux-6.11/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts	2024-09-15 16:57:56.000000000 +0200
-+++ linux-6.11/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts	2024-09-20 12:47:58.034592444 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.14-rc1/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts linux-6.14-rc1/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts
+--- linux-6.14-rc1/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts	2025-02-03 00:39:26.000000000 +0100
++++ linux-6.14-rc1/arch/arm64/boot/dts/rockchip/rk3566-rock-3c.dts	2025-02-05 12:39:23.783357711 +0100
 @@ -1,20 +1,28 @@
  // SPDX-License-Identifier: (GPL-2.0+ OR MIT)
  
@@ -16,7 +16,8 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.11/arch/arm64/
 -#include <dt-bindings/leds/common.h>
  #include <dt-bindings/pinctrl/rockchip.h>
  #include <dt-bindings/soc/rockchip,vop2.h>
- #include "rk3566.dtsi"
+-#include "rk3566t.dtsi"
++#include "rk3566.dtsi"
 +#include <dt-bindings/leds/common.h>
  
  / {
@@ -35,7 +36,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.11/arch/arm64/
  		mmc2 = &sdmmc1;
  	};
  
-@@ -43,56 +51,63 @@
+@@ -43,123 +51,109 @@
  	leds {
  		compatible = "gpio-leds";
  
@@ -84,7 +85,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.11/arch/arm64/
 -		reset-gpios = <&gpio0 RK_PC0 GPIO_ACTIVE_LOW>;
  	};
  
--	vcc5v_dcin: vcc5v-dcin-regulator {
+-	vcc5v_dcin: regulator-vcc5v-dcin {
 -		compatible = "regulator-fixed";
 -		regulator-name = "vcc5v_dcin";
 -		regulator-always-on;
@@ -93,7 +94,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.11/arch/arm64/
 -		regulator-max-microvolt = <5000000>;
 -	};
 -
--	vcc3v3_pcie: vcc3v3-pcie-regulator {
+-	vcc3v3_pcie: regulator-vcc3v3-pcie {
 +	vcc3v3_pcie_p: vcc3v3-pcie-p-regulator {
  		compatible = "regulator-fixed";
  		enable-active-high;
@@ -110,7 +111,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.11/arch/arm64/
 +		vin-supply = <&vcc_3v3>;
  	};
  
--	vcc3v3_sys: vcc3v3-sys-regulator {
+-	vcc3v3_sys: regulator-vcc3v3-sys {
 +	vcc5v0_in: vcc5v0-in-regulator {
  		compatible = "regulator-fixed";
 -		regulator-name = "vcc3v3_sys";
@@ -124,26 +125,30 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.11/arch/arm64/
 +		regulator-max-microvolt = <5000000>;
  	};
  
- 	vcc5v0_sys: vcc5v0-sys-regulator {
-@@ -102,16 +117,26 @@
+-	vcc5v0_sys: regulator-vcc5v0-sys {
++	vcc5v0_sys: vcc5v0-sys-regulator {
+ 		compatible = "regulator-fixed";
+ 		regulator-name = "vcc5v0_sys";
+ 		regulator-always-on;
  		regulator-boot-on;
  		regulator-min-microvolt = <5000000>;
  		regulator-max-microvolt = <5000000>;
 -		vin-supply = <&vcc5v_dcin>;
 +		vin-supply = <&vcc5v0_in>;
-+	};
-+
+ 	};
+ 
+-	vcc5v0_usb30_host: regulator-vcc5v0-usb30-host {
 +	vcc3v3_sys: vcc3v3-sys-regulator {
-+		compatible = "regulator-fixed";
+ 		compatible = "regulator-fixed";
 +		regulator-name = "vcc3v3_sys";
 +		regulator-min-microvolt = <3300000>;
 +		regulator-max-microvolt = <3300000>;
 +		regulator-always-on;
 +		vin-supply = <&vcc5v0_sys>;
- 	};
- 
- 	vcc5v0_usb30_host: vcc5v0-usb30-host-regulator {
- 		compatible = "regulator-fixed";
++	};
++
++	vcc5v0_usb30_host: vcc5v0-usb30-host-regulator {
++		compatible = "regulator-fixed";
 +		regulator-name = "vcc5v0_usb30_host";
  		enable-active-high;
  		gpio = <&gpio0 RK_PC5 GPIO_ACTIVE_HIGH>;
@@ -155,9 +160,10 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.11/arch/arm64/
  		regulator-min-microvolt = <5000000>;
  		regulator-max-microvolt = <5000000>;
  		vin-supply = <&vcc5v0_sys>;
-@@ -119,47 +144,16 @@
+ 	};
  
- 	vcc5v0_usb_otg: vcc5v0-usb-otg-regulator {
+-	vcc5v0_usb_otg: regulator-vcc5v0-usb-otg {
++	vcc5v0_usb_otg: vcc5v0-usb-otg-regulator {
  		compatible = "regulator-fixed";
 +		regulator-name = "vcc5v0_usb_otg";
  		enable-active-high;
@@ -172,7 +178,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.11/arch/arm64/
  		vin-supply = <&vcc5v0_sys>;
  	};
 -
--	vcc_cam: vcc-cam-regulator {
+-	vcc_cam: regulator-vcc-cam {
 -		compatible = "regulator-fixed";
 -		enable-active-high;
 -		gpio = <&gpio0 RK_PC4 GPIO_ACTIVE_HIGH>;
@@ -188,7 +194,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.11/arch/arm64/
 -		};
 -	};
 -
--	vcc_mipi: vcc-mipi-regulator {
+-	vcc_mipi: regulator-vcc-mipi {
 -		compatible = "regulator-fixed";
 -		enable-active-high;
 -		gpio = <&gpio0 RK_PC7 GPIO_ACTIVE_HIGH>;

@@ -1,6 +1,6 @@
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.10/arch/arm64/boot/dts/allwinner/sun50i-h618-orangepi-zero2w.dts linux-6.10/arch/arm64/boot/dts/allwinner/sun50i-h618-orangepi-zero2w.dts
---- linux-6.10/arch/arm64/boot/dts/allwinner/sun50i-h618-orangepi-zero2w.dts	2024-07-15 00:43:32.000000000 +0200
-+++ linux-6.10/arch/arm64/boot/dts/allwinner/sun50i-h618-orangepi-zero2w.dts	2024-07-24 16:53:48.363366427 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.14-rc1/arch/arm64/boot/dts/allwinner/sun50i-h618-orangepi-zero2w.dts linux-6.14-rc1/arch/arm64/boot/dts/allwinner/sun50i-h618-orangepi-zero2w.dts
+--- linux-6.14-rc1/arch/arm64/boot/dts/allwinner/sun50i-h618-orangepi-zero2w.dts	2025-02-03 00:39:26.000000000 +0100
++++ linux-6.14-rc1/arch/arm64/boot/dts/allwinner/sun50i-h618-orangepi-zero2w.dts	2025-02-07 12:10:15.140007608 +0100
 @@ -1,22 +1,25 @@
 -// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +// SPDX-License-Identifier: (GPL-2.0+ or MIT)
@@ -62,7 +62,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.10/arch/arm64/
  		};
  	};
  
-@@ -43,31 +58,133 @@
+@@ -43,14 +58,45 @@
  		regulator-always-on;
  	};
  
@@ -110,6 +110,8 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.10/arch/arm64/
 +		post-power-on-delay-ms = <200>;
  	};
  };
+ 
+@@ -61,18 +107,89 @@
  
  &cpu0 {
  	cpu-supply = <&reg_dcdc2>;
@@ -202,7 +204,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.10/arch/arm64/
  	status = "okay";
  };
  
-@@ -75,76 +192,114 @@
+@@ -80,76 +197,114 @@
  	status = "okay";
  };
  
@@ -349,16 +351,14 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.10/arch/arm64/
  		#address-cells = <1>;
  		#size-cells = <1>;
  		compatible = "jedec,spi-nor";
-@@ -153,29 +308,24 @@
+@@ -158,29 +313,18 @@
  	};
  };
  
 -&uart0 {
 -	pinctrl-names = "default";
 -	pinctrl-0 = <&uart0_ph_pins>;
-+&codec {
-+	allwinner,audio-routing =
-+		"Line Out", "LINEOUT";
++&ahub_dam_plat {
  	status = "okay";
  };
  
@@ -375,16 +375,12 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.10/arch/arm64/
 -	 * enabling OHCI0 and EHCI0.
 -	 */
 -	dr_mode = "peripheral";
-+&ahub_dam_plat {
++&ahub_dam_mach {
  	status = "okay";
  };
  
 -&usbphy {
 -	usb1_vbus-supply = <&reg_vcc5v>;
-+&ahub_dam_mach {
-+	status = "okay";
-+};
-+
 +&ahub1_plat {
 +	status = "okay";
 +};

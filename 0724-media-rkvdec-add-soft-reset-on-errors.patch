@@ -166,7 +166,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.6/drivers/stag
  	}
  
 +
-+	rkvdec->rstc = devm_reset_control_array_get(&pdev->dev, false, true);
++	rkvdec->rstc = devm_reset_control_array_get(&pdev->dev, RESET_CONTROL_OPTIONAL_EXCLUSIVE);
 +	if (IS_ERR(rkvdec->rstc)) {
 +		dev_err(&pdev->dev,
 +			"get resets failed %ld\n", PTR_ERR(rkvdec->rstc));

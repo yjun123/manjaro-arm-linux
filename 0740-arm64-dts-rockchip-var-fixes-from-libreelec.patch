@@ -16,21 +16,6 @@ Signed-off-by: Alex Bee <knaerzche@gmail.com>
  arch/arm64/boot/dts/rockchip/rk3328.dtsi      | 35 +++++++++++++++++++
  3 files changed, 43 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-index aa22a0c22265..51c7723d6762 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-@@ -166,6 +166,10 @@ &gmac2io {
- 	status = "okay";
- };
- 
-+&gpu {
-+	mali-supply = <&vdd_logic>;
-+};
-+
- &hdmi {
- 	status = "okay";
- };
 diff --git a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts b/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
 index f69a38f42d2d..c198a8a7f95a 100644
 --- a/arch/arm64/boot/dts/rockchip/rk3328-rock64.dts
@@ -258,38 +243,6 @@ Signed-off-by: Alex Bee <knaerzche@gmail.com>
  arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts | 14 ++++++++++++++
  1 file changed, 14 insertions(+)
 
-diff --git a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-index 51c7723d6762..cf321302daec 100644
---- a/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-+++ b/arch/arm64/boot/dts/rockchip/rk3328-roc-cc.dts
-@@ -88,6 +88,13 @@ vcc_phy: vcc-phy-regulator {
- 		regulator-boot-on;
- 	};
- 
-+	ir-receiver {
-+		compatible = "gpio-ir-receiver";
-+		gpios = <&gpio2 RK_PA2 GPIO_ACTIVE_LOW>;
-+		pinctrl-0 = <&ir_int>;
-+		pinctrl-names = "default";
-+	};
-+
- 	leds {
- 		compatible = "gpio-leds";
- 
-@@ -312,6 +319,13 @@ &io_domains {
- };
- 
- &pinctrl {
-+
-+	ir {
-+		ir_int: ir-int {
-+			rockchip,pins = <2 RK_PA2 RK_FUNC_GPIO &pcfg_pull_none>;
-+		};
-+	};
-+
- 	pmic {
- 		pmic_int_l: pmic-int-l {
- 			rockchip,pins = <1 RK_PD0 RK_FUNC_GPIO &pcfg_pull_up>;
 
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Alex Bee <knaerzche@gmail.com>

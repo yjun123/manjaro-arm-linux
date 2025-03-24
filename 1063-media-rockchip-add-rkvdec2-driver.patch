@@ -3574,7 +3574,7 @@ index 0000000000..852e88fc0e
 +
 +static struct platform_driver rkvdec2_driver = {
 +	.probe = rkvdec2_probe,
-+	.remove_new = rkvdec2_remove,
++	.remove = rkvdec2_remove,
 +	.driver = {
 +		   .name = "rkvdec2",
 +		   .of_match_table = of_rkvdec2_match,

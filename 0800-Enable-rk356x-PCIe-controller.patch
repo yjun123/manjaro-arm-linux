@@ -1,10 +1,10 @@
-
+vcc5v0_usb: vcc5v0_usb
 The pcie2x1 controller is common between the rk3568 and rk3566. It is a
 single lane pcie2 compliant controller.
 
 Signed-off-by: Peter Geis <pgwipeout@gmail.com>
 ---
- arch/arm64/boot/dts/rockchip/rk356x.dtsi | 52 ++++++++++++++++++++++++
+ arch/arm64/boot/dts/rockchip/rk356x-base.dtsi | 52 ++++++++++++++++++++++++
  1 file changed, 52 insertions(+)
 
 
@@ -36,7 +36,7 @@ index dd7f4b9b686b..8b0537744a60 100644
 +		vin-supply = <&vcc_3v3>;
 +	};
 +
- 	vcc5v0_usb: vcc5v0_usb {
+ 	vcc5v0_usb: regulator-vcc5v0-usb {
  		compatible = "regulator-fixed";
  		regulator-name = "vcc5v0_usb";
 @@ -187,6 +199,10 @@ vcc_wl: vcc_wl {

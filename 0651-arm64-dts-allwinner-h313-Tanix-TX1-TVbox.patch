@@ -1,7 +1,7 @@
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/arch/arm64/boot/dts/allwinner/sun50i-h313-tanix-tx1.dts linux-6.10-rc3/arch/arm64/boot/dts/allwinner/sun50i-h313-tanix-tx1.dts
---- linux-6.10-rc3/arch/arm64/boot/dts/allwinner/sun50i-h313-tanix-tx1.dts	2024-06-09 23:19:43.000000000 +0200
-+++ linux-6.10-rc3/arch/arm64/boot/dts/allwinner/sun50i-h313-tanix-tx1.dts	2024-06-14 17:32:59.271305076 +0200
-@@ -1,15 +1,14 @@
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.14-rc1/arch/arm64/boot/dts/allwinner/sun50i-h313-tanix-tx1.dts linux-6.14-rc1/arch/arm64/boot/dts/allwinner/sun50i-h313-tanix-tx1.dts
+--- linux-6.14-rc1/arch/arm64/boot/dts/allwinner/sun50i-h313-tanix-tx1.dts	2025-02-03 00:39:26.000000000 +0100
++++ linux-6.14-rc1/arch/arm64/boot/dts/allwinner/sun50i-h313-tanix-tx1.dts	2025-02-05 12:39:23.026691041 +0100
+@@ -1,16 +1,14 @@
 -// SPDX-License-Identifier: (GPL-2.0+ OR MIT)
 +// SPDX-License-Identifier: (GPL-2.0+ or MIT)
  /*
@@ -12,6 +12,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/arch/ar
  /dts-v1/;
  
  #include "sun50i-h616.dtsi"
+-#include "sun50i-h616-cpu-opp.dtsi"
 -
 +#include "sun50i-h313-cpu-opp.dtsi"
  #include <dt-bindings/gpio/gpio.h>
@@ -20,7 +21,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/arch/ar
  #include <dt-bindings/leds/common.h>
  
  / {
-@@ -17,82 +16,134 @@
+@@ -18,87 +16,134 @@
  	compatible = "oranth,tanix-tx1", "allwinner,sun50i-h616";
  
  	aliases {
@@ -85,7 +86,11 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/arch/ar
  		regulator-max-microvolt = <5000000>;
  		regulator-always-on;
  	};
-+
+-};
+ 
+-&codec {
+-	allwinner,audio-routing = "Line Out", "LINEOUT";
+-	status = "okay";
 +	reg_vcc_wifi: reg_vcc_wifi {
 +		compatible = "regulator-fixed";
 +		regulator-name = "vcc-wifi";
@@ -180,7 +185,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/arch/ar
  	bus-width = <8>;
  	non-removable;
  	max-frequency = <100000000>;
-@@ -105,55 +156,29 @@
+@@ -111,55 +156,29 @@
  	status = "okay";
  };
  
@@ -241,7 +246,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/arch/ar
  				regulator-name = "vdd-cpu";
  			};
  
-@@ -163,6 +188,20 @@
+@@ -169,6 +188,20 @@
  				regulator-max-microvolt = <1200000>;
  				regulator-name = "vdd-dram";
  			};
@@ -262,7 +267,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.10-rc3/arch/ar
  		};
  	};
  };
-@@ -173,11 +212,56 @@
+@@ -179,11 +212,56 @@
  	status = "okay";
  };
  

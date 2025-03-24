@@ -1,6 +1,6 @@
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.7/arch/arm64/boot/dts/rockchip/rk356x.dtsi linux-6.7/arch/arm64/boot/dts/rockchip/rk356x.dtsi
---- linux-6.7/arch/arm64/boot/dts/rockchip/rk356x.dtsi	2024-01-18 12:55:58.166808465 +0100
-+++ linux-6.7/arch/arm64/boot/dts/rockchip/rk356x.dtsi	2024-01-18 12:53:56.436811090 +0100
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.7/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi linux-6.7/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+--- linux-6.7/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi	2024-01-18 12:55:58.166808465 +0100
++++ linux-6.7/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi	2024-01-18 12:53:56.436811090 +0100
 @@ -669,6 +669,7 @@
  		resets = <&cru SRST_RGA_CORE>, <&cru SRST_A_RGA>, <&cru SRST_H_RGA>;
  		reset-names = "core", "axi", "ahb";

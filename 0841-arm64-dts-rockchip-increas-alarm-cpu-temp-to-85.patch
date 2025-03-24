@@ -1,6 +1,6 @@
-diff --speed-large-files --no-dereference --minimal -Naur linux-5.18.3/arch/arm64/boot/dts/rockchip/rk356x.dtsi linux-5.18.3/arch/arm64/boot/dts/rockchip/rk356x.dtsi
---- linux-5.18.3/arch/arm64/boot/dts/rockchip/rk356x.dtsi	2022-06-15 11:56:46.908530631 +0200
-+++ linux-5.18.3/arch/arm64/boot/dts/rockchip/rk356x.dtsi	2022-06-15 11:55:40.195196819 +0200
+diff --speed-large-files --no-dereference --minimal -Naur linux-5.18.3/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi linux-5.18.3/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi
+--- linux-5.18.3/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi	2022-06-15 11:56:46.908530631 +0200
++++ linux-5.18.3/arch/arm64/boot/dts/rockchip/rk356x-base.dtsi	2022-06-15 11:55:40.195196819 +0200
 @@ -1424,12 +1424,12 @@
  
  			trips {

@@ -4,7 +4,7 @@
 # Contributor: Dragan Simic <dsimic@buserror.io>
 
 pkgbase=linux
-pkgver=6.12.10
+pkgver=6.14.0
 pkgrel=1
 _newversion=false
 _stopbuild=false    # Will also stop if ${_newversion} is true
@@ -16,8 +16,9 @@ url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'dtc')
 options=('!strip')
-#source=("https://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
-source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
+source=("https://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
+#source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
+#0000-sound-soc-dont-use-__free_device_node-in-graph_util_parse_dai.patch
 0108-drivers-led-add-openvfd-g3118dda3.patch
 0109-drivers-mmc-add-disk-activity-support.patch
 0110-drivers-net-wireless-brcmfmac-add-ap6330-firmware.patch
@@ -69,13 +70,12 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 0553-media-cedrus-Don-t-CPU-map-source-buffers.patch
 0554-media-Add-NV12-and-P010-AFBC-compressed-formats.patch
 0555-media-cedrus-add-format-filtering-based-on-depth-and.patch
-0556-media-cedrus-Implement-AFBC-YUV420-formats-for-H265.patch
+#0556-media-cedrus-Implement-AFBC-YUV420-formats-for-H265.patch
 0557-media-cedrus-Increase-H6-clock-rate.patch
-0558-media-verisilicon-g2-fix-chroma-offset-calculation.patch
 0560-mmc-sunxi-fix-unusuable-eMMC-on-some-H6-boards-by-di.patch
 0561-bluetooth-btrtl-add-hci-ver-rtl8822cs.patch
 0562-h6-add-sun50i-di-deinterlace-WiP.patch
-0563-hantro-Add-quirk-for-NV12-NV12_4L4-capture-format.patch
+#0563-hantro-Add-quirk-for-NV12-NV12_4L4-capture-format.patch
 0570-arm64-dts-allwinner-h6-Protect-SCP-clock.patch
 0571-arm64-dts-allwinner-h6-Add-SCPI-protocol.patch
 0572-arm64-dts-allwinner-h6-dtsi-add-sound-node.patch
@@ -104,10 +104,10 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 0615-drivers-iommu-sun50i-iommu-fix-iommu-on-h616.patch
 0620-sound-soc-sunxi-add-codec-driver-for-h616.patch
 0621-sound-soc-add-sunxi_v2-for-h616-ahub.patch
-0622-sound-soc-sunxi-add-spdif-spdif.patch
 0623-sound-soc-sunxi-hack-to-fix-oops-on-cards-caps-query.patch
-0630-net-wireless-add-uwe5622-support-v20231020.patch
+#0630-net-wireless-add-uwe5622-support-v20231020.patch
 0631-clk-sunxi-ng-ccu-sun6i-rtc-fix-32k-clk.patch
+0632-clk-sunxi-ng-ccu-hack-fix-too-slow-hdmi-audio.patch
 0640-arm64-dts-allwinner-h616.dtsi-add-audio-hdmi-vdec.patch
 0641-arm64-dts-allwinner-h616.dtsi-add-ths-cpu-gpu-opp-and-dvfs.patch
 0642-arm64-dts-allwinner-h616.dtsi-add-emac1.patch
@@ -121,6 +121,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 0650-arm64-dts-allwinner-h618-add-opi-2w.patch
 0651-arm64-dts-allwinner-h313-Tanix-TX1-TVbox.patch
 0652-arm64-dts-allwinner-h313-add-x96q-v5.1-TVbox.patch
+0653-arm64-dts-allwinner-h616-add-pendoo-x12pro-tvbox.patch
 0703-media-v4l2-common-Add-helpers-to-calculate-bytesperl.patch
 0704-media-v4l2-Add-NV15-and-NV20-pixel-formats.patch
 0705-media-rkvdec-h264-Use-bytesperline-and-buffer-height.patch
@@ -140,6 +141,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 0724-media-rkvdec-add-soft-reset-on-errors.patch
 0725-drm-rockchip-vop-add-immutable-zpos-property-fix-z-order.patch
 0727-drm-rockchip-vop2-rk356x-reorder-wins-fix-osd-in-drm-planes.patch
+0728-rockchip-iommu-fixes.patch
 0739-arm64-dtsi-rockchip-rk3328-rk3399-add-soft-reset.patch
 0740-arm64-dts-rockchip-var-fixes-from-libreelec.patch
 0743-arm64-dts-rockchip-beelink-a1-enable-openvfd.patch
@@ -147,7 +149,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 0747-arm64-dts-rockchip-beelink-a1-limit-sdmmc-clk-to-35MHz.patch
 0748-arm64-dts-rockchip-beelink-a1-limit-emmc-speed-to-fix-emmc-booting.patch
 0749-phy-rockchip-phy-add-rockchip-inno-usb3.patch
-0750-arm64-dts-rockchip-enable-inno-usb3-beelinkA1-roc-cc.patch
+0750-arm64-dts-rockchip-rk3328-enable-inno-usb3-on-various-boards.patch
 0753-arm64-dts-rockchip-rk3399-radxa-rockpi-bc-remove-wifi-compatible.patch
 0754-arm64-dts-rockchip-rk33xx-set-userled-to-mmc.patch
 0755-arm64-dts-rockchip-rk3399-add-orangepi-4-and-4-lts.patch
@@ -156,12 +158,11 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 0800-Enable-rk356x-PCIe-controller.patch
 0801-net-wireless-backport-aic8800-sdio-v2024_0327_3561b08f.patch
 0802-net-wireless-mm2-fixes-aic8800-sdio-v2024_0327_3561b08f.patch
-0803-net-wireless-backport-aic8800-usb-v2024_0116_ec460377.patch
-0804-net-wireless-mm2-fixes-aic8800-usb-v2024_0116_ec460377.patch
+0803-net-wireless-backport-aic8800-usb-v2024_0327_3561b08f.patch
+0804-net-wireless-mm2-fixes-aic8800-usb-v2024_0327_3561b08f.patch
 0831-arm64-dts-rockchip-enable-usb2-usb3-sata-audio-in-rk35xx.dtsi.patch
 0832-arm64-dtsi-rockchip-rk356x-disable-vepu-rga-enable-dfi.patch
 0833-arm64-dts-rockchip-enable-Quartz64-A-usb2-usb3-pcie-audio.patch
-0834-arm64-dtsi-rockchip-add-missing-reset-names-for-combphy.patch
 0836-arm64-dts-rockchip-add-dts-for-x96-x6.patch
 0840-arm64-dts-rockchip-improve-dts-for-rock3b.patch
 0841-arm64-dts-rockchip-increas-alarm-cpu-temp-to-85.patch
@@ -173,56 +174,54 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 0848-arm64-dts-rockchip-add-dts-for-opi-3b.patch
 0849-arm64-dts-rockchip-improve-dts-for-zero3.patch
 0850-arm64-dts-rockchip-rk356x-add-eth-wifi-aliases.patch
-0900-rpi-vc04_services-add_h~l2-m2m_decode-15062024.patch
-0901-rpi-vc04_services-bcm2835-codec-remove-isp-formats.patch
-0902-media-add-rpivid-driver.patch
-0905-drivers-add-rpi5-clk-pinctrl-mmc-pwm-net-usb-pci-rp1.patch
-0906-gpu-drm-vc4-add-rpi5-support.patch
-0950-arm64-dts-brcm-set-userled-to-mmc.patch
-0951-arm64-dts-brcm-add-rpi5-dt.patch
-0953-arm64-dts-add-rpivid-rpi4.patch
-1008-math.h-add-DIV_ROUND_UP_NO_OVERFLOW.patch
-1009-clk-divider-Fix-divisor-masking-on-64-bit-platforms.patch
-1010-clk-composite-replace-open-coded-abs_diff.patch
-1012-clk-rockchip-handle-missing-clocks-with-EPROBE_DEFER.patch
-1013-clk-rockchip-rk3588-register-GATE_LINK-later.patch
-1014-clk-rockchip-expose-rockchip_clk_set_lookup.patch
-1016-clk-rockchip-implement-linked-gate-clock-support.patch
-1017-clk-rockchip-rk3588-drop-RK3588_LINKED_CLK.patch
-1018-mfd-rk8xx-Fix-shutdown-handler.patch
-1021-WIP-phy-phy-rockchip-samsung-hdptx-Add-FRL-EARC-supp.patch
-1022-TESTING-phy-phy-rockchip-samsung-hdptx-Add-verbose-l.patch
-1023-vop2-Add-clock-resets-support.patch
-1024-WIP-drm-rockchip-vop2-Improve-display-modes-handling.patch
-1026-drm-bridge-synopsys-Add-DW-HDMI-QP-TX-controller-dri.patch
-1027-drm-rockchip-Add-basic-RK3588-HDMI-output-support.patch
-1029-dw-hdmi-qp-Add-missing-capabilities.patch
-1030-drm-bridge-synopsys-Fix-HDR-metadata.patch
-1031-WIP-Add-a-requested-output-format-proper.patch
-1032-WIP-Add-a-min_bpc-hdmi-property.patch
-1033-WIP-drm-bridge-synopsys-Add-DW-HDMI-QP-C.patch
-1034-debug-patch-from-Andy-Yan.patch
-1035-WIP-Add-missing-colorspace-connector-pro.patch
-1036-WIP-fix-up-10bpc.patch
-1037-drm-rockchip-Set-dma-mask-to-64-bit.patch
-1038-drm-rockchip_vop2-add-plane-color-encodi.patch
-1039-drm-rockchip-vop2-Fix-cluster-windows-al.patch
-1040-drm-rockchip-vop2-Fix-the-mixer-alpha-se.patch
-1041-drm-rockchip-vop2-Fix-the-windows-switch.patch
-1042-WIP-Support-subsampled-YUV-color-formats.patch
-1043-phy-rockchip-samsung-hdptx-dont-use-dt-aliases-to-determine-phy-id.patch.patch
-1044-ASoC-rockchip-add-machine-driver-for-hdmi-audio.patch
-1045-ASoC-rockchip-hdmi-support-dts-specified-daifmt.patch
-1046-ASoC-rockchip-hdmi-Fix-potential-NULL-point-referenc.patch
-1047-ASoC-rockchip-i2s-tdm-Add-support-for-Digital-Loopba.patch
-1048-ASoC-rockchip-i2s-tdm-Add-support-for-PATHx-controls.patch
-1049-drm-bridge-synopsys-Add-audio-support-for-dw-hdmi-qp.patch
-1050-drm-rockchip-dw_hdmi-Make-sure-dclk-is-enabled-when-set-audio-regs.patch
-1051-phy-rockchip-add-samsung-mipi-dcphy-driver.patch
-1052-drm-rockchip-vop2-two-fixes-for-dsi-enablement.patch
-1053-drm-rockchip-add-driver-for-the-new-dsi2-controller.patch
-1054-phy-rockchip-samsung-hdptx-add-hdmi1-support.patch
-1055-drm-bridge-synopsys-dw-hdmi-qp-fix-wrong-cec-clock-v2.patch
+#0900-rpi-vc04_services-add_h~l2-m2m_decode-15062024.patch
+#0902-media-add-rpivid-driver.patch
+#0905-drivers-add-rpi5-clk-pinctrl-mmc-pwm-net-usb-pci-rp1.patch
+#0906-gpu-drm-vc4-add-rpi5-support.patch
+#0950-arm64-dts-brcm-set-userled-to-mmc.patch
+#0951-arm64-dts-brcm-add-rpi5-dt.patch
+#0953-arm64-dts-add-rpivid-rpi4.patch
+1001-math.h-add-DIV_ROUND_UP_NO_OVERFLOW.patch
+1002-clk-divider-Fix-divisor-masking-on-64-bit-platforms.patch
+1003-clk-composite-replace-open-coded-abs_diff.patch
+1010-FROM-ML-phy-phy-rockchip-samsung-hdptx-Don-t-use-dt-.patch
+1011-FROM-UPSTREAM-drm-rockchip-Don-t-change-hdmi-referen.patch
+1012-FROM-UPSTREAM-drm-rockchip-vop2-Drop-unnecessary-if_.patch
+1013-FROM-UPSTREAM-drm-rockchip-vop2-Improve-display-mode.patch
+1014-WIP-drm-rockchip-vop2-Improve-display-modes-handling.patch
+1015-drm-bridge-dw-hdmi-Sync-comments-with-actual-bus-for.patch
+1016-drm-bridge-connector-Sync-supported_formats-with-com.patch
+1017-drm-connector-hdmi-Evaluate-limited-range-after-comp.patch
+1018-drm-connector-hdmi-Add-support-for-YUV420-format-ver.patch
+1019-drm-connector-hdmi-Improve-debug-message-for-support.patch
+1020-drm-connector-hdmi-Use-YUV420-output-format-as-an-RG.patch
+1021-phy-Add-HDMI-configuration-options.patch
+1022-phy-hdmi-Add-color-depth-configuration.patch
+1023-phy-rockchip-samsung-hdptx-Fix-clock-ratio-setup.patch
+1024-phy-rockchip-samsung-hdptx-Drop-unused-lcpll_config.patch
+1025-phy-rockchip-samsung-hdptx-Setup-TMDS-char-rate-via-.patch
+1026-phy-rockchip-samsung-hdptx-Add-high-color-depth-mana.patch
+1027-phy-rockchip-samsung-hdptx-Cleanup-internal-rate-han.patch
+1028-phy-rockchip-samsung-hdptx-Avoid-Hz-hHz-unit-convers.patch
+1029-TEST-phy-rockchip-samsung-hdptx-Add-verbose-logging.patch
+1030-WIP-drm-bridge-Add-detect_ctx-hook.patch
+1031-WIP-drm-bridge-connector-Switch-from-detect-to-detec.patch
+1032-WIP-drm-bridge-dw-hdmi-qp-Add-high-TMDS-clock-ratio-.patch
+1033-WIP-drm-rockchip-vop2-Add-high-color-depth-support.patch
+1034-WIP-drm-rockchip-vop2-Add-YUV420-support.patch
+1035-WIP-drm-rockchip-dw_hdmi_qp-Make-use-of-phy_configur.patch
+1036-WIP-drm-rockchip-dw_hdmi_qp-Add-10bpc-and-YUV420-out.patch
+1037-WIP-drm-bridge-dw-hdmi-qp-Enable-10bpc-and-YUV420.patch
+1038-FROM-ML-clk-check-for-disabled-clock-provider.patch
+1040-drm-bridge-synopsys-add-audio-support-for-dw-hdmi-qp-v7.patch
+1045-drm-bridge-synopsys-add-cec-support.patch
+1047-drm-rockchip-rk3588-add-edp-support-v6.patch
+1048-phy-rockchip-samsung-hdptx-add-edp-mode-support-v7.patch
+1049-drm-bridge-synopsys-add-dw-dptx-controller-support-library-v2.patch
+1050-drm-rockchip-add-rk3588-dptx-output-support-v2.patch
+1051-drm-rockchip-vop2-fix-copy-erro-affecting-dp1-usage.patch
+1052-phy-rockchip-usbdp-only-verify-link-voltage-when-flags-are-set.patch
+1053-phy-rockchip-usbdp-avoid-call-hpd_event_trigger-in-dp_phy_init.patch
 1060-net-ethernet-add-yt6801-gige-pcie-controller.patch
 1061-net-ethernet-yt6801-gige-pcie-silence-debug-msgs.patch
 1062-WIP-iommu-rockchip-add-flush_iotlb_all-ops.patch
@@ -230,77 +229,72 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 1064-media-rkvdec2-add-iommu-support-v3.patch
 1065-wip-add-hevc-support.patch
 1066-wip-hevc-add-ref-frames-support.patch
-#1067-hack-drm-connector-revert-0485a718f-to-fix-oops-at-boot.patch
+#1067-wip-rkvdec2-fix-iommu.patch
+1067-wip-rkvdec2-fix-iommu-v2.patch
 1070-arm64-dtsi-rk3588s-add-vop2-clock-resets.patch
-1071-arm64-dtsi-rockchip-3588s-add-hdmi0-bridge.patch
-1072-arm64-dtsi-rockchip-3588-hdmi-audio-fixup.patch
-1074-arm64-dtsi-rockchip-add-rkvdec2-video-vecoder-on-rk3588.patch
-1075-arm64-dtsi-rockchip-add-dsi2.patch
-1076-arm64-dtsi-rk3588-add-phy-node-for-hdmi1-tx-port.patch
-1077-arm64-dtsi-rkvdec2-add-iommu-support-v3.patch
-1078-arm64-dtsi-rockchip-rk356x-add-rkvdec2-video-decoder-nodes.patch
+1071-arm64-dtsi-rockchip-3588s-add-hdmi-bridge.patch
+1072-arm64-dtsi-rockchip-3588-hdmi-add-audio-support.patch
+1073-arm64-dtsi-rockchip-add-rkvdec2-video-vecoder-on-rk3588.patch
+1074-arm64-dtsi-rkvdec2-add-iommu-support-v3.patch
+1075-arm64-dtsi-rockchip-rk356x-add-rkvdec2-video-decoder-nodes.patch
+1076-arm64-dtsi-rockchip-add-dw-dp-nodes.patch
+1077-arm64-dtsi-rockchip-add-samsung-edp-nodes.patch
 1080-arm64-dts-rockchip-rk3588s-rock5a-dts-improvements.patch
 1081-arm64-dts-rockchip-rk3588-rock5b-dts-improvements.patch
-1082-arm64-dts-rockchip-rk3588-rock5itx-dts-improvements.patch
-1083-arm64-dts-add-rock5c-dts.patch
-1084-arm64-dts-rockchip-rk3588-opi5plus-dts-improvements.patch
-1085-arm64-dts-rockchip-rk3588s-opi5-dts-improvements.patch
-1086-arm64-dts-add-opi5pro-dts.patch
-1087-arm64-dts-add-nanopi-m6-dts.patch
-1088-arm64-dts-rockchip-orangepi-5-plus-Enable-USB-3.0-ports.patch
-1089-arm64-dts-add-opi5max-dts.patch
-1090-arm64-dts-rockchip-rk3588s-nanopc-r6s-dts-improvements.patch
-1091-arm64-dts-rockchip-rk3588-nanopc-t6-dtsi-improvements.patch
-1092-arm64-dts-rockchip-rk3588-boards-enable-hdmi1.patch
-1101-dt-bindings-mfd-x-powers-axp152-Document-AXP323.patch
-1102-mfd-axp20x-ensure-relationship-between-IDs-and-model.patch
-1103-mfd-axp20x-Allow-multiple-regulators.patch
-1104-mfd-axp20x-Add-support-for-AXP323.patch
-1105-regulator-axp20x-add-support-for-the-AXP323.patch
-1107-disable-unused-cores-debug.patch
-1110-pinctrl-sunxi-refactor-pinctrl-variants-into-flags.patch
-1111-pinctrl-sunxi-move-bank-K-register-offset.patch
-1112-pinctrl-sunxi-support-moved-power-configuration-regi.patch
-1113-pinctrl-sunxi-allow-reading-mux-values-from-DT.patch
-1114-dt-bindings-pinctrl-add-compatible-for-Allwinner-A52.patch
-1115-pinctrl-sunxi-Add-support-for-the-Allwinner-A523.patch
-1116-pinctrl-sunxi-Add-support-for-the-secondary-A523-GPI.patch
-1117-clk-sunxi-ng-mp-Add-SUNXI_CCU_P_DATA_WITH_MUX_GATE-w.patch
-1118-clk-sunxi-ng-mp-introduce-dual-divider-clock.patch
-1119-clk-sunxi-ng-mp-provide-wrapper-for-setting-feature-.patch
-1120-dt-bindings-clk-sunxi-ng-add-compatible-for-the-A523.patch
-1121-dt-bindings-clk-sunxi-ng-add-compatible-for-the-A523.patch
-1122-clk-sunxi-ng-Add-support-for-the-A523-T527-CCU.patch
-1123-clk-sunxi-ng-add-support-for-the-A523-T527-PRCM-CCU.patch
-1124-dt-bindings-mmc-sunxi-Simplify-compatible-string-lis.patch
-1125-dt-bindings-mmc-sunxi-add-compatible-strings-for-All.patch
-1126-dt-bindings-watchdog-sunxi-add-Allwinner-A523-compat.patch
-1127-watchdog-sunxi_wdt-Add-support-for-Allwinner-A523.patch
-1128-dt-bindings-i2c-mv64xxx-Add-Allwinner-A523-compatibl.patch
-1129-dt-bindings-irq-sun7i-nmi-document-the-Allwinner-A52.patch
-1130-dt-bindings-phy-document-Allwinner-A523-USB-2.0-PHY.patch
-1131-dt-bindings-usb-sunxi-musb-add-Allwinner-A523-compat.patch
-1132-dt-bindings-usb-add-A523-compatible-string-for-EHCI-.patch
-1133-dt-bindings-rtc-sun6i-Add-Allwinner-A523-support.patch
-1135-dt-bindings-vendor-prefixes-Add-YuzukiHD-name.patch
-1136-dt-bindings-arm-sunxi-Add-Avaota-A1-board.patch
-1137-net-phy-add-Maxio-MAE0621A-phy-driver.patch
-1138-clk-sunxi-ng-add-support-for-A523-T527-gmac1-clocks.patch
+1082-arm64-dts-rockchip-rk3588s-rock5c-dts-improvements.patch
+1083-arm64-dts-rockchip-rk3588-rock5itx-dts-improvements.patch
+1084-arm64-dts-rockchip-rk3588s-opi5-dts-improvements.patch
+1085-arm64-dts-rockchip-rk3588-opi5plus-dts-improvements.patch
+1086-arm64-dts-rockchip-rk3588s-add-opi5pro-dts.patch
+1087-arm64-dts-rockchip-rk3588s-add-nanopi-m6-dts.patch
+1088-arm64-dts-rockchip-rk3588s-nanopc-r6s-dts-improvements.patch
+1089-arm64-dts-rockchip-rk3588-nanopc-t6-dtsi-improvements.patch
+1090-arm64-dts-rockchip-rk3588-add-rock5t-dt.patch
+1100-clk-sunxi-ng-add-A523-clock-support.patch
+1101-pinctrl-sunxi-Add-support-for-the-Allwinner-A523.patch
+1123-dt-bindings-mmc-sunxi-Simplify-compatible-string-lis.patch
+1124-dt-bindings-mmc-sunxi-add-compatible-strings-for-All.patch
+1125-dt-bindings-watchdog-sunxi-add-Allwinner-A523-compat.patch
+1126-watchdog-sunxi_wdt-Add-support-for-Allwinner-A523.patch
+1127-dt-bindings-irq-sun7i-nmi-document-the-Allwinner-A52.patch
+#1128-irqchip-sunxi-nmi-Support-Allwinner-A523-NMI-control.patch
+1129-dt-bindings-phy-document-Allwinner-A523-USB-2.0-PHY.patch
+1131-dt-bindings-vendor-prefixes-Add-YuzukiHD-name.patch
+1132-dt-bindings-arm-sunxi-Add-new-board-names-for-A523-g.patch
+1136-dt-bindings-arm-sunxi-Add-YuzukiHD-Chameleon-board-n.patch
 1139-net-ethernet-allwinner-add-gmac200-support.patch
 1140-net-ethernet-allwinner-add-gmac-support.patch
-#1141-irqchip-sunxi-nmi-Support-Allwinner-A523-NMI-control.patch
+1141-thermal-drivers-sun8i-add-initial-support-for-ths.patch
 1150-arm64-dtsi-allwinner-add-initial-A523-support.patch
 1151-arm64-dtsi-allwinner-add-gmac1-in-A523-dtsi.patch
 1152-arm64-dtsi-allwinner-add-gmac0-in-A523-dtsi.patch
+1153-arm64-dtsi-allwinner-add-ths-support.patch
 1170-arm64-dts-allwinner-h728-add-x96q-pro-tvbox-plus.patch
 1172-arm64-dts-allwinner-t527-add-orangepi-4a-dts.patch
 1173-arm64-dts-allwinner-a527-add-Radxa-A5E-support.patch
+1200-dt-bindings-add-rk3528-clock-reset-definitions.patch
+1201-clk-rockchip-add-clock-controller-for-the-RK3528.patch
+1202-pinctrl-rockchip-add-rk3528-support.patch
+1203-dt-bindings-power-add-RK3528-SoCs-header-for-idle.patch
+1204-ethernet-stmmac-dwmac-rk3528-add-GMAC-support.patch
+1205-soc-rockchip-power-domain-add-rk3528-support.patch
+1206-phy-rockchip-inno-usb2-add-phy-support-for-rk3528.patch
+1208-thermal-rockchip-add-support-for-rk3528.patch
+1209-phy-rockchip-naneng-combphy-add-support-for-rk3528.patch
+1210-phy-rockchip-inno-hdmi-add-support-for-rk3528.patch
+1211-drm-rockchip-dw_hdmi-add-support-for-rk3528.patch
+1213-nvmem-rockchip-otp-add-support-for-rk3528.patch
+1214-sound-soc-codecs-add-rk3528-support.patch
+1215-hack-hack-gpu-drm-rockchip-rockchip_vop2_reg-add-rk3528.patch
+1250-arm64-dtsi-rockchip-add-3528.dtsi.patch
+1251-arm64-dts-rockchip-add-dts-for-vontar_r3.patch
+1252-arm64-dts-rockchip-rk3528-add-dts-for-rock2a-rock2f.patch
 	config
         linux.preset)
 #        60-linux.hook
 #        90-linux.hook)
 
-md5sums=('a7523cfaca336076830f99b355baf773'
+md5sums=('a41967259ad46d027944362ce691405e'
          'ad0019ba412a1b4f54fc413e2c5c3e76'
          'e0e2176d175d13f56da374df109e70e1'
          'e2706a83da3208d8c2735a482aab4ce9'
@@ -331,7 +325,7 @@ md5sums=('a7523cfaca336076830f99b355baf773'
          'ee87f7f93441497058fb3ebbc386a2c1'
          '852eae6e396daac53bc4a32693fd9647'
          '2d8e3a65a196bab6dec559a1d8010d21'
-         '14d6342d9f60a37220ca5d13c2648d23'
+         '320b62f13387f4db0b154a582eacdc70'
          '294c3f250b5afa17f57e79944c4d529f'
          'd28b7ed9ab5ffb4080d2ab07caac26b9'
          '2f28d6a7ee59fd6b4693346a9df93beb'
@@ -352,13 +346,10 @@ md5sums=('a7523cfaca336076830f99b355baf773'
          '95b517e62538ac03f522e8a5b3660fb8'
          '874b8b9b17ffd156d4f0dfa4b1a5e81e'
          '39790f191e61387817480a50899600a9'
-         'ceed8f43b31dbe1eb4e9556e972af0a9'
          '4f0853228839336c69adcb2d9dadf2b3'
-         'd2955a406c37d17802961b4706ae89df'
          '0e6ebee7a6c045dd7cf45cbafbf924bb'
          '1dcafc57cdbc3421e12ab54a54c8284c'
          'f912776f05276c66311105f57fb5d475'
-         '2ab5ad8b1cc31bd85ea5d642253db36b'
          'fac6a4de3708bb8a2423a12a592120bb'
          '554fd010bfcfd195deeaaa5a180499b9'
          'cb47353acc35d5ef90d2c4a1f51ef6e1'
@@ -386,12 +377,11 @@ md5sums=('a7523cfaca336076830f99b355baf773'
          '1fe341d4300e1045927b3c755676f35d'
          '75fdc48ab706cbde4d663807dfe4928c'
          'a36846f6e57848bd58065aaf55c32c23'
-         '4c62c914bb5810e618197837bbbfce27'
-         '06af7233187c50bda4eaf4e86a5165ac'
-         'cb90ddcc4fdfdacc23cdc0a6f9161037'
-         '05050488cbea1692873c913c518a7e91'
+         'd8a4addcc3d57f66d48aa61f168c4ee3'
+         'a60e60823753eb54c85af4214c9cb104'
          'f68f47d2728f964b399f5ee302f4aaeb'
-         '58f455a5626beb3e0f0ad4bf7c58a876'
+         'cdad029e1ba91f4182efd3f4d7b1aa89'
+         'bc9a23ea0127cd757f2d0bc7f8f2c0bf'
          '54e9c55d7a90f00f6a6fc6d2494db9ed'
          'abe67e12862f6aab45af666d27a689ae'
          '2322b63bd374e80189211273b5e21785'
@@ -401,9 +391,10 @@ md5sums=('a7523cfaca336076830f99b355baf773'
          'bb1dc5da8fa5a1cdc685a0cc2e0d883f'
          '4b820f69ab2b8c22d65498791b6a3ad8'
          '8ba482f313154a54b2eeae6dff0bf5bb'
-         'a956b9e7de1d253e8ad3e6f88ba58cfa'
-         '861d4b535ab64007ca8129799c9d0ee1'
+         '412daf6cf952332ac807409f7cc233d1'
+         '39238cbc1d966de98c0978f4287921ad'
          'cbfa0efa5b123208b70986ed10043167'
+         '86cb576c046dfa602cbcf5d2eae6af40'
          '637985e20b9cf4fcf626dbca9dfd2935'
          'c7f1d6191f815be44437b9586d8f8aec'
          '32e8556d1a85cabb1029fa65f780a85d'
@@ -420,163 +411,149 @@ md5sums=('a7523cfaca336076830f99b355baf773'
          '536d5d5b90abd1c28ac22c8c2d82601f'
          'ab44f24c639034d099dbb0d0b39f0d49'
          '031646e4ddde55979488a7c9f44fe76d'
-         'f6d3d5ce58f3110d6c4b17af0c5720b5'
+         'a59e2731f8f9b78ecb11fc2fbc7251f7'
          'e7ae0a54c830f35a9eb41f8db035fc68'
          '340440939d477e453e465a2733c4f0a9'
+         'fef1c76e0dc928e14f3a84427f33f6ac'
          '6408cd90546123bd07f4f80f2b7010e3'
-         '0114a1d4e4274815c6eebfcf7b1c1948'
+         '87fa225131a0ce93e88503b04543bd39'
          'c891fba63f548409549b1a96d8604680'
          '9a2c9408381d546b16e983246484fd40'
          'da75c3163ffef13cbe070ed1d75da4e3'
          '84eeeb28c18b434dbf72ba3ed5f759b2'
-         'aec9fbd8c684f614d1a3a9ca89702a72'
-         'b28a68bfa642929be6a92e1db7a8b759'
+         '6edd87dfd3760b52b1988dfab2d13b64'
+         'a0cebbf223a6f4bb5cc087ad46faa73e'
          '12f1da0a3013cbbd6a4724490dbc99d1'
-         '98b226ad5582fa6286a2b8bdc851b1ff'
+         '0915610e97e58b4cdb9a5c4cdbd54a2f'
          'fbd3050b4a357d249e758c7220a14320'
          '148de4dd254cd9b1b514cf96e7cf07f3'
          '5596eed0396b37cd7a89ded4e3d2105d'
-         'c6cd0cd910f8f0e9dab7797b5de3088b'
-         'b53eccd45d108c9de24a42746d908f87'
-         'b5d2589f111a29ebdb55da19004f0c13'
-         '2770d20a46a13c8760a96b6edf01e68a'
-         '9026a13127f2f2d8db75e6c21c4f027f'
-         '4b04b720d2aa0a167e30cfeea0b77faf'
-         '370b405625ddfd65a038b84032f807f0'
-         '68f0356aa268f890f9dfda206e32ecee'
-         'e8eb4d5b6d7d0c6103477813041216ec'
+         '36f183da40a11eaf6245b12aa0092684'
+         '8f6beb529dc7894fa3cd0915c53a8338'
+         'c3620d90472476c7991fc81839a5e390'
+         'b101bb9062e3136d1e50afbcecdd657d'
+         'cd04c89fd8ddac352942e966d0ae7b24'
+         'ca782317804d7eca9aad74f2dcdc12a0'
+         'e87f12a7315571bdb20092be976dea69'
+         'aa82f20d5d6ec8affc6915058c2d4ab2'
          'd559a352374a2becd9fb6d30c6c7b6cf'
          '6b514cb03ef096d5d2f42a8b4332d918'
-         '18705fe9e7bdcfe4b1d22dddf0b6a7dd'
+         '94a9317c40a68c10504f492a0abf72da'
          '7ff3b7e09aaefa3060fb18a6bc04d367'
          '9fe69661ecc8589982ee6e25a8e39def'
-         'fb23e83c63071479b59a8e8997f9c5e0'
-         'ff6624ff56cb9a1db8f8fe8408e89a81'
+         'f556b3ac831a63f35aada54df93d40ea'
+         '9a325a4e8febfdd8b13b3713be3a30a4'
          '48c85cf2e1b0df6bd0f8c73525e1d999'
          '8979801afff6e1407ecb61d7a7de8652'
          'a2e0c1f541044bdf845dc85182bdd685'
          '59fa47be5f410dc12516b03a7212b0e4'
-         '311615576573b9312b77c1b3cfa06905'
-         '2c2e654aa7616f5bb572870db57d19f0'
-         'a8e731a84f47e376c3cb9f897c6e6f9d'
-         'a276c207e09b37fe925c057d052332a9'
-         '711f870fb612b6c040cac0347e6e0110'
-         '2d479ac232348c0b8de4e40387aa1068'
-         'c60570afc7764396cb1dff690e9131f5'
-         'a5439686c190e9ec469c7393f069e402'
          '9b956f7aec0ab9caeaa61916a740dcba'
          '85dac6a15f92e16bee8ca7d5b310289f'
          'e41d58ab7198267e35a13267b6271517'
-         '3af0e56d3f51672e583fbda323f04a65'
-         'd591681a8febc01148e508e74a92a8cb'
-         '3c02684aef87c95b6b9b5518c6bfe0a5'
-         'cd72a9957e6de633d2f13cdeff18c250'
-         'f017947770a1437b95a8ee43ef3c3230'
-         '94bbcd69e543c60031441cf271c58103'
-         'f81a7ef76e83e2154f2c3eedc4c9e738'
-         '20e44228749195bb373be207eb0913c0'
-         'a53a9c2349cbb31e0df58ffa0cb31940'
-         '66c00ba9dc275d49e59913c881180dd9'
-         '8410d1a68422c011dc81c2c750c6ae66'
-         '67d212212e26b85a227ce64ec03b7cdc'
-         '2e1e83b688993f1b4f86ddb70ce45606'
-         '5465dcfebea1b7484a8e9acedf56936d'
-         '56deacc1ae8413a287354f8939f50d19'
-         '3c65d6f27e049bb57749c16b630bfa25'
-         '5df0d1ace04cfc94a4fbb1cf82475b95'
-         '174292fdfc3a507dccd906927e105d29'
-         '9adf3152ee7de57427d8cbdec30fcbe8'
-         'c7820b692c16c84792c4c88802da2f16'
-         '0c98702836f8f63b93ab0592e136ab0b'
-         'b19a0fb88c27f47d55f03b7e4d190a8e'
-         'ff5354d037a69b78a087494744adb6f5'
-         'c101c652cb6c6b2adb619c2f30cb73e1'
-         'c47cbf6c6d85cd1cfd06b8bc015cab7b'
-         '012154852c069f8646d6a158fb6b4c36'
-         '6d9d629973ac27a2f2c1528ea1a4fc74'
-         'abcb7183729a8517cc7fa9bacf7bea23'
-         'f817c818e78749b722f12853e167682c'
-         'dd2bb620bc5f7a0845095d07a41a1f36'
-         'f97bab70380815da4ac94ccb32eeac6d'
-         '1570f1b168f8db30445fb28bcecc44f5'
-         '6b958d8de0a713d2d34704b63b79c491'
-         'b35e23b95e562ec24b29d34410c64ac0'
-         'fbe9c4bde5fe180306f00004bb8a95cb'
-         'e7ad4a7cd3e2932dd8c3251f5c59c6ce'
-         '9611873888ea7da3bf3ba2bb7625b211'
-         'cd764c04dc2b0feebac5c2c300a80a08'
-         'e6d45d671cbdee3591c4012f8d2ed9f8'
+         '448c7e2a593ee3d1bf09e4a5f3d84fce'
+         'aa60dee3d37e4fa3229ff17c6c40b8d5'
+         '2943defe5245062803685ae92aa29481'
+         'd209924aaf6138a214582a49a0559623'
+         '7473d6f6c53c89ba7005e70f1952d88a'
+         '36bf4e41d5557a6651c5ad9e897910ac'
+         '3bebcd15ea626db6fb8e09f3077d66dc'
+         '477e48f4ba526e58f52925b4db6d46aa'
+         'a03ae0f5354bde93c197d4ab5fbe3498'
+         'dc27e84f28cc0dc6a4e01de98e8e1415'
+         '65ef11d0d59d74eb3caf907420d54f63'
+         'f14d28d7d5ce14d8d912ed9d6e5c6a44'
+         '258f1bf4aaa7e88d21e04d2e5fc6a50f'
+         '60d11d861863b5245115c6f8d82e0845'
+         '9b036b19483da9c1dae007382d64e23e'
+         '226847fe8c9a4e8f8c49990505d32014'
+         '1367f8b0d7713f9e475f7127f90f3e50'
+         '0e14eb6034a1c2a3b998b2efcf893301'
+         '3516cf12b8d7565677bdcf8e861827ed'
+         '967fdb2c333f773082e29d42dfdedeb8'
+         '365d51d29db3b2777d327195e2e8e00b'
+         '93524d3d144a35844461a5f7bfdac081'
+         '81810a31b89d1e3ebe3a002069ccef57'
+         '7bc397b0def5f457a52abeb75c8a670e'
+         '291528a011769adc7752e3599af7190c'
+         'fd5bbd01bfc038a6c09bfa7622d951da'
+         'c5c88f69e293769c0fbb929d4ff4683c'
+         '1b7e7c8a716cb7f0835253409ee2a7f3'
+         '47802e1f836d19751b722719807e66be'
+         'ee2cbd5412a97f696e3a1440caa9e2fa'
+         '85a40e7b98addf0f7499de367fc6518f'
+         'f2498ecfdbe083a980b91e51c48d22c5'
+         'c188a6641f147c52838c034bb12c2c44'
+         'da0da81c9fcc4b6465f1cbb11f90a842'
+         '6daf2b1c1692847b49bea92d652c9fe2'
+         'a0289b7c14990b85711037474fdf8379'
+         'b197cbbd6e010d7e681099ee2a52135e'
+         'ce15b37780703f2dea9eff82949b0718'
          '7d653321ae7f79d08bbd58e4ac1def0b'
          '3502eb8a17aacac3df37c941461162f8'
          '8f0c414aa221b660f0bfd8c33452c04b'
-         '4ac94b423b496ef513a057bbc222206d'
+         '8535559c012b0acfb92a3af9d1739d3f'
          '3aa15bccb1a46204c00c97c495ce7e66'
          'd060cc4b40e501349cfbd4e1a526efe2'
          'a3daeffd6291c149ee148eb7abacc356'
+         '3110063dcae53d897161070b63910962'
          '5ad2f4fae8d1e947dd98915eefe0bbe1'
-         '52924aa4e7cd2b0d9ed7baaf59d620b8'
-         'd3f34b921136cab564802ce8cc112d46'
+         '0cfc2d453661b5d9d42b2edc871809bb'
+         '958a4b71097902f8e4e1289c04f61b7f'
          'ba20191bb8bf68e5c49feb8648e99a61'
-         '8aaaaf097b997376c765234746cbe390'
-         'ea98681e1f2c2737c49cf3db14a6c249'
          '4e2c1bff5da345de0ff04bf873dd0b4c'
-         '9fa68366a5cc3593b432416ff6891e74'
-         '2f8e3bd528618820c7553a251d0d3e10'
-         'b803395f14ed05f8c7d7c3ddc682514c'
-         'c9b3c7cd607bf628f3872b8f8a436da9'
-         'f062d64364505698d6f27ee54069b406'
-         '1b1ea7347419ec3b6a3eb360fae69c7f'
-         '87159ba2177714770664fdb1262cf7a0'
-         '2c90efd23f4ef77a5e373e479f9e50b1'
-         '1ab580fa55e2a7f12d0ad2a9db20bb35'
-         '7252e25b5a4188be520c8deb715c2f27'
-         'b79c8ad7d58028348a5b37c2599b4d13'
-         'c6f52ab98b5a171e75ca9ef68bceb146'
-         '62d3dd3c1e5594f998fad4d9b393fd3d'
-         '2dd2ab43ddaeb8727ee2ea25b40322df'
-         'd162daf02d02f2b9546de8e3a517e0c4'
-         '04138aa89414aeec9edb1e642b72e982'
-         'a240fa074688d4510314b13a34a1c481'
-         'a9eafe300ac4e670606b4e141ef69bc6'
-         '60ad12926f305185b3799c1ced352114'
-         '9092131879a95ab80306f0f64bf1ff9f'
-         '949fba1c3087911f49841233f0ae5747'
-         '2eb7348561933d031cd8ecfc8ed418a7'
-         '655565572764a843a5061ff81f42bbeb'
-         '2b512006b108042407cf828c5e63f788'
-         '74fb0cc09ea3ff5c460f992a36687480'
-         'ec0c81d851dfa6d244d71d501c681c83'
-         'e138ee15bdc3f4ef0cde65784be6dad6'
-         'd1ea38bc8105ae09d19442012036d60d'
-         'c563e195e06db3202c75db8c915b4610'
-         'f1892b3d62c80940551d09b0e46d7d66'
-         '809de75a53d53969058414449162840b'
-         '42844580144cf8228b07f2bc7b1b41da'
-         '15922aad03494acae5bceba28c35999f'
-         'c8ac7a4c7669c07cb8398b7b1c254a6b'
-         '8dfbd82ba81432c44ccfce6ed917783c'
-         '167aa614b573d4caea6692c3b7088a6c'
-         '6be853d77b89be46412b9a0a108a2b4d'
-         'e7b2222a8ab06b237986c164d6f73225'
-         '7d25b8c9d5795e34195ace5a0b42e858'
-         '3179ab015496807bbf1f97c9a0cd6dbb'
-         '0f6f9ac070c3055eca1e69cc42f84c09'
-         'cbdf37d89b99b0235cfddfb4dbf636f4'
-         '9d6935352f4d5639ccfb3e602edfb30f'
-         '8dd72a8fce108f4d5c3881afcab76826'
-         '92b5ffe1204ccda8852357e6c8931ba5'
-         '553a60026b108e1061be901f54199831'
-         '34433e10ee95e684df2991127d50d7a4'
-         'd4392674f9d700a5bbd7c1ddd8c07e94'
+         '6de2a1b7987d89f2b6eeb6e4677a3da0'
+         '13c64072621cb9a343f893b733ca1ed6'
+         '0ea23db04b96dbf1873c931ad97186f4'
+         'e87c97f1ea8d7e099664dce90ba27930'
+         'a1af714d915481486f9787451de298b6'
+         '27c8f30ef791b188817283ddd74e54a8'
+         '8fbeab37cb206009e0b96ef8c462af47'
+         'e1c03826ab3db7bb89a873b377b46ef1'
+         '9b63b97175f7109a86066dfd45586182'
+         'aacf35bf97ee2bb0f2ef81293443aa49'
+         '1b23240e3939dab3a05f9a70de2b039a'
+         'cafc8d4a33fedfc997f5034c85685f77'
+         '2d8abeb75fb7e2887df8adf319d81976'
+         'e4eeba7027a8a714719e9bea67681e6b'
+         '31604dfb2322699b0d00146744404ef6'
+         '29f0d38e99e925d9efefc5d97b224864'
+         'adc77295375437d35db99bf01bdb2636'
+         '53ccb694389f8b87d33fc3ccb86f6843'
+         '9081d7029fc36c8a1a411c2076244b18'
+         'a722eb8df102709cba0f49a37c863fb0'
+         '1544fd9f0af5d00ad3fb245476cae0e2'
+         '47ac799d993db055d5a766ab766d173f'
+         '420d406e798d5963773fe96b84307c2c'
+         'ee7e6fef3dc0f557069287a4b086f896'
+         'c672b634967c195374c80be3fef999f3'
          'fc2aae58f0f5641aab21748d74ff4cf7'
          '494c74c17d54fcd623b7bdd0b4ea2299'
-         '4cdc0e2a20b54bda7730ef26f1d34694'
+         'ea22d6ca5a5ca7571e3d6723c14f5789'
+         '13efef565f5a8d47a5246acae9e6d7de'
          '6dcab0586d2dd7025502f6edbba07be6'
          'ef7951f77136006c01f878a02d418e19'
+         'b811f35543f7ea8ebef6ef666a649444'
          'af732661ff052d2065406a80926db245'
-         '38590334132664eecf24e9dfbd58c9f3'
+         '01d114572769acf6b77063c151c2e38f'
          '08086fd33fa42b2e4c574211bdf4f313'
-         '6986195ae8251c1eda9a7ec6ef071e47'
+         '8b28d597b210e309cfae96febf7487bf'
+         '35f3291178707931accc1b167485b64d'
+         '54b091b9e12fbd9298c7db2d353a020e'
+         '9cf9ef422f300ca98848ca5f0401888b'
+         '558ef14a9204a4630207a591dda347a3'
+         'b734360131b3b5b028822e345f7e954b'
+         '7a94125dedf29fbfd17ccc29699dd1d0'
+         'c64719ac0582d3e9f4e633c20703a1e2'
+         'bbc75dd2d5a0a15e8efc1b56310051c3'
+         '7b90ad2bcb4abefa30851cb535efa5fb'
+         '204da62db5e0b7091e9c2e6c5edb282b'
+         'e5a9b62f6cced2e2af22b79bb0c49fe9'
+         '0f1beb05159edd3ec61e8fec1c0e2b6b'
+         '87d01a7d9217c9498e45f5497ccda5cd'
+         '8d319a0ae2bbdf1391462a5c58ca6e92'
+         '58e6330d9ba69805f910297a946a5e89'
+         '0c079c663d450dfd1b82fc0f7105e069'
+         'bba3c1b8d9b6adae5d998b61bdde1510'
          '86d4a35722b5410e3b29fc92dae15d4b')
 
 prepare() {

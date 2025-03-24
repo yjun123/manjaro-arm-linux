@@ -121,24 +121,10 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/arch/arm
  			};
  		};
  
-@@ -361,6 +458,230 @@
+@@ -361,6 +458,216 @@
  			#size-cells = <0>;
  		};
  
-+		codec: codec@05096000 {
-+			#sound-dai-cells = <0>;
-+			compatible = "allwinner,sun50i-h616-codec";
-+			reg = <0x05096000 0x31c>;
-+			interrupts = <GIC_SPI 58 IRQ_TYPE_LEVEL_HIGH>;
-+			clocks = <&ccu CLK_BUS_AUDIO_CODEC>,
-+				 <&ccu CLK_AUDIO_CODEC_1X>,
-+				 <&ccu CLK_AUDIO_CODEC_4X>;
-+			clock-names = "apb", "audio-codec-1x", "audio-codec-4x";
-+			resets = <&ccu RST_BUS_AUDIO_CODEC>;
-+			dmas = <&dma 6>;
-+			dma-names = "tx";
-+			status = "disabled";
-+		};
 +
 +		ahub_dam_plat:ahub_dam_plat@5097000 {
 +			#sound-dai-cells = <0>;
@@ -368,7 +354,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9-rc5/arch/arm
 +			iommus = <&iommu 2>, <&iommu 3>;
 +		};
 +
-+		gpu: gpu@0x01800000 {
++		gpu: gpu@1800000 {
 +			compatible = "allwinner,sun50i-h616-mali", "arm,mali-bifrost";
 +			reg = <0x1800000 0x40000>;
 +			interrupt-parent = <&gic>;

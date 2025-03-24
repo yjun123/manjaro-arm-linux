@@ -1,7 +1,7 @@
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc6/arch/arm64/boot/dts/broadcom/bcm2712.dtsi linux-6.12-rc6/arch/arm64/boot/dts/broadcom/bcm2712.dtsi
---- linux-6.12-rc6/arch/arm64/boot/dts/broadcom/bcm2712.dtsi	2024-11-04 01:05:52.000000000 +0100
-+++ linux-6.12-rc6/arch/arm64/boot/dts/broadcom/bcm2712.dtsi	2024-11-06 10:32:19.858343093 +0100
-@@ -1,78 +1,784 @@
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.14-rc1/arch/arm64/boot/dts/broadcom/bcm2712.dtsi linux-6.14-rc1/arch/arm64/boot/dts/broadcom/bcm2712.dtsi
+--- linux-6.14-rc1/arch/arm64/boot/dts/broadcom/bcm2712.dtsi	2025-02-03 00:39:26.000000000 +0100
++++ linux-6.14-rc1/arch/arm64/boot/dts/broadcom/bcm2712.dtsi	2025-02-07 13:03:46.033351623 +0100
+@@ -1,216 +1,108 @@
 -// SPDX-License-Identifier: (GPL-2.0 OR MIT)
 +// SPDX-License-Identifier: GPL-2.0
  #include <dt-bindings/interrupt-controller/arm-gic.h>
@@ -26,27 +26,39 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc6/arch/ar
 -			#clock-cells = <0>;
 -			clock-output-names = "osc";
 -			clock-frequency = <54000000>;
+-		};
 +	rmem: reserved-memory {
 +		#address-cells = <2>;
 +		#size-cells = <1>;
 +		ranges;
-+
-+		atf@0 {
-+			reg = <0x0 0x0 0x80000>;
-+			no-map;
- 		};
  
 -		clk_vpu: clk-vpu {
 -			compatible = "fixed-clock";
 -			#clock-cells = <0>;
 -			clock-frequency = <750000000>;
 -			clock-output-names = "vpu-clock";
++		atf@0 {
++			reg = <0x0 0x0 0x80000>;
++			no-map;
+ 		};
+ 
+-		clk_uart: clk-uart {
+-			compatible = "fixed-clock";
+-			#clock-cells = <0>;
+-			clock-frequency = <9216000>;
+-			clock-output-names = "uart-clock";
+-		};
 +		cma: linux,cma {
 +			compatible = "shared-dma-pool";
 +			size = <0x10000000>; /* 256MB */
 +			reusable;
 +			linux,cma-default;
-+
+ 
+-		clk_emmc2: clk-emmc2 {
+-			compatible = "fixed-clock";
+-			#clock-cells = <0>;
+-			clock-frequency = <200000000>;
+-			clock-output-names = "emmc2-clock";
 +			/*
 +			 * arm64 reserves the CMA by default somewhere in
 +			 * ZONE_DMA32, that's not good enough for the BCM2711
@@ -57,52 +69,176 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc6/arch/ar
 +			 */
 +			alloc-ranges = <0x0 0x00000000 0x30000000>;
  		};
-+	};
+ 	};
  
--		clk_uart: clk-uart {
--			compatible = "fixed-clock";
--			#clock-cells = <0>;
--			clock-frequency = <9216000>;
--			clock-output-names = "uart-clock";
+-	cpus: cpus {
+-		#address-cells = <1>;
+-		#size-cells = <0>;
+-
+-		/* Source for L1 d/i cache-line-size, cache-sets, cache-size
+-		 * https://developer.arm.com/documentation/100798/0401/L1-memory-system/About-the-L1-memory-system?lang=en
+-		 * Source for L2 cache-line-size and cache-sets:
+-		 * https://developer.arm.com/documentation/100798/0401/L2-memory-system/About-the-L2-memory-system?lang=en
+-		 * and for cache-size:
+-		 * https://www.raspberrypi.com/documentation/computers/processors.html#bcm2712
+-		 */
+-		cpu0: cpu@0 {
+-			device_type = "cpu";
+-			compatible = "arm,cortex-a76";
+-			reg = <0x000>;
+-			enable-method = "psci";
+-			d-cache-size = <0x10000>;
+-			d-cache-line-size = <64>;
+-			d-cache-sets = <256>; // 64KiB(size)/64(line-size)=1024ways/4-way set
+-			i-cache-size = <0x10000>;
+-			i-cache-line-size = <64>;
+-			i-cache-sets = <256>; // 64KiB(size)/64(line-size)=1024ways/4-way set
+-			next-level-cache = <&l2_cache_l0>;
+-
+-			l2_cache_l0: l2-cache-l0 {
+-				compatible = "cache";
+-				cache-size = <0x80000>;
+-				cache-line-size = <64>;
+-				cache-sets = <1024>; //512KiB(size)/64(line-size)=8192ways/8-way set
+-				cache-level = <2>;
+-				cache-unified;
+-				next-level-cache = <&l3_cache>;
+-			};
+-		};
+-
+-		cpu1: cpu@1 {
+-			device_type = "cpu";
+-			compatible = "arm,cortex-a76";
+-			reg = <0x100>;
+-			enable-method = "psci";
+-			d-cache-size = <0x10000>;
+-			d-cache-line-size = <64>;
+-			d-cache-sets = <256>; // 64KiB(size)/64(line-size)=1024ways/4-way set
+-			i-cache-size = <0x10000>;
+-			i-cache-line-size = <64>;
+-			i-cache-sets = <256>; // 64KiB(size)/64(line-size)=1024ways/4-way set
+-			next-level-cache = <&l2_cache_l1>;
+-
+-			l2_cache_l1: l2-cache-l1 {
+-				compatible = "cache";
+-				cache-size = <0x80000>;
+-				cache-line-size = <64>;
+-				cache-sets = <1024>; //512KiB(size)/64(line-size)=8192ways/8-way set
+-				cache-level = <2>;
+-				cache-unified;
+-				next-level-cache = <&l3_cache>;
+-			};
+-		};
+-
+-		cpu2: cpu@2 {
+-			device_type = "cpu";
+-			compatible = "arm,cortex-a76";
+-			reg = <0x200>;
+-			enable-method = "psci";
+-			d-cache-size = <0x10000>;
+-			d-cache-line-size = <64>;
+-			d-cache-sets = <256>; // 64KiB(size)/64(line-size)=1024ways/4-way set
+-			i-cache-size = <0x10000>;
+-			i-cache-line-size = <64>;
+-			i-cache-sets = <256>; // 64KiB(size)/64(line-size)=1024ways/4-way set
+-			next-level-cache = <&l2_cache_l2>;
 +	thermal-zones {
 +		cpu_thermal: cpu-thermal {
 +			polling-delay-passive = <2000>;
 +			polling-delay = <1000>;
 +			coefficients = <(-550) 450000>;
 +			thermal-sensors = <&thermal>;
-+
+ 
+-			l2_cache_l2: l2-cache-l2 {
+-				compatible = "cache";
+-				cache-size = <0x80000>;
+-				cache-line-size = <64>;
+-				cache-sets = <1024>; //512KiB(size)/64(line-size)=8192ways/8-way set
+-				cache-level = <2>;
+-				cache-unified;
+-				next-level-cache = <&l3_cache>;
 +			thermal_trips: trips {
 +				cpu_crit: cpu-crit {
 +					temperature	= <110000>;
 +					hysteresis	= <0>;
 +					type		= "critical";
 +				};
-+			};
-+
-+			cooling_maps: cooling-maps {
-+			};
- 		};
-+	};
+ 			};
+-		};
+-
+-		cpu3: cpu@3 {
+-			device_type = "cpu";
+-			compatible = "arm,cortex-a76";
+-			reg = <0x300>;
+-			enable-method = "psci";
+-			d-cache-size = <0x10000>;
+-			d-cache-line-size = <64>;
+-			d-cache-sets = <256>; // 64KiB(size)/64(line-size)=1024ways/4-way set
+-			i-cache-size = <0x10000>;
+-			i-cache-line-size = <64>;
+-			i-cache-sets = <256>; // 64KiB(size)/64(line-size)=1024ways/4-way set
+-			next-level-cache = <&l2_cache_l3>;
  
--		clk_emmc2: clk-emmc2 {
--			compatible = "fixed-clock";
--			#clock-cells = <0>;
--			clock-frequency = <200000000>;
--			clock-output-names = "emmc2-clock";
+-			l2_cache_l3: l2-cache-l3 {
+-				compatible = "cache";
+-				cache-size = <0x80000>;
+-				cache-line-size = <64>;
+-				cache-sets = <1024>; //512KiB(size)/64(line-size)=8192ways/8-way set
+-				cache-level = <2>;
+-				cache-unified;
+-				next-level-cache = <&l3_cache>;
++			cooling_maps: cooling-maps {
+ 			};
+ 		};
+-
+-		/* Source for cache-line-size and cache-sets:
+-		 * https://developer.arm.com/documentation/100453/0401/L3-cache?lang=en
+-		 * Source for cache-size:
+-		 * https://www.raspberrypi.com/documentation/computers/processors.html#bcm2712
+-		 */
+-		l3_cache: l3-cache {
+-			compatible = "cache";
+-			cache-size = <0x200000>;
+-			cache-line-size = <64>;
+-			cache-sets = <2048>; // 2MiB(size)/64(line-size)=32768ways/16-way set
+-			cache-level = <3>;
+-			cache-unified;
+-		};
+ 	};
+ 
+-	psci {
+-		method = "smc";
+-		compatible = "arm,psci-1.0", "arm,psci-0.2";
 +	clk_27MHz: clk-27M {
 +		#clock-cells = <0>;
 +		compatible = "fixed-clock";
 +		clock-frequency = <27000000>;
 +		clock-output-names = "27MHz-clock";
-+	};
-+
+ 	};
+ 
+-	rmem: reserved-memory {
+-		ranges;
+-		#address-cells = <2>;
+-		#size-cells = <2>;
+-
+-		atf@0 {
+-			reg = <0x0 0x0 0x0 0x80000>;
+-			no-map;
+-		};
 +	clk_108MHz: clk-108M {
 +		#clock-cells = <0>;
 +		compatible = "fixed-clock";
 +		clock-frequency = <108000000>;
 +		clock-output-names = "108MHz-clock";
 +	};
-+
+ 
+-		cma: linux,cma {
+-			compatible = "shared-dma-pool";
+-			size = <0x0 0x4000000>; /* 64MB */
+-			reusable;
+-			linux,cma-default;
+-			alloc-ranges = <0x0 0x00000000 0x0 0x40000000>;
+-		};
 +	hvs: hvs@107c580000 {
 +		compatible = "brcm,bcm2712-hvs";
 +		reg = <0x10 0x7c580000 0x1a000>;
@@ -113,82 +249,139 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc6/arch/ar
 +		clock-names = "core", "disp";
 +		//iommus = <&iommu4>;
 +		status = "okay";
-+	};
-+
+ 	};
+ 
+-	soc: soc@107c000000 {
 +	soc: soc {
-+		compatible = "simple-bus";
-+		#address-cells = <1>;
-+		#size-cells = <1>;
-+
+ 		compatible = "simple-bus";
+-		ranges = <0x00000000  0x10 0x00000000  0x80000000>;
+ 		#address-cells = <1>;
+ 		#size-cells = <1>;
+ 
+-		sdio1: mmc@fff000 {
+-			compatible = "brcm,bcm2712-sdhci",
+-				     "brcm,sdhci-brcmstb";
+-			reg = <0x00fff000 0x260>,
+-			      <0x00fff400 0x200>;
+-			reg-names = "host", "cfg";
+-			interrupts = <GIC_SPI 273 IRQ_TYPE_LEVEL_HIGH>;
+-			clocks = <&clk_emmc2>;
+-			clock-names = "sw_sdio";
+-			mmc-ddr-3_3v;
+-		};
 +		ranges     = <0x7c000000  0x10 0x7c000000  0x04000000>;
 +		/* Emulate a contiguous 30-bit address range for DMA */
 +		dma-ranges = <0xc0000000  0x00 0x00000000  0x40000000>,
 +			     <0x7c000000  0x10 0x7c000000  0x04000000>;
-+
-+		system_timer: timer@7c003000 {
-+			compatible = "brcm,bcm2835-system-timer";
-+			reg = <0x7c003000 0x1000>;
-+			interrupts = <GIC_SPI 64 IRQ_TYPE_LEVEL_HIGH>,
-+				     <GIC_SPI 65 IRQ_TYPE_LEVEL_HIGH>,
+ 
+ 		system_timer: timer@7c003000 {
+ 			compatible = "brcm,bcm2835-system-timer";
+ 			reg = <0x7c003000 0x1000>;
+ 			interrupts = <GIC_SPI 64 IRQ_TYPE_LEVEL_HIGH>,
+ 				     <GIC_SPI 65 IRQ_TYPE_LEVEL_HIGH>,
+-				     <GIC_SPI 66 IRQ_TYPE_LEVEL_HIGH>,
+-				     <GIC_SPI 67 IRQ_TYPE_LEVEL_HIGH>;
 +		     		     <GIC_SPI 66 IRQ_TYPE_LEVEL_HIGH>,
 +		     		     <GIC_SPI 67 IRQ_TYPE_LEVEL_HIGH>;
-+			clock-frequency = <1000000>;
-+		};
-+
-+		mailbox: mailbox@7c013880 {
-+			compatible = "brcm,bcm2835-mbox";
-+			reg = <0x7c013880 0x40>;
-+			interrupts = <GIC_SPI 33 IRQ_TYPE_LEVEL_HIGH>;
-+			#mbox-cells = <0>;
-+		};
-+
-+		pixelvalve0: pixelvalve@7c410000 {
-+			compatible = "brcm,bcm2712-pixelvalve0";
-+			reg = <0x7c410000 0x100>;
-+			interrupts = <GIC_SPI 101 IRQ_TYPE_LEVEL_HIGH>;
+ 			clock-frequency = <1000000>;
+ 		};
+ 
+@@ -221,71 +113,26 @@
+ 			#mbox-cells = <0>;
+ 		};
+ 
+-		uart10: serial@7d001000 {
+-			compatible = "arm,pl011", "arm,primecell";
+-			reg = <0x7d001000 0x200>;
+-			interrupts = <GIC_SPI 121 IRQ_TYPE_LEVEL_HIGH>;
+-			clocks = <&clk_uart>, <&clk_vpu>;
+-			clock-names = "uartclk", "apb_pclk";
+-			arm,primecell-periphid = <0x00241011>;
+-			status = "disabled";
+-		};
+-
+-		interrupt-controller@7d517000 {
+-			compatible = "brcm,bcm7271-l2-intc";
+-			reg = <0x7d517000 0x10>;
+-			interrupts = <GIC_SPI 247 IRQ_TYPE_LEVEL_HIGH>;
+-			interrupt-controller;
+-			#interrupt-cells = <1>;
+-		};
+-
+-		gio_aon: gpio@7d517c00 {
+-			compatible = "brcm,bcm7445-gpio", "brcm,brcmstb-gpio";
+-			reg = <0x7d517c00 0x40>;
+-			gpio-controller;
+-			#gpio-cells = <2>;
+-			brcm,gpio-bank-widths = <17 6>;
+-			/* The lack of 'interrupt-controller' property here is intended:
+-			 * don't use GIO_AON as an interrupt controller because it will
+-			 * clash with the firmware monitoring the PMIC interrupt via the VPU.
+-			 */
+-		};
+-
+-		gicv2: interrupt-controller@7fff9000 {
+-			compatible = "arm,gic-400";
+-			reg = <0x7fff9000 0x1000>,
+-			      <0x7fffa000 0x2000>,
+-			      <0x7fffc000 0x2000>,
+-			      <0x7fffe000 0x2000>;
+-			interrupt-controller;
+-			#interrupt-cells = <3>;
+-		};
+-
+-		aon_intr: interrupt-controller@7d510600 {
+-			compatible = "brcm,bcm2711-l2-intc", "brcm,l2-intc";
+-			reg = <0x7d510600 0x30>;
+-			interrupts = <GIC_SPI 239 IRQ_TYPE_LEVEL_HIGH>;
+-			interrupt-controller;
+-			#interrupt-cells = <1>;
+-		};
+-
+ 		pixelvalve0: pixelvalve@7c410000 {
+ 			compatible = "brcm,bcm2712-pixelvalve0";
+ 			reg = <0x7c410000 0x100>;
+ 			interrupts = <GIC_SPI 101 IRQ_TYPE_LEVEL_HIGH>;
 +			status = "okay";
-+		};
-+
-+		pixelvalve1: pixelvalve@7c411000 {
-+			compatible = "brcm,bcm2712-pixelvalve1";
-+			reg = <0x7c411000 0x100>;
-+			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH>;
+ 		};
+ 
+ 		pixelvalve1: pixelvalve@7c411000 {
+ 			compatible = "brcm,bcm2712-pixelvalve1";
+ 			reg = <0x7c411000 0x100>;
+ 			interrupts = <GIC_SPI 110 IRQ_TYPE_LEVEL_HIGH>;
 +			status = "okay";
-+		};
-+
-+		mop: mop@7c500000 {
-+			compatible = "brcm,bcm2712-mop";
+ 		};
+ 
+ 		mop: mop@7c500000 {
+ 			compatible = "brcm,bcm2712-mop";
+-			reg = <0x7c500000 0x28>;
 +			reg = <0x7c500000 0x20>;
-+			interrupt-parent = <&disp_intr>;
-+			interrupts = <1>;
+ 			interrupt-parent = <&disp_intr>;
+ 			interrupts = <1>;
 +			status = "okay";
-+		};
-+
-+		moplet: moplet@7c501000 {
-+			compatible = "brcm,bcm2712-moplet";
-+			reg = <0x7c501000 0x20>;
-+			interrupt-parent = <&disp_intr>;
-+			interrupts = <0>;
+ 		};
+ 
+ 		moplet: moplet@7c501000 {
+@@ -293,6 +140,7 @@
+ 			reg = <0x7c501000 0x20>;
+ 			interrupt-parent = <&disp_intr>;
+ 			interrupts = <0>;
 +			status = "okay";
-+		};
-+
-+		disp_intr: interrupt-controller@7c502000 {
-+			compatible = "brcm,bcm2711-l2-intc", "brcm,l2-intc";
-+			reg = <0x7c502000 0x30>;
-+			interrupts = <GIC_SPI 97 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-controller;
-+			#interrupt-cells = <1>;
+ 		};
+ 
+ 		disp_intr: interrupt-controller@7c502000 {
+@@ -301,6 +149,7 @@
+ 			interrupts = <GIC_SPI 97 IRQ_TYPE_LEVEL_HIGH>;
+ 			interrupt-controller;
+ 			#interrupt-cells = <1>;
 +			status = "okay";
-+		};
-+
-+		dvp: clock@7c700000 {
-+			compatible = "brcm,brcm2711-dvp";
-+			reg = <0x7c700000 0x10>;
-+			clocks = <&clk_108MHz>;
-+			#clock-cells = <1>;
-+			#reset-cells = <1>;
-+		};
-+
+ 		};
+ 
+ 		dvp: clock@7c700000 {
+@@ -311,14 +160,307 @@
+ 			#reset-cells = <1>;
+ 		};
+ 
 +		/*
 +		 * This node is the provider for the enable-method for
 +		 * bringing up secondary cores.
@@ -433,7 +626,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc6/arch/ar
 +			interrupts = <GIC_SPI 238 IRQ_TYPE_LEVEL_HIGH>;
 +			interrupt-controller;
 +			#interrupt-cells = <1>;
- 		};
++		};
 +
 +		pinctrl: pinctrl@7d504100 {
 +			compatible = "brcm,bcm2712-pinctrl";
@@ -481,28 +674,31 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc6/arch/ar
 +			};
 +		};
 +
-+		ddc0: i2c@7d508200 {
-+			compatible = "brcm,brcmstb-i2c";
-+			reg = <0x7d508200 0x58>;
-+			interrupt-parent = <&bsc_irq>;
-+			interrupts = <1>;
+ 		ddc0: i2c@7d508200 {
+ 			compatible = "brcm,brcmstb-i2c";
+ 			reg = <0x7d508200 0x58>;
+ 			interrupt-parent = <&bsc_irq>;
+ 			interrupts = <1>;
+-			clock-frequency = <97500>;
 +			clock-frequency = <200000>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
 +			status = "okay";
-+		};
-+
-+		ddc1: i2c@7d508280 {
-+			compatible = "brcm,brcmstb-i2c";
-+			reg = <0x7d508280 0x58>;
-+			interrupt-parent = <&bsc_irq>;
-+			interrupts = <2>;
+ 		};
+ 
+ 		ddc1: i2c@7d508280 {
+@@ -326,12 +468,24 @@
+ 			reg = <0x7d508280 0x58>;
+ 			interrupt-parent = <&bsc_irq>;
+ 			interrupts = <2>;
+-			clock-frequency = <97500>;
 +			clock-frequency = <200000>;
-+			#address-cells = <1>;
-+			#size-cells = <0>;
+ 			#address-cells = <1>;
+ 			#size-cells = <0>;
 +			status = "okay";
-+		};
-+
+ 		};
+ 
+-		bsc_irq: interrupt-controller@7d508380 {
 +		bscd: i2c@7d508300 {
 +			compatible = "brcm,brcmstb-i2c";
 +			reg = <0x7d508300 0x58>;
@@ -515,21 +711,23 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc6/arch/ar
 +		};
 +
 +		bsc_irq: intc@7d508380 {
-+			compatible = "brcm,bcm7271-l2-intc";
-+			reg = <0x7d508380 0x10>;
-+			interrupts = <GIC_SPI 242 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-controller;
-+			#interrupt-cells = <1>;
-+		};
-+
+ 			compatible = "brcm,bcm7271-l2-intc";
+ 			reg = <0x7d508380 0x10>;
+ 			interrupts = <GIC_SPI 242 IRQ_TYPE_LEVEL_HIGH>;
+@@ -339,7 +493,7 @@
+ 			#interrupt-cells = <1>;
+ 		};
+ 
+-		main_irq: interrupt-controller@7d508400 {
 +		main_irq: intc@7d508400 {
-+			compatible = "brcm,bcm7271-l2-intc";
-+			reg = <0x7d508400 0x10>;
-+			interrupts = <GIC_SPI 244 IRQ_TYPE_LEVEL_HIGH>;
-+			interrupt-controller;
-+			#interrupt-cells = <1>;
-+		};
-+
+ 			compatible = "brcm,bcm7271-l2-intc";
+ 			reg = <0x7d508400 0x10>;
+ 			interrupts = <GIC_SPI 244 IRQ_TYPE_LEVEL_HIGH>;
+@@ -347,7 +501,181 @@
+ 			#interrupt-cells = <1>;
+ 		};
+ 
+-		hdmi0: hdmi@7c701400 {
 +		gio: gpio@7d508500 {
 +			compatible = "brcm,brcmstb-gpio";
 +			reg = <0x7d508500 0x40>;
@@ -705,66 +903,37 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc6/arch/ar
 +		};
 +
 +		hdmi0: hdmi@7ef00700 {
-+			compatible = "brcm,bcm2712-hdmi0";
-+			reg = <0x7c701400 0x300>,
-+			      <0x7c701000 0x200>,
-+			      <0x7c701d00 0x300>,
-+			      <0x7c702000 0x80>,
-+			      <0x7c703800 0x200>,
-+			      <0x7c704000 0x800>,
-+			      <0x7c700100 0x80>,
-+			      <0x7d510800 0x100>,
-+			      <0x7c720000 0x100>;
-+			reg-names = "hdmi",
-+				    "dvp",
-+				    "phy",
-+				    "rm",
-+				    "packet",
-+				    "metadata",
-+				    "csc",
-+				    "cec",
-+				    "hd";
-+			resets = <&dvp 1>;
-+			interrupt-parent = <&aon_intr>;
-+			interrupts = <1>, <2>, <3>,
-+				     <7>, <8>;
-+			interrupt-names = "cec-tx", "cec-rx", "cec-low",
-+					  "hpd-connected", "hpd-removed";
-+			ddc = <&ddc0>;
+ 			compatible = "brcm,bcm2712-hdmi0";
+ 			reg = <0x7c701400 0x300>,
+ 			      <0x7c701000 0x200>,
+@@ -374,9 +702,14 @@
+ 			interrupt-names = "cec-tx", "cec-rx", "cec-low",
+ 					  "hpd-connected", "hpd-removed";
+ 			ddc = <&ddc0>;
 +			dmas = <&dma40 10>;
 +			dma-names = "audio-rx";
 +			clocks = <&firmware_clocks 13>, <&firmware_clocks 14>, <&dvp 0>, <&clk_27MHz>;
 +			clock-names = "hdmi", "bvb", "audio", "cec";
 +			status = "okay";
-+		};
-+
+ 		};
+ 
+-		hdmi1: hdmi@7c706400 {
 +		hdmi1: hdmi@7ef05700 {
-+			compatible = "brcm,bcm2712-hdmi1";
-+			reg = <0x7c706400 0x300>,
-+			      <0x7c706000 0x200>,
-+			      <0x7c706d00 0x300>,
-+			      <0x7c707000 0x80>,
-+			      <0x7c708800 0x200>,
-+			      <0x7c709000 0x800>,
-+			      <0x7c700180 0x80>,
-+			      <0x7d511000 0x100>,
-+			      <0x7c720000 0x100>;
-+			reg-names = "hdmi",
-+				    "dvp",
-+				    "phy",
-+				    "rm",
-+				    "packet",
-+				    "metadata",
-+				    "csc",
-+				    "cec",
-+				    "hd";
+ 			compatible = "brcm,bcm2712-hdmi1";
+ 			reg = <0x7c706400 0x300>,
+ 			      <0x7c706000 0x200>,
+@@ -396,14 +729,98 @@
+ 				    "csc",
+ 				    "cec",
+ 				    "hd";
 +			ddc = <&ddc1>;
-+			resets = <&dvp 2>;
-+			interrupt-parent = <&aon_intr>;
-+			interrupts = <11>, <12>, <13>,
-+				     <14>, <15>;
-+			interrupt-names = "cec-tx", "cec-rx", "cec-low",
-+					  "hpd-connected", "hpd-removed";
+ 			resets = <&dvp 2>;
+ 			interrupt-parent = <&aon_intr>;
+ 			interrupts = <11>, <12>, <13>,
+ 				     <14>, <15>;
+ 			interrupt-names = "cec-tx", "cec-rx", "cec-low",
+ 					  "hpd-connected", "hpd-removed";
+-			ddc = <&ddc1>;
 +			dmas = <&dma40 17>;
 +			dma-names = "audio-rx";
 +			clocks = <&firmware_clocks 13>, <&firmware_clocks 14>, <&dvp 1>, <&clk_27MHz>;
@@ -795,180 +964,83 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc6/arch/ar
 +					  IRQ_TYPE_LEVEL_LOW)>;
 +		/* This only applies to the ARMv7 stub */
 +		arm,cpu-registers-not-fw-configured;
- 	};
- 
- 	cpus: cpus {
- 		#address-cells = <1>;
- 		#size-cells = <0>;
++	};
++
++	cpus: cpus {
++		#address-cells = <1>;
++		#size-cells = <0>;
 +		enable-method = "brcm,bcm2836-smp"; // for ARM 32-bit
- 
--		/* Source for L1 d/i cache-line-size, cache-sets, cache-size
--		 * https://developer.arm.com/documentation/100798/0401/L1-memory-system/About-the-L1-memory-system?lang=en
--		 * Source for L2 cache-line-size and cache-sets:
--		 * https://developer.arm.com/documentation/100798/0401/L2-memory-system/About-the-L2-memory-system?lang=en
--		 * and for cache-size:
--		 * https://www.raspberrypi.com/documentation/computers/processors.html#bcm2712
--		 */
- 		cpu0: cpu@0 {
- 			device_type = "cpu";
- 			compatible = "arm,cortex-a76";
- 			reg = <0x000>;
- 			enable-method = "psci";
--			d-cache-size = <0x10000>;
--			d-cache-line-size = <64>;
--			d-cache-sets = <256>; // 64KiB(size)/64(line-size)=1024ways/4-way set
--			i-cache-size = <0x10000>;
--			i-cache-line-size = <64>;
--			i-cache-sets = <256>; // 64KiB(size)/64(line-size)=1024ways/4-way set
--			next-level-cache = <&l2_cache_l0>;
--
--			l2_cache_l0: l2-cache-l0 {
--				compatible = "cache";
--				cache-size = <0x80000>;
--				cache-line-size = <64>;
--				cache-sets = <1024>; //512KiB(size)/64(line-size)=8192ways/8-way set
--				cache-level = <2>;
--				cache-unified;
--				next-level-cache = <&l3_cache>;
--			};
++
++		cpu0: cpu@0 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a76";
++			reg = <0x000>;
++			enable-method = "psci";
 +			next-level-cache = <&l2_cache>;
  		};
- 
- 		cpu1: cpu@1 {
-@@ -80,23 +786,7 @@
- 			compatible = "arm,cortex-a76";
- 			reg = <0x100>;
- 			enable-method = "psci";
--			d-cache-size = <0x10000>;
--			d-cache-line-size = <64>;
--			d-cache-sets = <256>; // 64KiB(size)/64(line-size)=1024ways/4-way set
--			i-cache-size = <0x10000>;
--			i-cache-line-size = <64>;
--			i-cache-sets = <256>; // 64KiB(size)/64(line-size)=1024ways/4-way set
--			next-level-cache = <&l2_cache_l1>;
--
--			l2_cache_l1: l2-cache-l1 {
--				compatible = "cache";
--				cache-size = <0x80000>;
--				cache-line-size = <64>;
--				cache-sets = <1024>; //512KiB(size)/64(line-size)=8192ways/8-way set
--				cache-level = <2>;
--				cache-unified;
--				next-level-cache = <&l3_cache>;
--			};
-+			next-level-cache = <&l2_cache>;
- 		};
- 
- 		cpu2: cpu@2 {
-@@ -104,23 +794,7 @@
- 			compatible = "arm,cortex-a76";
- 			reg = <0x200>;
- 			enable-method = "psci";
--			d-cache-size = <0x10000>;
--			d-cache-line-size = <64>;
--			d-cache-sets = <256>; // 64KiB(size)/64(line-size)=1024ways/4-way set
--			i-cache-size = <0x10000>;
--			i-cache-line-size = <64>;
--			i-cache-sets = <256>; // 64KiB(size)/64(line-size)=1024ways/4-way set
--			next-level-cache = <&l2_cache_l2>;
--
--			l2_cache_l2: l2-cache-l2 {
--				compatible = "cache";
--				cache-size = <0x80000>;
--				cache-line-size = <64>;
--				cache-sets = <1024>; //512KiB(size)/64(line-size)=8192ways/8-way set
--				cache-level = <2>;
--				cache-unified;
--				next-level-cache = <&l3_cache>;
--			};
-+			next-level-cache = <&l2_cache>;
- 		};
- 
- 		cpu3: cpu@3 {
-@@ -128,156 +802,421 @@
- 			compatible = "arm,cortex-a76";
- 			reg = <0x300>;
- 			enable-method = "psci";
--			d-cache-size = <0x10000>;
--			d-cache-line-size = <64>;
--			d-cache-sets = <256>; // 64KiB(size)/64(line-size)=1024ways/4-way set
--			i-cache-size = <0x10000>;
--			i-cache-line-size = <64>;
--			i-cache-sets = <256>; // 64KiB(size)/64(line-size)=1024ways/4-way set
--			next-level-cache = <&l2_cache_l3>;
++
++		cpu1: cpu@1 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a76";
++			reg = <0x100>;
++			enable-method = "psci";
 +			next-level-cache = <&l2_cache>;
 +		};
- 
--			l2_cache_l3: l2-cache-l3 {
--				compatible = "cache";
--				cache-size = <0x80000>;
--				cache-line-size = <64>;
--				cache-sets = <1024>; //512KiB(size)/64(line-size)=8192ways/8-way set
--				cache-level = <2>;
--				cache-unified;
--				next-level-cache = <&l3_cache>;
--			};
++
++		cpu2: cpu@2 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a76";
++			reg = <0x200>;
++			enable-method = "psci";
++			next-level-cache = <&l2_cache>;
++		};
++
++		cpu3: cpu@3 {
++			device_type = "cpu";
++			compatible = "arm,cortex-a76";
++			reg = <0x300>;
++			enable-method = "psci";
++			next-level-cache = <&l2_cache>;
++		};
++
 +		l2_cache: l2-cache {
 +			compatible = "cache";
 +			next-level-cache = <&l3_cache>;
- 		};
- 
--		/* Source for cache-line-size and cache-sets:
--		 * https://developer.arm.com/documentation/100453/0401/L3-cache?lang=en
--		 * Source for cache-size:
--		 * https://www.raspberrypi.com/documentation/computers/processors.html#bcm2712
--		 */
- 		l3_cache: l3-cache {
- 			compatible = "cache";
--			cache-size = <0x200000>;
--			cache-line-size = <64>;
--			cache-sets = <2048>; // 2MiB(size)/64(line-size)=32768ways/16-way set
--			cache-level = <3>;
--			cache-unified;
- 		};
- 	};
- 
- 	psci {
- 		method = "smc";
--		compatible = "arm,psci-1.0", "arm,psci-0.2";
++		};
++
++		l3_cache: l3-cache {
++			compatible = "cache";
++		};
++	};
++
++	psci {
++		method = "smc";
 +		compatible = "arm,psci-1.0", "arm,psci-0.2", "arm,psci";
 +		cpu_on = <0xc4000003>;
 +		cpu_suspend = <0xc4000001>;
 +		cpu_off = <0x84000002>;
  	};
  
--	rmem: reserved-memory {
--		ranges;
-+	axi: axi {
-+		compatible = "simple-bus";
- 		#address-cells = <2>;
- 		#size-cells = <2>;
- 
--		atf@0 {
--			reg = <0x0 0x0 0x0 0x80000>;
--			no-map;
-+		ranges = <0x00 0x00000000  0x00 0x00000000  0x10 0x00000000>,
-+			 <0x10 0x00000000  0x10 0x00000000  0x01 0x00000000>,
-+			 <0x14 0x00000000  0x14 0x00000000  0x04 0x00000000>,
-+			 <0x18 0x00000000  0x18 0x00000000  0x04 0x00000000>,
-+			 <0x1c 0x00000000  0x1c 0x00000000  0x04 0x00000000>;
-+
-+		dma-ranges = <0x00 0x00000000  0x00 0x00000000  0x10 0x00000000>,
-+			     <0x10 0x00000000  0x10 0x00000000  0x01 0x00000000>,
-+			     <0x14 0x00000000  0x14 0x00000000  0x04 0x00000000>,
-+			     <0x18 0x00000000  0x18 0x00000000  0x04 0x00000000>,
-+			     <0x1c 0x00000000  0x1c 0x00000000  0x04 0x00000000>;
-+
-+		vc4: gpu {
-+			compatible = "brcm,bcm2712-vc6";
+ 	axi: axi {
+@@ -426,41 +843,380 @@
+ 		vc4: gpu {
+ 			compatible = "brcm,bcm2712-vc6";
  		};
+-	};
  
--		cma: linux,cma {
--			compatible = "shared-dma-pool";
--			size = <0x0 0x4000000>; /* 64MB */
--			reusable;
--			linux,cma-default;
--			alloc-ranges = <0x0 0x00000000 0x0 0x40000000>;
+-	timer {
+-		compatible = "arm,armv8-timer";
+-		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) |
+-					  IRQ_TYPE_LEVEL_LOW)>,
+-			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) |
+-					  IRQ_TYPE_LEVEL_LOW)>,
+-			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) |
+-					  IRQ_TYPE_LEVEL_LOW)>,
+-			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) |
+-					  IRQ_TYPE_LEVEL_LOW)>,
+-			     <GIC_PPI 12 (GIC_CPU_MASK_SIMPLE(4) |
+-					  IRQ_TYPE_LEVEL_LOW)>;
+-	};
 +		dma32: dma@10000 {
 +			compatible = "brcm,bcm2712-dma-lite";
 +			reg = <0x10 0x00010000 0 0x600>;
@@ -987,14 +1059,13 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc6/arch/ar
 +			#dma-cells = <1>;
 +			brcm,dma-channel-mask = <0x0035>;
 +			status = "disabled";
- 		};
--	};
++		};
  
--	soc: soc@107c000000 {
--		compatible = "simple-bus";
--		ranges = <0x00000000  0x10 0x00000000  0x80000000>;
--		#address-cells = <1>;
--		#size-cells = <1>;
+-	clk_27MHz: clk-27M {
+-		#clock-cells = <0>;
+-		compatible = "fixed-clock";
+-		clock-frequency = <27000000>;
+-		clock-output-names = "27MHz-clock";
 +		dma40: dma@10600 {
 +			compatible = "brcm,bcm2712-dma";
 +			reg = <0x10 0x00010600 0 0x600>;
@@ -1217,36 +1288,22 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc6/arch/ar
 +			//iommus = <&iommu2>;
 +			status = "okay";
 +		};
- 
- 		sdio1: mmc@fff000 {
--			compatible = "brcm,bcm2712-sdhci",
--				     "brcm,sdhci-brcmstb";
--			reg = <0x00fff000 0x260>,
--			      <0x00fff400 0x200>;
--			reg-names = "host", "cfg";
++
++		sdio1: mmc@fff000 {
 +			compatible = "brcm,bcm2712-sdhci";
 +			reg = <0x10 0x00fff000  0x0 0x260>,
 +			      <0x10 0x00fff400  0x0 0x200>,
 +			      <0x10 0x015040b0  0x0 0x4>,  // Bus isolation control
 +			      <0x10 0x015200f0  0x0 0x24>; // LCPLL control misc0-8
 +			reg-names = "host", "cfg", "busisol", "lcpll";
- 			interrupts = <GIC_SPI 273 IRQ_TYPE_LEVEL_HIGH>;
- 			clocks = <&clk_emmc2>;
--			clock-names = "sw_sdio";
++			interrupts = <GIC_SPI 273 IRQ_TYPE_LEVEL_HIGH>;
++			clocks = <&clk_emmc2>;
 +			sdhci-caps-mask = <0x0000C000 0x0>;
 +			sdhci-caps = <0x0 0x0>;
 +			supports-cqe;
- 			mmc-ddr-3_3v;
- 		};
- 
--		system_timer: timer@7c003000 {
--			compatible = "brcm,bcm2835-system-timer";
--			reg = <0x7c003000 0x1000>;
--			interrupts = <GIC_SPI 64 IRQ_TYPE_LEVEL_HIGH>,
--				     <GIC_SPI 65 IRQ_TYPE_LEVEL_HIGH>,
--				     <GIC_SPI 66 IRQ_TYPE_LEVEL_HIGH>,
--				     <GIC_SPI 67 IRQ_TYPE_LEVEL_HIGH>;
--			clock-frequency = <1000000>;
++			mmc-ddr-3_3v;
++		};
++
 +		sdio2: mmc@1100000 {
 +			compatible = "brcm,bcm2712-sdhci";
 +			reg = <0x10 0x01100000  0x0 0x260>,
@@ -1259,13 +1316,8 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc6/arch/ar
 +			supports-cqe;
 +			mmc-ddr-3_3v;
 +			status = "disabled";
- 		};
- 
--		mailbox: mailbox@7c013880 {
--			compatible = "brcm,bcm2835-mbox";
--			reg = <0x7c013880 0x40>;
--			interrupts = <GIC_SPI 33 IRQ_TYPE_LEVEL_HIGH>;
--			#mbox-cells = <0>;
++		};
++
 +		sdio0: mmc@1108000 {
 +			compatible = "brcm,bcm2711-emmc2";
 +			reg = <0x10 0x01108000  0x0 0x100>;
@@ -1273,25 +1325,14 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc6/arch/ar
 +			clocks = <&clk_emmc2>;
 +			mmc-ddr-3_3v;
 +			status = "disabled";
- 		};
- 
--		local_intc: interrupt-controller@7cd00000 {
--			compatible = "brcm,bcm2836-l1-intc";
--			reg = <0x7cd00000 0x100>;
++		};
++
 +		bcm_reset: reset-controller@1504318 {
 +			compatible = "brcm,brcmstb-reset";
 +			reg = <0x10 0x01504318  0x0 0x30>;
 +			#reset-cells = <1>;
- 		};
- 
--		uart10: serial@7d001000 {
--			compatible = "arm,pl011", "arm,primecell";
--			reg = <0x7d001000 0x200>;
--			interrupts = <GIC_SPI 121 IRQ_TYPE_LEVEL_HIGH>;
--			clocks = <&clk_uart>, <&clk_vpu>;
--			clock-names = "uartclk", "apb_pclk";
--			arm,primecell-periphid = <0x00241011>;
--			status = "disabled";
++		};
++
 +		v3d: v3d@2000000 {
 +			compatible = "brcm,2712-v3d";
 +			reg = <0x10 0x02000000  0x0 0x4000>,
@@ -1305,15 +1346,10 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc6/arch/ar
 +			interrupts = <GIC_SPI 250 IRQ_TYPE_LEVEL_HIGH>,
 +				     <GIC_SPI 249 IRQ_TYPE_LEVEL_HIGH>;
 +			status = "okay";
- 		};
- 
--		interrupt-controller@7d517000 {
--			compatible = "brcm,bcm7271-l2-intc";
--			reg = <0x7d517000 0x10>;
--			interrupts = <GIC_SPI 247 IRQ_TYPE_LEVEL_HIGH>;
++		};
++
 +		gicv2: interrupt-controller@7fff9000 {
- 			interrupt-controller;
--			#interrupt-cells = <1>;
++			interrupt-controller;
 +			#interrupt-cells = <3>;
 +			compatible = "arm,gic-400";
 +			reg =	<0x10 0x7fff9000  0x0 0x1000>,
@@ -1322,18 +1358,8 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc6/arch/ar
 +				<0x10 0x7fffe000  0x0 0x2000>;
 +			interrupts = <GIC_PPI 9 (GIC_CPU_MASK_SIMPLE(4) |
 +						 IRQ_TYPE_LEVEL_HIGH)>;
- 		};
- 
--		gio_aon: gpio@7d517c00 {
--			compatible = "brcm,bcm7445-gpio", "brcm,brcmstb-gpio";
--			reg = <0x7d517c00 0x40>;
--			gpio-controller;
--			#gpio-cells = <2>;
--			brcm,gpio-bank-widths = <17 6>;
--			/* The lack of 'interrupt-controller' property here is intended:
--			 * don't use GIO_AON as an interrupt controller because it will
--			 * clash with the firmware monitoring the PMIC interrupt via the VPU.
--			 */
++		};
++
 +		usb: usb@480000 {
 +			compatible = "brcm,bcm2835-usb";
 +			reg = <0x10 0x00480000 0x0 0x10000>;
@@ -1350,17 +1376,14 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc6/arch/ar
 +			g-np-tx-fifo-size = <32>;
 +			g-rx-fifo-size = <558>;
 +			g-tx-fifo-size = <512 512 512 512 512 256 256>;
- 		};
-+	};
++		};
+ 	};
  
--		gicv2: interrupt-controller@7fff9000 {
--			compatible = "arm,gic-400";
--			reg = <0x7fff9000 0x1000>,
--			      <0x7fffa000 0x2000>,
--			      <0x7fffc000 0x2000>,
--			      <0x7fffe000 0x2000>;
--			interrupt-controller;
--			#interrupt-cells = <3>;
+-	clk_108MHz: clk-108M {
+-		#clock-cells = <0>;
+-		compatible = "fixed-clock";
+-		clock-frequency = <108000000>;
+-		clock-output-names = "108MHz-clock";
 +	clocks {
 +		/* The oscillator is the root of the clock tree. */
 +		clk_osc: clk-osc {
@@ -1396,29 +1419,23 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc6/arch/ar
 +			compatible = "fixed-clock";
 +			clock-frequency = <54000000>;
 +			clock-output-names = "emmc2-clock";
- 		};
++		};
  	};
  
--	timer {
--		compatible = "arm,armv8-timer";
--		interrupts = <GIC_PPI 13 (GIC_CPU_MASK_SIMPLE(4) |
--					  IRQ_TYPE_LEVEL_LOW)>,
--			     <GIC_PPI 14 (GIC_CPU_MASK_SIMPLE(4) |
--					  IRQ_TYPE_LEVEL_LOW)>,
--			     <GIC_PPI 11 (GIC_CPU_MASK_SIMPLE(4) |
--					  IRQ_TYPE_LEVEL_LOW)>,
--			     <GIC_PPI 10 (GIC_CPU_MASK_SIMPLE(4) |
--					  IRQ_TYPE_LEVEL_LOW)>,
--			     <GIC_PPI 12 (GIC_CPU_MASK_SIMPLE(4) |
--					  IRQ_TYPE_LEVEL_LOW)>;
+-	hvs: hvs@107c580000 {
+-		compatible = "brcm,bcm2712-hvs";
+-		reg = <0x10 0x7c580000 0x0 0x1a000>;
+-		interrupt-parent = <&disp_intr>;
+-		interrupts = <2>, <9>, <16>;
+-		interrupt-names = "ch0-eof", "ch1-eof", "ch2-eof";
 +	usbphy: phy {
 +		compatible = "usb-nop-xceiv";
 +		#phy-cells = <0>;
  	};
  };
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc6/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts linux-6.12-rc6/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts
---- linux-6.12-rc6/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts	2024-11-04 01:05:52.000000000 +0100
-+++ linux-6.12-rc6/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts	2024-11-06 10:29:44.231675918 +0100
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.14-rc1/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts linux-6.14-rc1/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts
+--- linux-6.14-rc1/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts	2025-02-03 00:39:26.000000000 +0100
++++ linux-6.14-rc1/arch/arm64/boot/dts/broadcom/bcm2712-rpi-5-b.dts	2025-02-07 14:01:26.316696637 +0100
 @@ -1,28 +1,84 @@
 -// SPDX-License-Identifier: (GPL-2.0 OR MIT)
 +// SPDX-License-Identifier: GPL-2.0
@@ -1531,7 +1548,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc6/arch/ar
  		compatible = "regulator-fixed";
  		regulator-name = "vcc-sd";
  		regulator-min-microvolt = <3300000>;
-@@ -43,22 +100,659 @@
+@@ -43,24 +100,661 @@
  		regulator-boot-on;
  		enable-active-high;
  		gpios = <&gio_aon 4 GPIO_ACTIVE_HIGH>;
@@ -2195,9 +2212,11 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc6/arch/ar
 +		pwr_led_trigger = <&led_pwr>, "linux,default-trigger";
 +	};
  };
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc6/arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi linux-6.12-rc6/arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi
---- linux-6.12-rc6/arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi	1970-01-01 01:00:00.000000000 +0100
-+++ linux-6.12-rc6/arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi	2024-11-06 10:37:37.398344148 +0100
+ 
+ &soc {
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.14-rc1/arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi linux-6.14-rc1/arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi
+--- linux-6.14-rc1/arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi	1970-01-01 01:00:00.000000000 +0100
++++ linux-6.14-rc1/arch/arm64/boot/dts/broadcom/bcm2712-rpi.dtsi	2025-02-07 14:01:26.316696637 +0100
 @@ -0,0 +1,240 @@
 +// SPDX-License-Identifier: GPL-2.0
 +
@@ -2439,9 +2458,9 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc6/arch/ar
 +	pinctrl-names = "default";
 +	pinctrl-0 = <&spi5_pins>;
 +};
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.12-rc6/arch/arm64/boot/dts/broadcom/rp1.dtsi linux-6.12-rc6/arch/arm64/boot/dts/broadcom/rp1.dtsi
---- linux-6.12-rc6/arch/arm64/boot/dts/broadcom/rp1.dtsi	1970-01-01 01:00:00.000000000 +0100
-+++ linux-6.12-rc6/arch/arm64/boot/dts/broadcom/rp1.dtsi	2024-11-06 10:37:37.398344148 +0100
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.14-rc1/arch/arm64/boot/dts/broadcom/rp1.dtsi linux-6.14-rc1/arch/arm64/boot/dts/broadcom/rp1.dtsi
+--- linux-6.14-rc1/arch/arm64/boot/dts/broadcom/rp1.dtsi	1970-01-01 01:00:00.000000000 +0100
++++ linux-6.14-rc1/arch/arm64/boot/dts/broadcom/rp1.dtsi	2025-02-07 14:01:26.316696637 +0100
 @@ -0,0 +1,1227 @@
 +#include <dt-bindings/clock/rp1.h>
 +#include <dt-bindings/interrupt-controller/irq.h>
