@@ -553,7 +553,7 @@ md5sums=('a41967259ad46d027944362ce691405e'
          '8d319a0ae2bbdf1391462a5c58ca6e92'
          '58e6330d9ba69805f910297a946a5e89'
          '0c079c663d450dfd1b82fc0f7105e069'
-         'a20ad88204aafe76c3790b1b1ed00bde'
+         'ca00ae3d3afe7b966451c808bfb97dd9'
          '86d4a35722b5410e3b29fc92dae15d4b')
 
 prepare() {
