@@ -4,7 +4,7 @@
 # Contributor: Dragan Simic <dsimic@buserror.io>
 
 pkgbase=linux
-pkgver=6.14.0
+pkgver=6.14.1
 pkgrel=1
 _newversion=false
 _stopbuild=false    # Will also stop if ${_newversion} is true
@@ -16,8 +16,8 @@ url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'dtc')
 options=('!strip')
-source=("https://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
-#source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
+#source=("https://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
+source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 #0000-sound-soc-dont-use-__free_device_node-in-graph_util_parse_dai.patch
 0108-drivers-led-add-openvfd-g3118dda3.patch
 0109-drivers-mmc-add-disk-activity-support.patch
@@ -108,6 +108,7 @@ source=("https://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
 #0630-net-wireless-add-uwe5622-support-v20231020.patch
 0631-clk-sunxi-ng-ccu-sun6i-rtc-fix-32k-clk.patch
 0632-clk-sunxi-ng-ccu-hack-fix-too-slow-hdmi-audio.patch
+0633-regulator-add-mmc-high-speed-SD-UHS-modes-support.patch
 0640-arm64-dts-allwinner-h616.dtsi-add-audio-hdmi-vdec.patch
 0641-arm64-dts-allwinner-h616.dtsi-add-ths-cpu-gpu-opp-and-dvfs.patch
 0642-arm64-dts-allwinner-h616.dtsi-add-emac1.patch
@@ -174,13 +175,13 @@ source=("https://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
 0848-arm64-dts-rockchip-add-dts-for-opi-3b.patch
 0849-arm64-dts-rockchip-improve-dts-for-zero3.patch
 0850-arm64-dts-rockchip-rk356x-add-eth-wifi-aliases.patch
-#0900-rpi-vc04_services-add_h~l2-m2m_decode-15062024.patch
-#0902-media-add-rpivid-driver.patch
-#0905-drivers-add-rpi5-clk-pinctrl-mmc-pwm-net-usb-pci-rp1.patch
-#0906-gpu-drm-vc4-add-rpi5-support.patch
-#0950-arm64-dts-brcm-set-userled-to-mmc.patch
-#0951-arm64-dts-brcm-add-rpi5-dt.patch
-#0953-arm64-dts-add-rpivid-rpi4.patch
+0900-rpi-vc04_services-add_h~l2-m2m_decode-15062024.patch
+0902-media-add-rpivid-driver.patch
+0905-drivers-add-rpi5-clk-pinctrl-mmc-pwm-net-usb-pci-rp1.patch
+0906-gpu-drm-vc4-add-rpi5-support.patch
+0950-arm64-dts-brcm-set-userled-to-mmc.patch
+0951-arm64-dts-brcm-add-rpi5-dt.patch
+0953-arm64-dts-add-rpivid-rpi4.patch
 1001-math.h-add-DIV_ROUND_UP_NO_OVERFLOW.patch
 1002-clk-divider-Fix-divisor-masking-on-64-bit-platforms.patch
 1003-clk-composite-replace-open-coded-abs_diff.patch
@@ -231,6 +232,7 @@ source=("https://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
 1066-wip-hevc-add-ref-frames-support.patch
 #1067-wip-rkvdec2-fix-iommu.patch
 1067-wip-rkvdec2-fix-iommu-v2.patch
+#1068-wip-hevc-remove-rps-support.patch
 1070-arm64-dtsi-rk3588s-add-vop2-clock-resets.patch
 1071-arm64-dtsi-rockchip-3588s-add-hdmi-bridge.patch
 1072-arm64-dtsi-rockchip-3588-hdmi-add-audio-support.patch
@@ -265,10 +267,12 @@ source=("https://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
 1139-net-ethernet-allwinner-add-gmac200-support.patch
 1140-net-ethernet-allwinner-add-gmac-support.patch
 1141-thermal-drivers-sun8i-add-initial-support-for-ths.patch
+1142-add-initial-cpufreq-support.patch
 1150-arm64-dtsi-allwinner-add-initial-A523-support.patch
 1151-arm64-dtsi-allwinner-add-gmac1-in-A523-dtsi.patch
 1152-arm64-dtsi-allwinner-add-gmac0-in-A523-dtsi.patch
 1153-arm64-dtsi-allwinner-add-ths-support.patch
+1154-arm64-dtsi-allwinner-add-cpufreq-support.patch
 1170-arm64-dts-allwinner-h728-add-x96q-pro-tvbox-plus.patch
 1172-arm64-dts-allwinner-t527-add-orangepi-4a-dts.patch
 1173-arm64-dts-allwinner-a527-add-Radxa-A5E-support.patch
@@ -294,7 +298,7 @@ source=("https://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
 #        60-linux.hook
 #        90-linux.hook)
 
-md5sums=('a41967259ad46d027944362ce691405e'
+md5sums=('aa119ee1aace47b271dec968836fd7aa'
          'ad0019ba412a1b4f54fc413e2c5c3e76'
          'e0e2176d175d13f56da374df109e70e1'
          'e2706a83da3208d8c2735a482aab4ce9'
@@ -381,6 +385,7 @@ md5sums=('a41967259ad46d027944362ce691405e'
          'a60e60823753eb54c85af4214c9cb104'
          'f68f47d2728f964b399f5ee302f4aaeb'
          'cdad029e1ba91f4182efd3f4d7b1aa89'
+         '5ee50f81c91e37c7ebab799b6be333dc'
          'bc9a23ea0127cd757f2d0bc7f8f2c0bf'
          '54e9c55d7a90f00f6a6fc6d2494db9ed'
          'abe67e12862f6aab45af666d27a689ae'
@@ -447,6 +452,13 @@ md5sums=('a41967259ad46d027944362ce691405e'
          '8979801afff6e1407ecb61d7a7de8652'
          'a2e0c1f541044bdf845dc85182bdd685'
          '59fa47be5f410dc12516b03a7212b0e4'
+         'b5ba6b61b211909f614c5b205828012f'
+         'a8e731a84f47e376c3cb9f897c6e6f9d'
+         '781dc9a6c373513d14d25f8fda5bd239'
+         'f7b09fdb7789966306d7e1f49a0e9f86'
+         '2d479ac232348c0b8de4e40387aa1068'
+         '1157934fd2fcee90fb85903635f16707'
+         'a5439686c190e9ec469c7393f069e402'
          '9b956f7aec0ab9caeaa61916a740dcba'
          '85dac6a15f92e16bee8ca7d5b310289f'
          'e41d58ab7198267e35a13267b6271517'
@@ -529,13 +541,15 @@ md5sums=('a41967259ad46d027944362ce691405e'
          'fc2aae58f0f5641aab21748d74ff4cf7'
          '494c74c17d54fcd623b7bdd0b4ea2299'
          'ea22d6ca5a5ca7571e3d6723c14f5789'
+         '303c9d173d254b13417763c1c1697f08'
          '13efef565f5a8d47a5246acae9e6d7de'
          '6dcab0586d2dd7025502f6edbba07be6'
          'ef7951f77136006c01f878a02d418e19'
          'b811f35543f7ea8ebef6ef666a649444'
-         'af732661ff052d2065406a80926db245'
-         '01d114572769acf6b77063c151c2e38f'
-         '08086fd33fa42b2e4c574211bdf4f313'
+         'ea56a95e71941c04321c462251076ea4'
+         'bf641fb3d6133507b1bc5420f28c7050'
+         'c69b927e7638d1b91ee658fa472f282b'
+         'cf0a9682357b5cf9b282e4b78ad9d48a'
          '8b28d597b210e309cfae96febf7487bf'
          '35f3291178707931accc1b167485b64d'
          '54b091b9e12fbd9298c7db2d353a020e'
@@ -553,7 +567,7 @@ md5sums=('a41967259ad46d027944362ce691405e'
          '8d319a0ae2bbdf1391462a5c58ca6e92'
          '58e6330d9ba69805f910297a946a5e89'
          '0c079c663d450dfd1b82fc0f7105e069'
-         'ca00ae3d3afe7b966451c808bfb97dd9'
+         'f0c0dd833335dc9017fc916e88119f91'
          '86d4a35722b5410e3b29fc92dae15d4b')
 
 prepare() {
