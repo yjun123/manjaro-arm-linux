@@ -175,13 +175,13 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 0848-arm64-dts-rockchip-add-dts-for-opi-3b.patch
 0849-arm64-dts-rockchip-improve-dts-for-zero3.patch
 0850-arm64-dts-rockchip-rk356x-add-eth-wifi-aliases.patch
-0900-rpi-vc04_services-add_h~l2-m2m_decode-15062024.patch
-0902-media-add-rpivid-driver.patch
-0905-drivers-add-rpi5-clk-pinctrl-mmc-pwm-net-usb-pci-rp1.patch
-0906-gpu-drm-vc4-add-rpi5-support.patch
-0950-arm64-dts-brcm-set-userled-to-mmc.patch
-0951-arm64-dts-brcm-add-rpi5-dt.patch
-0953-arm64-dts-add-rpivid-rpi4.patch
+#0900-rpi-vc04_services-add_h~l2-m2m_decode-15062024.patch
+#0902-media-add-rpivid-driver.patch
+#0905-drivers-add-rpi5-clk-pinctrl-mmc-pwm-net-usb-pci-rp1.patch
+#0906-gpu-drm-vc4-add-rpi5-support.patch
+#0950-arm64-dts-brcm-set-userled-to-mmc.patch
+#0951-arm64-dts-brcm-add-rpi5-dt.patch
+#0953-arm64-dts-add-rpivid-rpi4.patch
 1001-math.h-add-DIV_ROUND_UP_NO_OVERFLOW.patch
 1002-clk-divider-Fix-divisor-masking-on-64-bit-platforms.patch
 1003-clk-composite-replace-open-coded-abs_diff.patch
@@ -452,13 +452,6 @@ md5sums=('7f305d1d40d8ca9393c58071f01453ed'
          '8979801afff6e1407ecb61d7a7de8652'
          'a2e0c1f541044bdf845dc85182bdd685'
          '59fa47be5f410dc12516b03a7212b0e4'
-         'b4fff95562dbc3d4a3c2bf13b5804e97'
-         'a8e731a84f47e376c3cb9f897c6e6f9d'
-         '6957e4e96bb8dc9a9d45eed6ff8da778'
-         'f7b09fdb7789966306d7e1f49a0e9f86'
-         '2d479ac232348c0b8de4e40387aa1068'
-         '1157934fd2fcee90fb85903635f16707'
-         'a5439686c190e9ec469c7393f069e402'
          '9b956f7aec0ab9caeaa61916a740dcba'
          '85dac6a15f92e16bee8ca7d5b310289f'
          'e41d58ab7198267e35a13267b6271517'
@@ -566,7 +559,7 @@ md5sums=('7f305d1d40d8ca9393c58071f01453ed'
          '8d319a0ae2bbdf1391462a5c58ca6e92'
          '58e6330d9ba69805f910297a946a5e89'
          '0c079c663d450dfd1b82fc0f7105e069'
-         '66c608b342da3dd21e911ba9eb840877'
+         'b24a2f2e30f9011d5119d28ed0d70f2f'
          '86d4a35722b5410e3b29fc92dae15d4b')
 
 prepare() {
