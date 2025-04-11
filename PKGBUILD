@@ -4,8 +4,8 @@
 # Contributor: Dragan Simic <dsimic@buserror.io>
 
 pkgbase=linux
-pkgver=6.14.1
-pkgrel=2
+pkgver=6.14.2
+pkgrel=1
 _newversion=false
 _stopbuild=false    # Will also stop if ${_newversion} is true
 _srcname="linux-${pkgver/%.0/}"
@@ -75,7 +75,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 0560-mmc-sunxi-fix-unusuable-eMMC-on-some-H6-boards-by-di.patch
 0561-bluetooth-btrtl-add-hci-ver-rtl8822cs.patch
 0562-h6-add-sun50i-di-deinterlace-WiP.patch
-#0563-hantro-Add-quirk-for-NV12-NV12_4L4-capture-format.patch
+0563-hantro-Add-quirk-for-NV12-NV12_4L4-capture-format.patch
 0570-arm64-dts-allwinner-h6-Protect-SCP-clock.patch
 0571-arm64-dts-allwinner-h6-Add-SCPI-protocol.patch
 0572-arm64-dts-allwinner-h6-dtsi-add-sound-node.patch
@@ -185,7 +185,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 1001-math.h-add-DIV_ROUND_UP_NO_OVERFLOW.patch
 1002-clk-divider-Fix-divisor-masking-on-64-bit-platforms.patch
 1003-clk-composite-replace-open-coded-abs_diff.patch
-1010-FROM-ML-phy-phy-rockchip-samsung-hdptx-Don-t-use-dt-.patch
 1011-FROM-UPSTREAM-drm-rockchip-Don-t-change-hdmi-referen.patch
 1012-FROM-UPSTREAM-drm-rockchip-vop2-Drop-unnecessary-if_.patch
 1013-FROM-UPSTREAM-drm-rockchip-vop2-Improve-display-mode.patch
@@ -298,7 +297,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 #        60-linux.hook
 #        90-linux.hook)
 
-md5sums=('aa119ee1aace47b271dec968836fd7aa'
+md5sums=('7f305d1d40d8ca9393c58071f01453ed'
          'ad0019ba412a1b4f54fc413e2c5c3e76'
          'e0e2176d175d13f56da374df109e70e1'
          'e2706a83da3208d8c2735a482aab4ce9'
@@ -354,6 +353,7 @@ md5sums=('aa119ee1aace47b271dec968836fd7aa'
          '0e6ebee7a6c045dd7cf45cbafbf924bb'
          '1dcafc57cdbc3421e12ab54a54c8284c'
          'f912776f05276c66311105f57fb5d475'
+         '2ab5ad8b1cc31bd85ea5d642253db36b'
          'fac6a4de3708bb8a2423a12a592120bb'
          '554fd010bfcfd195deeaaa5a180499b9'
          'cb47353acc35d5ef90d2c4a1f51ef6e1'
@@ -426,7 +426,7 @@ md5sums=('aa119ee1aace47b271dec968836fd7aa'
          '9a2c9408381d546b16e983246484fd40'
          'da75c3163ffef13cbe070ed1d75da4e3'
          '84eeeb28c18b434dbf72ba3ed5f759b2'
-         '6edd87dfd3760b52b1988dfab2d13b64'
+         'f72cde7a7e37974c60abc6db7f8e5340'
          'a0cebbf223a6f4bb5cc087ad46faa73e'
          '12f1da0a3013cbbd6a4724490dbc99d1'
          '0915610e97e58b4cdb9a5c4cdbd54a2f'
@@ -445,16 +445,16 @@ md5sums=('aa119ee1aace47b271dec968836fd7aa'
          '6b514cb03ef096d5d2f42a8b4332d918'
          '94a9317c40a68c10504f492a0abf72da'
          '7ff3b7e09aaefa3060fb18a6bc04d367'
-         '9fe69661ecc8589982ee6e25a8e39def'
+         '0f38739e23894da7251ee14e35bed22b'
          'f556b3ac831a63f35aada54df93d40ea'
          '9a325a4e8febfdd8b13b3713be3a30a4'
          '48c85cf2e1b0df6bd0f8c73525e1d999'
          '8979801afff6e1407ecb61d7a7de8652'
          'a2e0c1f541044bdf845dc85182bdd685'
          '59fa47be5f410dc12516b03a7212b0e4'
-         'b5ba6b61b211909f614c5b205828012f'
+         'b4fff95562dbc3d4a3c2bf13b5804e97'
          'a8e731a84f47e376c3cb9f897c6e6f9d'
-         '781dc9a6c373513d14d25f8fda5bd239'
+         '6957e4e96bb8dc9a9d45eed6ff8da778'
          'f7b09fdb7789966306d7e1f49a0e9f86'
          '2d479ac232348c0b8de4e40387aa1068'
          '1157934fd2fcee90fb85903635f16707'
@@ -462,7 +462,6 @@ md5sums=('aa119ee1aace47b271dec968836fd7aa'
          '9b956f7aec0ab9caeaa61916a740dcba'
          '85dac6a15f92e16bee8ca7d5b310289f'
          'e41d58ab7198267e35a13267b6271517'
-         '448c7e2a593ee3d1bf09e4a5f3d84fce'
          'aa60dee3d37e4fa3229ff17c6c40b8d5'
          '2943defe5245062803685ae92aa29481'
          'd209924aaf6138a214582a49a0559623'
@@ -567,7 +566,7 @@ md5sums=('aa119ee1aace47b271dec968836fd7aa'
          '8d319a0ae2bbdf1391462a5c58ca6e92'
          '58e6330d9ba69805f910297a946a5e89'
          '0c079c663d450dfd1b82fc0f7105e069'
-         'bcefea6d405024a30523970454784924'
+         '66c608b342da3dd21e911ba9eb840877'
          '86d4a35722b5410e3b29fc92dae15d4b')
 
 prepare() {
