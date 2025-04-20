@@ -4,7 +4,7 @@
 # Contributor: Dragan Simic <dsimic@buserror.io>
 
 pkgbase=linux
-pkgver=6.14.2
+pkgver=6.14.3
 pkgrel=1
 _newversion=false
 _stopbuild=false    # Will also stop if ${_newversion} is true
@@ -186,7 +186,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 1002-clk-divider-Fix-divisor-masking-on-64-bit-platforms.patch
 1003-clk-composite-replace-open-coded-abs_diff.patch
 #1010-FROM-ML-phy-phy-rockchip-samsung-hdptx-Don-t-use-dt-.patch
-1011-FROM-UPSTREAM-drm-rockchip-Don-t-change-hdmi-referen.patch
+#1011-FROM-UPSTREAM-drm-rockchip-Don-t-change-hdmi-referen.patch
 1012-FROM-UPSTREAM-drm-rockchip-vop2-Drop-unnecessary-if_.patch
 1013-FROM-UPSTREAM-drm-rockchip-vop2-Improve-display-mode.patch
 1014-WIP-drm-rockchip-vop2-Improve-display-modes-handling.patch
@@ -266,12 +266,12 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 1136-dt-bindings-arm-sunxi-Add-YuzukiHD-Chameleon-board-n.patch
 1139-net-ethernet-allwinner-add-gmac200-support.patch
 1140-net-ethernet-allwinner-add-gmac-support.patch
-1141-thermal-drivers-sun8i-add-initial-support-for-ths.patch
+1141-thermal-drivers-sun8i-add-initial-support-for-ths-v2.patch
 1142-add-initial-cpufreq-support.patch
 1150-arm64-dtsi-allwinner-add-initial-A523-support.patch
 1151-arm64-dtsi-allwinner-add-gmac1-in-A523-dtsi.patch
 1152-arm64-dtsi-allwinner-add-gmac0-in-A523-dtsi.patch
-1153-arm64-dtsi-allwinner-add-ths-support.patch
+1153-arm64-dtsi-allwinner-add-ths-support-v2.patch
 1154-arm64-dtsi-allwinner-add-cpufreq-support.patch
 1170-arm64-dts-allwinner-h728-add-x96q-pro-tvbox-plus.patch
 1172-arm64-dts-allwinner-t527-add-orangepi-4a-dts.patch
@@ -298,7 +298,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 #        60-linux.hook
 #        90-linux.hook)
 
-md5sums=('7f305d1d40d8ca9393c58071f01453ed'
+md5sums=('fa7f4ad7ad3e48476b6fe3f282fabf2c'
          'ad0019ba412a1b4f54fc413e2c5c3e76'
          'e0e2176d175d13f56da374df109e70e1'
          'e2706a83da3208d8c2735a482aab4ce9'
@@ -462,7 +462,6 @@ md5sums=('7f305d1d40d8ca9393c58071f01453ed'
          '9b956f7aec0ab9caeaa61916a740dcba'
          '85dac6a15f92e16bee8ca7d5b310289f'
          'e41d58ab7198267e35a13267b6271517'
-         'aa60dee3d37e4fa3229ff17c6c40b8d5'
          '2943defe5245062803685ae92aa29481'
          'd209924aaf6138a214582a49a0559623'
          '7473d6f6c53c89ba7005e70f1952d88a'
@@ -539,13 +538,13 @@ md5sums=('7f305d1d40d8ca9393c58071f01453ed'
          'c672b634967c195374c80be3fef999f3'
          'fc2aae58f0f5641aab21748d74ff4cf7'
          '494c74c17d54fcd623b7bdd0b4ea2299'
-         'ea22d6ca5a5ca7571e3d6723c14f5789'
+         '11ef441b24bf9eb61096a501e1770610'
          '303c9d173d254b13417763c1c1697f08'
          '13efef565f5a8d47a5246acae9e6d7de'
          '6dcab0586d2dd7025502f6edbba07be6'
          'ef7951f77136006c01f878a02d418e19'
-         'b811f35543f7ea8ebef6ef666a649444'
-         'ea56a95e71941c04321c462251076ea4'
+         '78ed0608a68f6c088ab73cc48becbeac'
+         'dfc0a51a332c23d6ef41db60268ce5ec'
          'bf641fb3d6133507b1bc5420f28c7050'
          'c69b927e7638d1b91ee658fa472f282b'
          'cf0a9682357b5cf9b282e4b78ad9d48a'
@@ -566,7 +565,7 @@ md5sums=('7f305d1d40d8ca9393c58071f01453ed'
          '8d319a0ae2bbdf1391462a5c58ca6e92'
          '58e6330d9ba69805f910297a946a5e89'
          '0c079c663d450dfd1b82fc0f7105e069'
-         '66c608b342da3dd21e911ba9eb840877'
+         '492243af166bbebf0872cd247fec0754'
          '86d4a35722b5410e3b29fc92dae15d4b')
 
 prepare() {
