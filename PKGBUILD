@@ -558,7 +558,7 @@ md5sums=('fa7f4ad7ad3e48476b6fe3f282fabf2c'
          '8d319a0ae2bbdf1391462a5c58ca6e92'
          '58e6330d9ba69805f910297a946a5e89'
          '0c079c663d450dfd1b82fc0f7105e069'
-         '492243af166bbebf0872cd247fec0754'
+         '2c938bd8af0dfece71716d879fc71fe0'
          '86d4a35722b5410e3b29fc92dae15d4b')
 
 prepare() {
