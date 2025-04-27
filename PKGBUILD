@@ -4,13 +4,13 @@
 # Contributor: Dragan Simic <dsimic@buserror.io>
 
 pkgbase=linux
-pkgver=6.14.3
+pkgver=6.14.4
 pkgrel=1
 _newversion=false
 _stopbuild=false    # Will also stop if ${_newversion} is true
 _srcname="linux-${pkgver/%.0/}"
 _kernelname="${pkgbase#linux}"
-_desc="AArch64 multi-platform"
+_desc="AArch64 multi-platform with warpme patches"
 arch=('aarch64')
 url="http://www.kernel.org/"
 license=('GPL2')
@@ -123,6 +123,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 0651-arm64-dts-allwinner-h313-Tanix-TX1-TVbox.patch
 0652-arm64-dts-allwinner-h313-add-x96q-v5.1-TVbox.patch
 0653-arm64-dts-allwinner-h616-add-pendoo-x12pro-tvbox.patch
+0654-arm64-dts-allwinner-h618-improve-transpeed-8k618-tvbox.patch
 0703-media-v4l2-common-Add-helpers-to-calculate-bytesperl.patch
 0704-media-v4l2-Add-NV15-and-NV20-pixel-formats.patch
 0705-media-rkvdec-h264-Use-bytesperline-and-buffer-height.patch
@@ -298,7 +299,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 #        60-linux.hook
 #        90-linux.hook)
 
-md5sums=('fa7f4ad7ad3e48476b6fe3f282fabf2c'
+md5sums=('c8e750100a5fc02bb856539ff9b9a41f'
          'ad0019ba412a1b4f54fc413e2c5c3e76'
          'e0e2176d175d13f56da374df109e70e1'
          'e2706a83da3208d8c2735a482aab4ce9'
@@ -400,6 +401,7 @@ md5sums=('fa7f4ad7ad3e48476b6fe3f282fabf2c'
          '39238cbc1d966de98c0978f4287921ad'
          'cbfa0efa5b123208b70986ed10043167'
          '86cb576c046dfa602cbcf5d2eae6af40'
+         '1bd001dcbb29f76eaa3780da67c7a1af'
          '637985e20b9cf4fcf626dbca9dfd2935'
          'c7f1d6191f815be44437b9586d8f8aec'
          '32e8556d1a85cabb1029fa65f780a85d'
@@ -558,7 +560,7 @@ md5sums=('fa7f4ad7ad3e48476b6fe3f282fabf2c'
          '8d319a0ae2bbdf1391462a5c58ca6e92'
          '58e6330d9ba69805f910297a946a5e89'
          '0c079c663d450dfd1b82fc0f7105e069'
-         '2c938bd8af0dfece71716d879fc71fe0'
+         '74b4f805c9bed3fba4239d2d4f136e57'
          '86d4a35722b5410e3b29fc92dae15d4b')
 
 prepare() {
