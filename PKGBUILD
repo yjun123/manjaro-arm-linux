@@ -4,7 +4,7 @@
 # Contributor: Dragan Simic <dsimic@buserror.io>
 
 pkgbase=linux
-pkgver=6.14.4
+pkgver=6.14.5
 pkgrel=1
 _newversion=false
 _stopbuild=false    # Will also stop if ${_newversion} is true
@@ -76,25 +76,21 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 0561-bluetooth-btrtl-add-hci-ver-rtl8822cs.patch
 0562-h6-add-sun50i-di-deinterlace-WiP.patch
 #0563-hantro-Add-quirk-for-NV12-NV12_4L4-capture-format.patch
+0564-pmdomain-sunxi-add-H6-PRCM-PPU-driver-v2.patch
 0570-arm64-dts-allwinner-h6-Protect-SCP-clock.patch
 0571-arm64-dts-allwinner-h6-Add-SCPI-protocol.patch
 0572-arm64-dts-allwinner-h6-dtsi-add-sound-node.patch
 0573-arm64-dts-allwinner-h6-Fix-Cedrus-IOMMU-again.patch
 0574-arm64-dts-allwinner-h6.dtsi-add-ac200-nodes.patch
-0575-arm64-dts-allwinner-gs1-fix-eMMC-and-incr-vcpu-limit.patch
-0576-arm64-dts-allwinner-tanix-tx6-mini-enable-eth.patch
+0575-arm64-dts-allwinner-gs1-fixes.patch
+0576-arm64-dts-allwinner-tanix-tx6-dtsi-fixes.patch
 0577-arm64-dts-allwinner-add-Eeachlink-H6-Mini.patch
-0578-arm64-dts-allwinner-tanix-tx6-mini-enable-wifi-cpu-dvfs.patch
-0579-arm64-dts-allwinner-enable-audio-gs1.patch
-0580-arm64-dts-allwinner-tanix-tx6-enable-wifi-cpu-dvfs.patch
-0581-arm64-dts-allwinner-h6-normalize-spdif-card-name.patch
+0578-arm64-dts-allwinner-tanix-tx6-mini-add-eth-wifi.patch
+0579-arm64-dts-allwinner-tanix-tx6-add-eth-wifi-vfd.patch
+0580-arm64-dts-allwinner-opi3-fixes.patch
+0581-arm64-dts-allwinner-add-tanix-tx6-a.patch
 0582-arm64-dts-allwinner-h6-add-deinterlace-node.patch
-0583-arm64-dts-allwinner-opi3-enable-ethernet.patch
-0584-arm64-dts-allwinner-opi3-fixes.patch
-0585-arm64-dts-allwinner-add-Tanix-TX6-A.patch
-0586-arm64-dts-allwinner-enable-gpu-opp-multiple-boards.patch
-0587-arm64-dts-allwinner-add-orangepi-3-lts.patch
-0588-arm64-dtsi-allwinner-rework-cpu-gpu-opp.patch
+0583-arm64-dts-allwinner-add-orangepi-3-lts.patch
 0600-drivers-h616-wip-add-usb-emac2-support.patch
 0601-drivers-thermal-allwinner-add-h616-ths-support.patch
 0602-media-cedrus-add-H616-variant.patch
@@ -109,8 +105,12 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 0631-clk-sunxi-ng-ccu-sun6i-rtc-fix-32k-clk.patch
 0632-clk-sunxi-ng-ccu-hack-fix-too-slow-hdmi-audio.patch
 0633-regulator-add-mmc-high-speed-SD-UHS-modes-support.patch
+0635-drvers-of-add-dt-overlay-configfs-interface.patch
+0636-clk-sunxi-ng-h616-Reparent-GPU-clock-during-frequency-changes-v3.patch
+0637-drm-panfrost-enable-G31-on-H616.patch
 0640-arm64-dts-allwinner-h616.dtsi-add-audio-hdmi-vdec.patch
-0641-arm64-dts-allwinner-h616.dtsi-add-ths-cpu-gpu-opp-and-dvfs.patch
+0641-arm64-dts-allwinner-h616.dtsi-add-dvfs-and-h313-cpu-opp.patch
+0641-arm64-dts-allwinner-h616.dtsi-add-gpu-nodes.patch
 0642-arm64-dts-allwinner-h616.dtsi-add-emac1.patch
 0643-arm64-dts-allwinner-h616.dtsi-fix-x96q-failing-mmc3.patch
 0644-arm64-dts-allwinner-h616-OrangePI-Zero23-enable-ths-hdmi-audio.patch
@@ -124,6 +124,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 0652-arm64-dts-allwinner-h313-add-x96q-v5.1-TVbox.patch
 0653-arm64-dts-allwinner-h616-add-pendoo-x12pro-tvbox.patch
 0654-arm64-dts-allwinner-h618-improve-transpeed-8k618-tvbox.patch
+0655-arm64-dts-allwinner-h313-h616-h618-add-cpu-overclock-via-overlays.patch
+0656-arm64-dts-allwinner-h313-h616-h618-add-gpu-overclock-via-overlays.patch
 0703-media-v4l2-common-Add-helpers-to-calculate-bytesperl.patch
 0704-media-v4l2-Add-NV15-and-NV20-pixel-formats.patch
 0705-media-rkvdec-h264-Use-bytesperline-and-buffer-height.patch
@@ -214,7 +216,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 1035-WIP-drm-rockchip-dw_hdmi_qp-Make-use-of-phy_configur.patch
 1036-WIP-drm-rockchip-dw_hdmi_qp-Add-10bpc-and-YUV420-out.patch
 1037-WIP-drm-bridge-dw-hdmi-qp-Enable-10bpc-and-YUV420.patch
-1038-FROM-ML-clk-check-for-disabled-clock-provider.patch
 1040-drm-bridge-synopsys-add-audio-support-for-dw-hdmi-qp-v7.patch
 1045-drm-bridge-synopsys-add-cec-support.patch
 1047-drm-rockchip-rk3588-add-edp-support-v6.patch
@@ -223,7 +224,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 1050-drm-rockchip-add-rk3588-dptx-output-support-v2.patch
 1051-drm-rockchip-vop2-fix-copy-erro-affecting-dp1-usage.patch
 1052-phy-rockchip-usbdp-only-verify-link-voltage-when-flags-are-set.patch
-1053-phy-rockchip-usbdp-avoid-call-hpd_event_trigger-in-dp_phy_init.patch
 1060-net-ethernet-add-yt6801-gige-pcie-controller.patch
 1061-net-ethernet-yt6801-gige-pcie-silence-debug-msgs.patch
 1062-WIP-iommu-rockchip-add-flush_iotlb_all-ops.patch
@@ -299,7 +299,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 #        60-linux.hook
 #        90-linux.hook)
 
-md5sums=('c8e750100a5fc02bb856539ff9b9a41f'
+md5sums=('6e6ba29247ff0ab954d0224547586ba0'
          'ad0019ba412a1b4f54fc413e2c5c3e76'
          'e0e2176d175d13f56da374df109e70e1'
          'e2706a83da3208d8c2735a482aab4ce9'
@@ -355,25 +355,21 @@ md5sums=('c8e750100a5fc02bb856539ff9b9a41f'
          '0e6ebee7a6c045dd7cf45cbafbf924bb'
          '1dcafc57cdbc3421e12ab54a54c8284c'
          'f912776f05276c66311105f57fb5d475'
+         '9caaf988520667da09769f58933193d4'
          'fac6a4de3708bb8a2423a12a592120bb'
          '554fd010bfcfd195deeaaa5a180499b9'
          'cb47353acc35d5ef90d2c4a1f51ef6e1'
          'ff3e22baa0060cbc6b8d7956b166680e'
          'aa19151df8770f0fa126a93fade5d115'
-         '428d69fd2f4fcb96af7c5a9aad9af780'
-         '1d11d026d9644bc7c9bf8a13c39f4362'
-         '638b58066a16da62c6eee019e7db5803'
-         'd90fe549764b44cdc542290f5d5cb080'
-         '2d31c924cee504820c08c9b08b10e0af'
-         '0c6f8d51d8d9f2b0d2ac9fe09acf1a66'
-         'd02ce5bb9d708eefb4fb3120d27c681a'
+         '2311d1b0063b0ecbb222fa1449872891'
+         '9a2723bd97b748eb7507b8971d02aee6'
+         '2a8daf86328b8ae4e7fb875652dc19d2'
+         '07b3e3979d7f5e85e37182574b8efe89'
+         'f800aa07f46e08fd39a5996fc00c4ae7'
+         '9ac3fd6ac5ddcefff1ac7554c6977ec1'
+         'd5b94392123677bb62106f9a25484b04'
          'e2bf8a4a8706706ef53879c6e0238db4'
-         '2e37e312337cb16fc57d5b782f26098b'
-         '5259409dc93c0806efc5a7cfaf79f3e6'
-         '0b6d168d526c86fae23a0e5ad60aeaf9'
-         '0f9f0572d73d09e262a8684d1cb7972a'
          '97b02760dd91244d39094574d8256750'
-         '12cea7e2a3e7f6882976440e1bb504af'
          'f443813381896cb685b0012b1d7108d4'
          '42db2fae3d4fc7435de7f756d12d456c'
          '63e44cc95a8b2ede6a5f8ee830e795bc'
@@ -387,21 +383,27 @@ md5sums=('c8e750100a5fc02bb856539ff9b9a41f'
          'f68f47d2728f964b399f5ee302f4aaeb'
          'cdad029e1ba91f4182efd3f4d7b1aa89'
          '5ee50f81c91e37c7ebab799b6be333dc'
-         'bc9a23ea0127cd757f2d0bc7f8f2c0bf'
-         '54e9c55d7a90f00f6a6fc6d2494db9ed'
+         '4257bf04a0e285d6caeb4a3e1519226f'
+         '80935e8bfdbe17f4a4e8260e16e1d368'
+         '733ce6d60ef14abdd7b9f595070d818a'
+         'c5eb21b3b6f59b2a37d2cc4c8f68701f'
+         'f6b66e3e5ea6529ee335a432ad008b21'
+         '9f29dc701e0419c71ef3ae865bc38a96'
          'abe67e12862f6aab45af666d27a689ae'
          '2322b63bd374e80189211273b5e21785'
          '0bec4e3a7f3cc36da11e647b2e92330d'
-         'afb7fdc35fb492c5b32b229025faff29'
-         'a7bee1cf23fb624052eeb43361c20381'
-         'bb1dc5da8fa5a1cdc685a0cc2e0d883f'
-         '4b820f69ab2b8c22d65498791b6a3ad8'
-         '8ba482f313154a54b2eeae6dff0bf5bb'
+         'f9998f900ecf9adf591458350c1cb4c1'
+         '8ea4e897daf72e5d340b8ae871ea579c'
+         'e2aa6c05e27f4604a1c8c94fb06ab3c1'
+         '6fc13c55b4815b115364654e14c5d1aa'
+         'cabb2016cd42344f65478ac4ee0d3413'
          '412daf6cf952332ac807409f7cc233d1'
-         '39238cbc1d966de98c0978f4287921ad'
-         'cbfa0efa5b123208b70986ed10043167'
-         '86cb576c046dfa602cbcf5d2eae6af40'
-         '1bd001dcbb29f76eaa3780da67c7a1af'
+         '35247f091a92cd6b298ff7b40d0f789b'
+         '13590c1735d08b141c077f149f1ec4bb'
+         'dae7b7e510c1b05c17e0ae9a1ee45e6e'
+         '8a387289e6084ea76da96b30fd02ec0e'
+         'df6a260763dafb5e6757bbb885ed1bed'
+         'a06129a8cf6a487e65af60c85aacb5ab'
          '637985e20b9cf4fcf626dbca9dfd2935'
          'c7f1d6191f815be44437b9586d8f8aec'
          '32e8556d1a85cabb1029fa65f780a85d'
@@ -483,7 +485,6 @@ md5sums=('c8e750100a5fc02bb856539ff9b9a41f'
          'fd5bbd01bfc038a6c09bfa7622d951da'
          'c5c88f69e293769c0fbb929d4ff4683c'
          '1b7e7c8a716cb7f0835253409ee2a7f3'
-         '47802e1f836d19751b722719807e66be'
          'ee2cbd5412a97f696e3a1440caa9e2fa'
          '85a40e7b98addf0f7499de367fc6518f'
          'f2498ecfdbe083a980b91e51c48d22c5'
@@ -492,7 +493,6 @@ md5sums=('c8e750100a5fc02bb856539ff9b9a41f'
          '6daf2b1c1692847b49bea92d652c9fe2'
          'a0289b7c14990b85711037474fdf8379'
          'b197cbbd6e010d7e681099ee2a52135e'
-         'ce15b37780703f2dea9eff82949b0718'
          '7d653321ae7f79d08bbd58e4ac1def0b'
          '3502eb8a17aacac3df37c941461162f8'
          '8f0c414aa221b660f0bfd8c33452c04b'
@@ -560,7 +560,7 @@ md5sums=('c8e750100a5fc02bb856539ff9b9a41f'
          '8d319a0ae2bbdf1391462a5c58ca6e92'
          '58e6330d9ba69805f910297a946a5e89'
          '0c079c663d450dfd1b82fc0f7105e069'
-         '74b4f805c9bed3fba4239d2d4f136e57'
+         '3b1c355a0ab6a743d1e9a53ab2c0f5cc'
          '86d4a35722b5410e3b29fc92dae15d4b')
 
 prepare() {
