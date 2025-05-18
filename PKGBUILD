@@ -4,7 +4,7 @@
 # Contributor: Dragan Simic <dsimic@buserror.io>
 
 pkgbase=linux
-pkgver=6.14.6
+pkgver=6.14.7
 pkgrel=1
 _newversion=false
 _stopbuild=false    # Will also stop if ${_newversion} is true
@@ -299,7 +299,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 #        60-linux.hook
 #        90-linux.hook)
 
-md5sums=('994a5e99e8529bf69e9a2e4f52c0a832'
+md5sums=('e2981ea5ebdda69ac5924114441985a5'
          'ad0019ba412a1b4f54fc413e2c5c3e76'
          'e0e2176d175d13f56da374df109e70e1'
          'e2706a83da3208d8c2735a482aab4ce9'
@@ -560,7 +560,7 @@ md5sums=('994a5e99e8529bf69e9a2e4f52c0a832'
          '8d319a0ae2bbdf1391462a5c58ca6e92'
          '58e6330d9ba69805f910297a946a5e89'
          '0c079c663d450dfd1b82fc0f7105e069'
-         '3b1c355a0ab6a743d1e9a53ab2c0f5cc'
+         'de269aabd85cd6f858a51a36eb34ba02'
          '86d4a35722b5410e3b29fc92dae15d4b')
 
 prepare() {
