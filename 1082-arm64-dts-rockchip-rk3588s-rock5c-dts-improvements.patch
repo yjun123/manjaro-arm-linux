@@ -33,11 +33,11 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.14-rc1/arch/ar
  		};
  	};
  
--	fan {
+-	fan: fan {
 +	fan: pwm-fan {
  		compatible = "pwm-fan";
  		#cooling-cells = <2>;
--		cooling-levels = <0 64 128 192 255>;
+-		cooling-levels = <0 24 44 64 128 192 255>;
 +		cooling-levels = <0 96 128 164 196 224 255>;
  		fan-supply = <&vcc_5v0>;
  		pwms = <&pwm3 0 10000 0>;

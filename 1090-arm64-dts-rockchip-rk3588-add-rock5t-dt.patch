@@ -83,7 +83,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.14-rc3/arch/ar
 +		compatible = "gpio-leds";
 +
 +		led_rgb_b {
-+			//function = LED_FUNCTION_STATUS;
++			function = LED_FUNCTION_DISK_ACTIVITY;
 +			color = <LED_COLOR_ID_BLUE>;
 +			label = "disk_led";
 +			gpios = <&gpio0 RK_PA0 GPIO_ACTIVE_HIGH>;
@@ -93,7 +93,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.14-rc3/arch/ar
 +		};
 +
 +		led_rgb_g {
-+			//function = LED_FUNCTION_STATUS;
++			function = LED_FUNCTION_STATUS;
 +			color = <LED_COLOR_ID_GREEN>;
 +			label = "sys_led";
 +			gpios = <&gpio4 RK_PC5 GPIO_ACTIVE_HIGH>;
@@ -275,7 +275,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.14-rc3/arch/ar
 +	};
 +};
 +
-+&hdptxphy_hdmi0 {
++&hdptxphy0 {
 +	status = "okay";
 +};
 +

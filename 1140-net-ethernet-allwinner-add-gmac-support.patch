@@ -3211,7 +3211,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.12.10/drivers/
 +		sunxi_gmac_loopback(chip->base, true);
 +	} else {
 +		*test_index = EXTERNAL_LOOPBACK_TEST;
-+		err |= phy_loopback(ndev->phydev, true);
++		err |= phy_loopback(ndev->phydev, true, 0);
 +		if (err)
 +			goto out;
 +	}
@@ -3238,7 +3238,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.12.10/drivers/
 +	if (!(flags & ETH_TEST_FL_EXTERNAL_LB))
 +		sunxi_gmac_loopback(chip->base, false);
 +	else
-+		err |= phy_loopback(ndev->phydev, false);
++		err |= phy_loopback(ndev->phydev, false, 0);
 +
 +	return err;
 +}

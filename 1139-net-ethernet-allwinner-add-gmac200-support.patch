@@ -6,7 +6,7 @@ Signed-off-by: Piotr Oniszczuk <piotr.oniszczuk@gmail.com>
 diff --speed-large-files --no-dereference --minimal -Naur linux-6.12.10/drivers/net/ethernet/allwinner/gmac-200/dwmac-sunxi.c linux-6.12.10/drivers/net/ethernet/allwinner/gmac-200/dwmac-sunxi.c
 --- linux-6.12.10/drivers/net/ethernet/allwinner/gmac-200/dwmac-sunxi.c	1970-01-01 01:00:00.000000000 +0100
 +++ linux-6.12.10/drivers/net/ethernet/allwinner/gmac-200/dwmac-sunxi.c	2025-01-21 15:58:05.577494134 +0100
-@@ -0,0 +1,829 @@
+@@ -0,0 +1,828 @@
 +/* SPDX-License-Identifier: GPL-2.0-or-later */
 +/* Copyright(c) 2020 - 2023 Allwinner Technology Co.,Ltd. All rights reserved. */
 +/*
@@ -741,7 +741,6 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.12.10/drivers/
 +		if (ndev->phydev->state == PHY_UP || ndev->phydev->state == PHY_NOLINK) {
 +			if (ndev->phydev->state == PHY_NOLINK)
 +				ndev->phydev->state = PHY_UP;
-+			phy_queue_state_machine(ndev->phydev, HZ);
 +		}
 +		mutex_unlock(&ndev->phydev->lock);
 +		rtnl_unlock();
@@ -1445,7 +1444,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.12.10/drivers/
 +
 +	netif_testing_on(ndev);
 +
-+	ret = phy_loopback(priv->dev->phydev, true);
++	ret = phy_loopback(priv->dev->phydev, true, 0);
 +	if (ret)
 +		goto err;
 +
@@ -1478,7 +1477,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.12.10/drivers/
 +		cali->tx_delay = cali->rx_delay = 0;
 +	}
 +
-+	phy_loopback(priv->dev->phydev, false);
++	phy_loopback(priv->dev->phydev, false, 0);
 +
 +err:
 +	netif_testing_off(ndev);

@@ -45007,7 +45007,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/drivers/ne
 +
 +	if (priv->scan_vif && priv->scan_vif == vif) {
 +		if (timer_pending(&priv->scan_timer))
-+			del_timer_sync(&priv->scan_timer);
++			timer_delete_sync(&priv->scan_timer);
 +
 +		spin_lock_bh(&priv->scan_lock);
 +
@@ -45067,7 +45067,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/drivers/ne
 +
 +	if (priv->scan_vif && priv->scan_vif == vif) {
 +		if (timer_pending(&priv->scan_timer))
-+			del_timer_sync(&priv->scan_timer);
++			timer_delete_sync(&priv->scan_timer);
 +
 +		spin_lock_bh(&priv->scan_lock);
 +		if (priv->scan_request) {
@@ -58962,13 +58962,13 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/drivers/ne
 +		g_wmmac_admittedtime[ac] = 0;
 +	}
 +	if (timer_pending(&priv->wmmac.wmmac_edcaf_timer))
-+		del_timer_sync(&priv->wmmac.wmmac_edcaf_timer);
++		timer_delete_sync(&priv->wmmac.wmmac_edcaf_timer);
 +
 +	if (timer_pending(&priv->wmmac.wmmac_vo_timer))
-+		del_timer_sync(&priv->wmmac.wmmac_vo_timer);
++		timer_delete_sync(&priv->wmmac.wmmac_vo_timer);
 +
 +	if (timer_pending(&priv->wmmac.wmmac_vi_timer))
-+		del_timer_sync(&priv->wmmac.wmmac_vi_timer);
++		timer_delete_sync(&priv->wmmac.wmmac_vi_timer);
 +
 +	memset(&priv->wmmac.ac[0], 0, 4*sizeof(struct wmm_ac_params));
 +}
@@ -59099,13 +59099,13 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/drivers/ne
 +		else {
 +			g_wmmac_admittedtime[ac] = 0;
 +			if (timer_pending(&priv->wmmac.wmmac_edcaf_timer))
-+				del_timer_sync(&priv->wmmac.wmmac_edcaf_timer);
++				timer_delete_sync(&priv->wmmac.wmmac_edcaf_timer);
 +
 +			if (timer_pending(&priv->wmmac.wmmac_vo_timer))
-+				del_timer_sync(&priv->wmmac.wmmac_vo_timer);
++				timer_delete_sync(&priv->wmmac.wmmac_vo_timer);
 +
 +			if (timer_pending(&priv->wmmac.wmmac_vi_timer))
-+				del_timer_sync(&priv->wmmac.wmmac_vi_timer);
++				timer_delete_sync(&priv->wmmac.wmmac_vi_timer);
 +		}
 +	}
 +
@@ -59997,7 +59997,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/drivers/ne
 +		mod_timer(&ba_node->reorder_timer,
 +			  jiffies + RX_BA_LOSS_RECOVERY_TIMEOUT);
 +	} else {
-+		del_timer(&ba_node->reorder_timer);
++		timer_delete(&ba_node->reorder_timer);
 +		ba_node->timeout_cnt = 0;
 +	}
 +}
@@ -60325,7 +60325,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/drivers/ne
 +			}
 +		} else if (unlikely(!ba_node_desc->buff_cnt)) {
 +			/* Should never happen */
-+			del_timer(&ba_node->reorder_timer);
++			timer_delete(&ba_node->reorder_timer);
 +			ba_node->timeout_cnt = 0;
 +		}
 +	} else {
@@ -60534,7 +60534,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/drivers/ne
 +		return;
 +	}
 +
-+	del_timer_sync(&ba_node->reorder_timer);
++	timer_delete_sync(&ba_node->reorder_timer);
 +	spin_lock_bh(&ba_node->ba_node_lock);
 +	if (ba_node->active) {
 +		ba_node_desc = ba_node->rx_ba;
@@ -60765,7 +60765,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/drivers/ne
 +			continue;
 +
 +		hlist_for_each_entry_safe(ba_node, node, head, hlist) {
-+			del_timer_sync(&ba_node->reorder_timer);
++			timer_delete_sync(&ba_node->reorder_timer);
 +			spin_lock_bh(&ba_node->ba_node_lock);
 +			ba_node->active = 0;
 +			flush_reorder_buffer(ba_node->rx_ba);
@@ -60872,7 +60872,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/drivers/ne
 +		if (ba_node) {
 +			wl_info("%s: del ba lut_index: %d, tid %d\n",
 +				__func__, lut_index, tid);
-+			del_timer_sync(&ba_node->reorder_timer);
++			timer_delete_sync(&ba_node->reorder_timer);
 +			spin_lock_bh(&ba_node->ba_node_lock);
 +			if (ba_node->active) {
 +				ba_node_desc = ba_node->rx_ba;
@@ -64831,7 +64831,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/drivers/ne
 +		drop_msg = NULL;
 +
 +		write_seqlock_bh(&ack_m->ack_info[i].seqlock);
-+		del_timer(&ack_m->ack_info[i].timer);
++		timer_delete(&ack_m->ack_info[i].timer);
 +		drop_msg = ack_m->ack_info[i].msgbuf;
 +		ack_m->ack_info[i].msgbuf = NULL;
 +		write_sequnlock_bh(&ack_m->ack_info[i].seqlock);
@@ -65089,7 +65089,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/drivers/ne
 +			if (ack_info->msgbuf) {
 +				drop_msg = ack_info->msgbuf;
 +				ack_info->msgbuf = NULL;
-+				del_timer(&ack_info->timer);
++				timer_delete(&ack_info->timer);
 +			}
 +
 +			ack_info->in_send_msg = NULL;
@@ -65121,7 +65121,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/drivers/ne
 +				   atomic_read(&ack_m->max_drop_cnt)))) {
 +			ack_info->drop_cnt = 0;
 +			ack_info->in_send_msg = new_msgbuf;
-+			del_timer(&ack_info->timer);
++			timer_delete(&ack_info->timer);
 +		} else {
 +			ret = 1;
 +			ack_info->msgbuf = new_msgbuf;
@@ -65284,7 +65284,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/drivers/ne
 +			write_seqlock_bh(&ack_m->ack_info[i].seqlock);
 +			drop_msg = ack_m->ack_info[i].msgbuf;
 +			ack_m->ack_info[i].msgbuf = NULL;
-+			del_timer(&ack_m->ack_info[i].timer);
++			timer_delete(&ack_m->ack_info[i].timer);
 +			write_sequnlock_bh(&ack_m->ack_info[i].seqlock);
 +
 +			if (drop_msg)

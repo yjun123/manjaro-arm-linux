@@ -4,7 +4,7 @@
 # Contributor: Dragan Simic <dsimic@buserror.io>
 
 pkgbase=linux
-pkgver=6.14.7
+pkgver=6.15.0
 pkgrel=1
 _newversion=false
 _stopbuild=false    # Will also stop if ${_newversion} is true
@@ -16,9 +16,8 @@ url="http://www.kernel.org/"
 license=('GPL2')
 makedepends=('xmlto' 'docbook-xsl' 'kmod' 'inetutils' 'bc' 'git' 'dtc')
 options=('!strip')
-#source=("https://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
-source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
-#0000-sound-soc-dont-use-__free_device_node-in-graph_util_parse_dai.patch
+source=("https://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
+#source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 0108-drivers-led-add-openvfd-g3118dda3.patch
 0109-drivers-mmc-add-disk-activity-support.patch
 0110-drivers-net-wireless-brcmfmac-add-ap6330-firmware.patch
@@ -91,7 +90,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 0581-arm64-dts-allwinner-add-tanix-tx6-a.patch
 0582-arm64-dts-allwinner-h6-add-deinterlace-node.patch
 0583-arm64-dts-allwinner-add-orangepi-3-lts.patch
-0600-drivers-h616-wip-add-usb-emac2-support.patch
+#0600-drivers-h616-wip-add-usb-emac2-support.patch
 0601-drivers-thermal-allwinner-add-h616-ths-support.patch
 0602-media-cedrus-add-H616-variant.patch
 0603-soc-sunxi-sram-Add-SRAM-C1-H616-handling.patch
@@ -106,7 +105,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 0632-clk-sunxi-ng-ccu-hack-fix-too-slow-hdmi-audio.patch
 0633-regulator-add-mmc-high-speed-SD-UHS-modes-support.patch
 0635-drvers-of-add-dt-overlay-configfs-interface.patch
-0636-clk-sunxi-ng-h616-Reparent-GPU-clock-during-frequency-changes-v3.patch
 0637-drm-panfrost-enable-G31-on-H616.patch
 0640-arm64-dts-allwinner-h616.dtsi-add-audio-hdmi-vdec.patch
 0641-arm64-dts-allwinner-h616.dtsi-add-dvfs-and-h313-cpu-opp.patch
@@ -145,7 +143,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 0724-media-rkvdec-add-soft-reset-on-errors.patch
 0725-drm-rockchip-vop-add-immutable-zpos-property-fix-z-order.patch
 0727-drm-rockchip-vop2-rk356x-reorder-wins-fix-osd-in-drm-planes.patch
-0728-rockchip-iommu-fixes.patch
 0739-arm64-dtsi-rockchip-rk3328-rk3399-add-soft-reset.patch
 0740-arm64-dts-rockchip-var-fixes-from-libreelec.patch
 0743-arm64-dts-rockchip-beelink-a1-enable-openvfd.patch
@@ -161,9 +158,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 0757-arm64-dts-rockchip-rk3399-orangepi-4-lts-add-fan-support.patch
 0800-Enable-rk356x-PCIe-controller.patch
 0801-net-wireless-backport-aic8800-sdio-v2024_0327_3561b08f.patch
-0802-net-wireless-mm2-fixes-aic8800-sdio-v2024_0327_3561b08f.patch
 0803-net-wireless-backport-aic8800-usb-v2024_0327_3561b08f.patch
-0804-net-wireless-mm2-fixes-aic8800-usb-v2024_0327_3561b08f.patch
 0831-arm64-dts-rockchip-enable-usb2-usb3-sata-audio-in-rk35xx.dtsi.patch
 0832-arm64-dtsi-rockchip-rk356x-disable-vepu-rga-enable-dfi.patch
 0833-arm64-dts-rockchip-enable-Quartz64-A-usb2-usb3-pcie-audio.patch
@@ -185,63 +180,60 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 #0950-arm64-dts-brcm-set-userled-to-mmc.patch
 #0951-arm64-dts-brcm-add-rpi5-dt.patch
 #0953-arm64-dts-add-rpivid-rpi4.patch
-1001-math.h-add-DIV_ROUND_UP_NO_OVERFLOW.patch
-1002-clk-divider-Fix-divisor-masking-on-64-bit-platforms.patch
-1003-clk-composite-replace-open-coded-abs_diff.patch
-#1010-FROM-ML-phy-phy-rockchip-samsung-hdptx-Don-t-use-dt-.patch
-#1011-FROM-UPSTREAM-drm-rockchip-Don-t-change-hdmi-referen.patch
-1012-FROM-UPSTREAM-drm-rockchip-vop2-Drop-unnecessary-if_.patch
-1013-FROM-UPSTREAM-drm-rockchip-vop2-Improve-display-mode.patch
-1014-WIP-drm-rockchip-vop2-Improve-display-modes-handling.patch
-1015-drm-bridge-dw-hdmi-Sync-comments-with-actual-bus-for.patch
-1016-drm-bridge-connector-Sync-supported_formats-with-com.patch
-1017-drm-connector-hdmi-Evaluate-limited-range-after-comp.patch
-1018-drm-connector-hdmi-Add-support-for-YUV420-format-ver.patch
-1019-drm-connector-hdmi-Improve-debug-message-for-support.patch
-1020-drm-connector-hdmi-Use-YUV420-output-format-as-an-RG.patch
-1021-phy-Add-HDMI-configuration-options.patch
-1022-phy-hdmi-Add-color-depth-configuration.patch
-1023-phy-rockchip-samsung-hdptx-Fix-clock-ratio-setup.patch
-1024-phy-rockchip-samsung-hdptx-Drop-unused-lcpll_config.patch
-1025-phy-rockchip-samsung-hdptx-Setup-TMDS-char-rate-via-.patch
-1026-phy-rockchip-samsung-hdptx-Add-high-color-depth-mana.patch
-1027-phy-rockchip-samsung-hdptx-Cleanup-internal-rate-han.patch
-1028-phy-rockchip-samsung-hdptx-Avoid-Hz-hHz-unit-convers.patch
-1029-TEST-phy-rockchip-samsung-hdptx-Add-verbose-logging.patch
-1030-WIP-drm-bridge-Add-detect_ctx-hook.patch
-1031-WIP-drm-bridge-connector-Switch-from-detect-to-detec.patch
-1032-WIP-drm-bridge-dw-hdmi-qp-Add-high-TMDS-clock-ratio-.patch
-1033-WIP-drm-rockchip-vop2-Add-high-color-depth-support.patch
-1034-WIP-drm-rockchip-vop2-Add-YUV420-support.patch
-1035-WIP-drm-rockchip-dw_hdmi_qp-Make-use-of-phy_configur.patch
-1036-WIP-drm-rockchip-dw_hdmi_qp-Add-10bpc-and-YUV420-out.patch
-1037-WIP-drm-bridge-dw-hdmi-qp-Enable-10bpc-and-YUV420.patch
-1040-drm-bridge-synopsys-add-audio-support-for-dw-hdmi-qp-v7.patch
-1045-drm-bridge-synopsys-add-cec-support.patch
-1047-drm-rockchip-rk3588-add-edp-support-v6.patch
-1048-phy-rockchip-samsung-hdptx-add-edp-mode-support-v7.patch
-1049-drm-bridge-synopsys-add-dw-dptx-controller-support-library-v2.patch
-1050-drm-rockchip-add-rk3588-dptx-output-support-v2.patch
-1051-drm-rockchip-vop2-fix-copy-erro-affecting-dp1-usage.patch
-1052-phy-rockchip-usbdp-only-verify-link-voltage-when-flags-are-set.patch
+1003-math.h-add-DIV_ROUND_UP_NO_OVERFLOW.patch
+1004-clk-divider-Fix-divisor-masking-on-64-bit-platforms.patch
+1005-clk-composite-replace-open-coded-abs_diff.patch
+1015-mfd-rk8xx-Fix-shutdown-handler.patch
+1016-dt-bindings-display-vop2-Add-VP-clock-resets.patch
+1017-drm-rockchip-vop2-Add-clock-resets-support.patch
+1022-drm-rockchip-vop2-Add-core-reset-support.patch
+1025-phy-Add-HDMI-configuration-options.patch
+1026-phy-hdmi-Add-color-depth-configuration.patch
+1027-phy-rockchip-samsung-hdptx-Fix-clock-ratio-setup.patch
+1028-phy-rockchip-samsung-hdptx-Do-no-set-rk_hdptx_phy-ra.patch
+1029-phy-rockchip-samsung-hdptx-Drop-unused-struct-lcpll_.patch
+1030-phy-rockchip-samsung-hdptx-Drop-unused-phy_cfg-drive.patch
+1031-phy-rockchip-samsung-hdptx-Drop-superfluous-cfgs-dri.patch
+1032-phy-rockchip-samsung-hdptx-Avoid-Hz-hHz-unit-convers.patch
+1033-phy-rockchip-samsung-hdptx-Setup-TMDS-char-rate-via-.patch
+1034-phy-rockchip-samsung-hdptx-Provide-config-params-val.patch
+1035-phy-rockchip-samsung-hdptx-Restrict-altering-TMDS-ch.patch
+1036-phy-rockchip-samsung-hdptx-Rename-ambiguous-rk_hdptx.patch
+1037-phy-rockchip-samsung-hdptx-Optimize-internal-rate-ha.patch
+1038-phy-rockchip-samsung-hdptx-Add-high-color-depth-mana.patch
+1039-WIP-drm-rockchip-dw_hdmi_qp-Make-use-of-phy_configur.patch
+1040-WIP-drm-bridge-Add-detect_ctx-hook.patch
+1041-WIP-drm-bridge-connector-Switch-from-detect-to-detec.patch
+1042-WIP-drm-bridge-dw-hdmi-qp-Add-high-TMDS-clock-ratio-.patch
+1043-drm-dp-Pull-drm_dp_link_power_up-down-from-Tegra-to-.patch
+1044-drm-bridge-cdns-mhdp8546-Switch-to-common-helpers-to.patch
+1045-drm-bridge-anx6345-Switch-to-common-helpers-to-power.patch
+1046-drm-bridge-anx78xx-Switch-to-common-helpers-to-power.patch
+1047-drm-bridge-it6505-Switch-to-common-helpers-to-power-.patch
+1049-dt-bindings-display-rockchip-Add-schema-for-RK3588-D.patch
+1050-drm-bridge-synopsys-Add-DW-DPTX-Controller-support-l.patch
+1051-drm-rockchip-Add-RK3588-DPTX-output-support.patch
+1052-dt-bindings-display-simple-bridge-Add-ra620-compatib.patch
+1053-drm-birdge-simple-bridge-Add-support-for-radxa-ra620.patch
+1054-media-v4l2-ctrls-core-Set-frame_mbs_only_flag-by-def.patch
+1055-media-rockchip-Move-H264-CABAC-table-to-header-file.patch
+1056-media-rockchip-Introduce-the-rkvdec2-driver.patch
+1057-media-dt-bindings-rockchip-Document-RK3588-Video-Dec.patch
+1058-drm-bridge-synopsys-add-cec-support.patch
 1060-net-ethernet-add-yt6801-gige-pcie-controller.patch
 1061-net-ethernet-yt6801-gige-pcie-silence-debug-msgs.patch
 1062-WIP-iommu-rockchip-add-flush_iotlb_all-ops.patch
-1063-media-rockchip-add-rkvdec2-driver.patch
 1064-media-rkvdec2-add-iommu-support-v3.patch
 1065-wip-add-hevc-support.patch
 1066-wip-hevc-add-ref-frames-support.patch
-#1067-wip-rkvdec2-fix-iommu.patch
 1067-wip-rkvdec2-fix-iommu-v2.patch
+1068-dt-bindings-PCI-dw-rockchip-Add-rk3576-support.patch
 #1068-wip-hevc-remove-rps-support.patch
 1070-arm64-dtsi-rk3588s-add-vop2-clock-resets.patch
-1071-arm64-dtsi-rockchip-3588s-add-hdmi-bridge.patch
-1072-arm64-dtsi-rockchip-3588-hdmi-add-audio-support.patch
 1073-arm64-dtsi-rockchip-add-rkvdec2-video-vecoder-on-rk3588.patch
 1074-arm64-dtsi-rkvdec2-add-iommu-support-v3.patch
 1075-arm64-dtsi-rockchip-rk356x-add-rkvdec2-video-decoder-nodes.patch
 1076-arm64-dtsi-rockchip-add-dw-dp-nodes.patch
-1077-arm64-dtsi-rockchip-add-samsung-edp-nodes.patch
 1080-arm64-dts-rockchip-rk3588s-rock5a-dts-improvements.patch
 1081-arm64-dts-rockchip-rk3588-rock5b-dts-improvements.patch
 1082-arm64-dts-rockchip-rk3588s-rock5c-dts-improvements.patch
@@ -253,18 +245,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 1088-arm64-dts-rockchip-rk3588s-nanopc-r6s-dts-improvements.patch
 1089-arm64-dts-rockchip-rk3588-nanopc-t6-dtsi-improvements.patch
 1090-arm64-dts-rockchip-rk3588-add-rock5t-dt.patch
-1100-clk-sunxi-ng-add-A523-clock-support.patch
-1101-pinctrl-sunxi-Add-support-for-the-Allwinner-A523.patch
-1123-dt-bindings-mmc-sunxi-Simplify-compatible-string-lis.patch
-1124-dt-bindings-mmc-sunxi-add-compatible-strings-for-All.patch
-1125-dt-bindings-watchdog-sunxi-add-Allwinner-A523-compat.patch
-1126-watchdog-sunxi_wdt-Add-support-for-Allwinner-A523.patch
-1127-dt-bindings-irq-sun7i-nmi-document-the-Allwinner-A52.patch
-#1128-irqchip-sunxi-nmi-Support-Allwinner-A523-NMI-control.patch
-1129-dt-bindings-phy-document-Allwinner-A523-USB-2.0-PHY.patch
-1131-dt-bindings-vendor-prefixes-Add-YuzukiHD-name.patch
-1132-dt-bindings-arm-sunxi-Add-new-board-names-for-A523-g.patch
-1136-dt-bindings-arm-sunxi-Add-YuzukiHD-Chameleon-board-n.patch
 1139-net-ethernet-allwinner-add-gmac200-support.patch
 1140-net-ethernet-allwinner-add-gmac-support.patch
 1141-thermal-drivers-sun8i-add-initial-support-for-ths-v2.patch
@@ -277,29 +257,12 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 1170-arm64-dts-allwinner-h728-add-x96q-pro-tvbox-plus.patch
 1172-arm64-dts-allwinner-t527-add-orangepi-4a-dts.patch
 1173-arm64-dts-allwinner-a527-add-Radxa-A5E-support.patch
-1200-dt-bindings-add-rk3528-clock-reset-definitions.patch
-1201-clk-rockchip-add-clock-controller-for-the-RK3528.patch
-1202-pinctrl-rockchip-add-rk3528-support.patch
-1203-dt-bindings-power-add-RK3528-SoCs-header-for-idle.patch
-1204-ethernet-stmmac-dwmac-rk3528-add-GMAC-support.patch
-1205-soc-rockchip-power-domain-add-rk3528-support.patch
-1206-phy-rockchip-inno-usb2-add-phy-support-for-rk3528.patch
-1208-thermal-rockchip-add-support-for-rk3528.patch
-1209-phy-rockchip-naneng-combphy-add-support-for-rk3528.patch
-1210-phy-rockchip-inno-hdmi-add-support-for-rk3528.patch
-1211-drm-rockchip-dw_hdmi-add-support-for-rk3528.patch
-1213-nvmem-rockchip-otp-add-support-for-rk3528.patch
-1214-sound-soc-codecs-add-rk3528-support.patch
-1215-hack-hack-gpu-drm-rockchip-rockchip_vop2_reg-add-rk3528.patch
-1250-arm64-dtsi-rockchip-add-3528.dtsi.patch
-1251-arm64-dts-rockchip-add-dts-for-vontar_r3.patch
-1252-arm64-dts-rockchip-rk3528-add-dts-for-rock2a-rock2f.patch
 	config
         linux.preset)
 #        60-linux.hook
 #        90-linux.hook)
 
-md5sums=('e2981ea5ebdda69ac5924114441985a5'
+md5sums=('f37783334d33320667a67d8b3c343299'
          'ad0019ba412a1b4f54fc413e2c5c3e76'
          'e0e2176d175d13f56da374df109e70e1'
          'e2706a83da3208d8c2735a482aab4ce9'
@@ -366,11 +329,10 @@ md5sums=('e2981ea5ebdda69ac5924114441985a5'
          '2a8daf86328b8ae4e7fb875652dc19d2'
          '07b3e3979d7f5e85e37182574b8efe89'
          'f800aa07f46e08fd39a5996fc00c4ae7'
-         '9ac3fd6ac5ddcefff1ac7554c6977ec1'
+         'e3a0b0484fd17975620289818fc9c885'
          'd5b94392123677bb62106f9a25484b04'
          'e2bf8a4a8706706ef53879c6e0238db4'
          '97b02760dd91244d39094574d8256750'
-         'f443813381896cb685b0012b1d7108d4'
          '42db2fae3d4fc7435de7f756d12d456c'
          '63e44cc95a8b2ede6a5f8ee830e795bc'
          '226ff38d2a1ead67c4457210b2f8f42f'
@@ -378,13 +340,12 @@ md5sums=('e2981ea5ebdda69ac5924114441985a5'
          '1fe341d4300e1045927b3c755676f35d'
          '75fdc48ab706cbde4d663807dfe4928c'
          'a36846f6e57848bd58065aaf55c32c23'
-         'd8a4addcc3d57f66d48aa61f168c4ee3'
+         '2b5ffe71dd9b653df00d04819c71ac25'
          'a60e60823753eb54c85af4214c9cb104'
          'f68f47d2728f964b399f5ee302f4aaeb'
          'cdad029e1ba91f4182efd3f4d7b1aa89'
          '5ee50f81c91e37c7ebab799b6be333dc'
          '4257bf04a0e285d6caeb4a3e1519226f'
-         '80935e8bfdbe17f4a4e8260e16e1d368'
          '733ce6d60ef14abdd7b9f595070d818a'
          'c5eb21b3b6f59b2a37d2cc4c8f68701f'
          'f6b66e3e5ea6529ee335a432ad008b21'
@@ -422,8 +383,7 @@ md5sums=('e2981ea5ebdda69ac5924114441985a5'
          '031646e4ddde55979488a7c9f44fe76d'
          'a59e2731f8f9b78ecb11fc2fbc7251f7'
          'e7ae0a54c830f35a9eb41f8db035fc68'
-         '340440939d477e453e465a2733c4f0a9'
-         'fef1c76e0dc928e14f3a84427f33f6ac'
+         '0db550634152688fc7211e055dfa2129'
          '6408cd90546123bd07f4f80f2b7010e3'
          '87fa225131a0ce93e88503b04543bd39'
          'c891fba63f548409549b1a96d8604680'
@@ -438,10 +398,8 @@ md5sums=('e2981ea5ebdda69ac5924114441985a5'
          '148de4dd254cd9b1b514cf96e7cf07f3'
          '5596eed0396b37cd7a89ded4e3d2105d'
          '36f183da40a11eaf6245b12aa0092684'
-         '8f6beb529dc7894fa3cd0915c53a8338'
-         'c3620d90472476c7991fc81839a5e390'
-         'b101bb9062e3136d1e50afbcecdd657d'
-         'cd04c89fd8ddac352942e966d0ae7b24'
+         'd09d628295c8427bd9b30552f687ecd4'
+         '838c036f502bb251fba7ebf098fd3ac4'
          'ca782317804d7eca9aad74f2dcdc12a0'
          'e87f12a7315571bdb20092be976dea69'
          'aa82f20d5d6ec8affc6915058c2d4ab2'
@@ -456,83 +414,72 @@ md5sums=('e2981ea5ebdda69ac5924114441985a5'
          '8979801afff6e1407ecb61d7a7de8652'
          'a2e0c1f541044bdf845dc85182bdd685'
          '59fa47be5f410dc12516b03a7212b0e4'
-         '9b956f7aec0ab9caeaa61916a740dcba'
-         '85dac6a15f92e16bee8ca7d5b310289f'
-         'e41d58ab7198267e35a13267b6271517'
-         '2943defe5245062803685ae92aa29481'
-         'd209924aaf6138a214582a49a0559623'
-         '7473d6f6c53c89ba7005e70f1952d88a'
-         '36bf4e41d5557a6651c5ad9e897910ac'
-         '3bebcd15ea626db6fb8e09f3077d66dc'
-         '477e48f4ba526e58f52925b4db6d46aa'
-         'a03ae0f5354bde93c197d4ab5fbe3498'
-         'dc27e84f28cc0dc6a4e01de98e8e1415'
-         '65ef11d0d59d74eb3caf907420d54f63'
-         'f14d28d7d5ce14d8d912ed9d6e5c6a44'
-         '258f1bf4aaa7e88d21e04d2e5fc6a50f'
-         '60d11d861863b5245115c6f8d82e0845'
-         '9b036b19483da9c1dae007382d64e23e'
-         '226847fe8c9a4e8f8c49990505d32014'
-         '1367f8b0d7713f9e475f7127f90f3e50'
-         '0e14eb6034a1c2a3b998b2efcf893301'
-         '3516cf12b8d7565677bdcf8e861827ed'
-         '967fdb2c333f773082e29d42dfdedeb8'
-         '365d51d29db3b2777d327195e2e8e00b'
-         '93524d3d144a35844461a5f7bfdac081'
-         '81810a31b89d1e3ebe3a002069ccef57'
-         '7bc397b0def5f457a52abeb75c8a670e'
-         '291528a011769adc7752e3599af7190c'
-         'fd5bbd01bfc038a6c09bfa7622d951da'
-         'c5c88f69e293769c0fbb929d4ff4683c'
-         '1b7e7c8a716cb7f0835253409ee2a7f3'
-         'ee2cbd5412a97f696e3a1440caa9e2fa'
+         'f06731cfb7b2812d6d4d125d13ceca70'
+         'fc4908203b9799983494bcfb7db0503e'
+         '6425b1cb85e02afb1d901fba7ce67316'
+         '8fd57b490ce42f7e92bbd5c170133185'
+         '13d55b469c784a5aec977a3578377852'
+         '9fe4b5a243141e12b7e34a8e13b56148'
+         '4c3db6c8543c297d751b57755bbcc569'
+         '637b92ef203016df9a22878dcd2c4f63'
+         '2970d36cded0482ad91611c482b58884'
+         '0c8128b3b39ad39a6f0d1811c0e543d5'
+         'ca4b874d1e52af6b9af83d28a33e184e'
+         '6ddc357448834dfbc8224b0aa1e168f6'
+         'f26675e9ccf4dc48a5fd938a9f4ab366'
+         '974fbea11bfa184b8576d6f642ac8b64'
+         'ece2375f9e31807b0ca2141337695fdb'
+         'e4ef07555407e9497d887ee29b4816b0'
+         '1b3c1be63d4e4bd22b4545871bfd85b7'
+         'ccde1c9b35640bfd2cb62190ddc21019'
+         '0467455e59158aa0a8167cb0772f238b'
+         '18c40cc3badb07b52606c78dd859a12a'
+         'b25d1f2ff5a2614771b0fc1960827239'
+         '8d6c800c8c24bb8c5db5f2cdd35d9ce0'
+         '303760696acf1f674d663b7d19e5ae15'
+         '4a43851b350aa5838c3a9d2062759625'
+         '2a662945082e1c33c70cc133497b70f8'
+         'f765d7d009139f535cff6c3d12f6a45f'
+         '021bba653bd155b089e71f06410064f4'
+         '0c781a51fad7c06b0cf56f76448cca28'
+         '58e98fe49f27f23bc0e567afe455baf9'
+         '0f71317a2a6d6e400f1d6e2a828f0072'
+         '524859aa28f1e070fe5d1f14baaa4e8f'
+         '82f519d53438e9cde3d809893353988c'
+         'f29db24d419d7eef14ac86afc068732f'
+         'd61e30794d7476635ab1c737f2945f60'
+         '5e8b415174ba6186f8412142d2234b6f'
+         '1b4d45f6a0a6d2e6e6fbd88885a05b43'
+         'cf2063317eac8792e1f7ac1c5bf84a82'
+         '20a8c0b0db6a4e9b74ac8d5c8e8e840a'
+         '0c254aad39c67e8a714f9971556679a6'
          '85a40e7b98addf0f7499de367fc6518f'
-         'f2498ecfdbe083a980b91e51c48d22c5'
-         'c188a6641f147c52838c034bb12c2c44'
-         'da0da81c9fcc4b6465f1cbb11f90a842'
-         '6daf2b1c1692847b49bea92d652c9fe2'
-         'a0289b7c14990b85711037474fdf8379'
-         'b197cbbd6e010d7e681099ee2a52135e'
          '7d653321ae7f79d08bbd58e4ac1def0b'
          '3502eb8a17aacac3df37c941461162f8'
          '8f0c414aa221b660f0bfd8c33452c04b'
-         '8535559c012b0acfb92a3af9d1739d3f'
          '3aa15bccb1a46204c00c97c495ce7e66'
          'd060cc4b40e501349cfbd4e1a526efe2'
          'a3daeffd6291c149ee148eb7abacc356'
          '3110063dcae53d897161070b63910962'
+         'baf610b7496daf4737838ea704608c5e'
          '5ad2f4fae8d1e947dd98915eefe0bbe1'
-         '0cfc2d453661b5d9d42b2edc871809bb'
-         '958a4b71097902f8e4e1289c04f61b7f'
          'ba20191bb8bf68e5c49feb8648e99a61'
-         '4e2c1bff5da345de0ff04bf873dd0b4c'
+         '4ab61a2a4976138ab63a23627c0d7a98'
          '6de2a1b7987d89f2b6eeb6e4677a3da0'
          '13c64072621cb9a343f893b733ca1ed6'
-         '0ea23db04b96dbf1873c931ad97186f4'
          'e87c97f1ea8d7e099664dce90ba27930'
-         'a1af714d915481486f9787451de298b6'
-         '27c8f30ef791b188817283ddd74e54a8'
-         '8fbeab37cb206009e0b96ef8c462af47'
+         '4aeb7369025cc001e5244f7686431fc3'
+         '93531742c48d4712912a9504dd605c85'
+         '24f6572dee7852113df332756b22d7cc'
          'e1c03826ab3db7bb89a873b377b46ef1'
-         '9b63b97175f7109a86066dfd45586182'
-         'aacf35bf97ee2bb0f2ef81293443aa49'
-         '1b23240e3939dab3a05f9a70de2b039a'
+         '009204babeb051c758aaeeefacea0fe1'
+         '4be073f2f73e5a6e5b3dedfc5dce1d4a'
+         '097d9c47a265d9cb96e06751101c50e1'
          'cafc8d4a33fedfc997f5034c85685f77'
          '2d8abeb75fb7e2887df8adf319d81976'
-         'e4eeba7027a8a714719e9bea67681e6b'
-         '31604dfb2322699b0d00146744404ef6'
-         '29f0d38e99e925d9efefc5d97b224864'
-         'adc77295375437d35db99bf01bdb2636'
-         '53ccb694389f8b87d33fc3ccb86f6843'
-         '9081d7029fc36c8a1a411c2076244b18'
-         'a722eb8df102709cba0f49a37c863fb0'
-         '1544fd9f0af5d00ad3fb245476cae0e2'
-         '47ac799d993db055d5a766ab766d173f'
-         '420d406e798d5963773fe96b84307c2c'
-         'ee7e6fef3dc0f557069287a4b086f896'
-         'c672b634967c195374c80be3fef999f3'
-         'fc2aae58f0f5641aab21748d74ff4cf7'
-         '494c74c17d54fcd623b7bdd0b4ea2299'
+         'd0761cb38080b6a2eedfe0627b90aebb'
+         '2861570a42260aefeca3f47068790770'
+         '0241de0ab1510cbc576ed2d3b37216bf'
          '11ef441b24bf9eb61096a501e1770610'
          '303c9d173d254b13417763c1c1697f08'
          '13efef565f5a8d47a5246acae9e6d7de'
@@ -543,24 +490,7 @@ md5sums=('e2981ea5ebdda69ac5924114441985a5'
          'bf641fb3d6133507b1bc5420f28c7050'
          'c69b927e7638d1b91ee658fa472f282b'
          'cf0a9682357b5cf9b282e4b78ad9d48a'
-         '8b28d597b210e309cfae96febf7487bf'
-         '35f3291178707931accc1b167485b64d'
-         '54b091b9e12fbd9298c7db2d353a020e'
-         '9cf9ef422f300ca98848ca5f0401888b'
-         '558ef14a9204a4630207a591dda347a3'
-         'b734360131b3b5b028822e345f7e954b'
-         '7a94125dedf29fbfd17ccc29699dd1d0'
-         'c64719ac0582d3e9f4e633c20703a1e2'
-         'bbc75dd2d5a0a15e8efc1b56310051c3'
-         '7b90ad2bcb4abefa30851cb535efa5fb'
-         '204da62db5e0b7091e9c2e6c5edb282b'
-         'e5a9b62f6cced2e2af22b79bb0c49fe9'
-         '0f1beb05159edd3ec61e8fec1c0e2b6b'
-         '87d01a7d9217c9498e45f5497ccda5cd'
-         '8d319a0ae2bbdf1391462a5c58ca6e92'
-         '58e6330d9ba69805f910297a946a5e89'
-         '0c079c663d450dfd1b82fc0f7105e069'
-         'de269aabd85cd6f858a51a36eb34ba02'
+         '4b0ec61fe8fac3a92473c358bf1a1a4a'
          '86d4a35722b5410e3b29fc92dae15d4b')
 
 prepare() {
