@@ -4,7 +4,7 @@
 # Contributor: Dragan Simic <dsimic@buserror.io>
 
 pkgbase=linux
-pkgver=6.15.1
+pkgver=6.15.2
 pkgrel=1
 _newversion=false
 _stopbuild=false    # Will also stop if ${_newversion} is true
@@ -229,23 +229,23 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 1051-drm-rockchip-Add-RK3588-DPTX-output-support.patch
 1052-dt-bindings-display-simple-bridge-Add-ra620-compatib.patch
 1053-drm-birdge-simple-bridge-Add-support-for-radxa-ra620.patch
-1054-media-v4l2-ctrls-core-Set-frame_mbs_only_flag-by-def.patch
-1055-media-rockchip-Move-H264-CABAC-table-to-header-file.patch
-1056-media-rockchip-Introduce-the-rkvdec2-driver.patch
-1057-media-dt-bindings-rockchip-Document-RK3588-Video-Dec.patch
-1058-drm-bridge-synopsys-add-cec-support.patch
-1060-net-ethernet-add-yt6801-gige-pcie-controller.patch
-1061-net-ethernet-yt6801-gige-pcie-silence-debug-msgs.patch
-1062-WIP-iommu-rockchip-add-flush_iotlb_all-ops.patch
+1054-drm-bridge-synopsys-add-cec-support.patch
+1055-net-ethernet-add-yt6801-gige-pcie-controller.patch
+1056-net-ethernet-yt6801-gige-pcie-silence-debug-msgs.patch
+1059-media-v4l2-ctrls-core-Set-frame_mbs_only_flag-by-def.patch
+1060-media-rockchip-Move-H264-CABAC-table-to-header-file.patch
+1061-media-rockchip-Introduce-the-rkvdec2-driver.patch
+1062-media-dt-bindings-rockchip-Document-RK3588-Video-Dec.patch
+1063-WIP-iommu-rockchip-add-flush_iotlb_all-ops.patch
 1064-media-rkvdec2-add-iommu-support-v3.patch
 1065-wip-add-hevc-support.patch
 1066-wip-hevc-add-ref-frames-support.patch
 1067-wip-rkvdec2-fix-iommu-v2.patch
 1070-arm64-dtsi-rk3588s-add-vop2-clock-resets.patch
+1071-arm64-dtsi-rockchip-add-dw-dp-nodes.patch
 1073-arm64-dtsi-rockchip-add-rkvdec2-video-vecoder-on-rk3588.patch
 1074-arm64-dtsi-rkvdec2-add-iommu-support-v3.patch
 1075-arm64-dtsi-rockchip-rk356x-add-rkvdec2-video-decoder-nodes.patch
-1076-arm64-dtsi-rockchip-add-dw-dp-nodes.patch
 1080-arm64-dts-rockchip-rk3588s-rock5a-dts-improvements.patch
 1081-arm64-dts-rockchip-rk3588-rock5b-dts-improvements.patch
 1082-arm64-dts-rockchip-rk3588s-rock5c-dts-improvements.patch
@@ -274,16 +274,22 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 1202-clk-rockchip-add-support-for-GRF-gated-clocks.patch
 1203-ASoC-dt-bindings-add-schema-for-rockchip-SAI-controllers.patch
 1204-ASoC-rockchip-add-Serial-Audio-Interface-SAI-driver.patch
+1205-thermal-rockchip-rename-rk_tsadcv3_tshut_mode.patch
+1206-thermal-rockchip-Support-RK3576-SoC-in-the-thermal-driver.patch
+1207-thermal-rockchip-support-reading-trim-values-from-OTP.patch
 1260-arm64-dtsi-rk3576-add-missing-hdmiphy-clk-cells.patch
-1261-arm64-dts-rockchip-Add-RK3576-SAI-nodes.patch
-1262-arm64-dts-rockchip-Add-RK3576-HDMI-audio.patch
-1280-arm64-dts-add-rk3576-nanopi-m5-dt.patch
+1261-arm64-dtsi-rk3576-add-sai-nodes.patch
+1262-arm64-dtsi-rk3576-add-hdmi-audio-nodes.patch
+1263-arm64-dtsi-rk3576-add-pcie-nodes.patch
+1265-arm64-dtsi-rk3576-add-sdio-node.patch
+1266-arm64-dtsi-rockchip-Add-thermal-nodes-to-RK3576.patch
+1267-arm64-dtsi-rockchip-Add-thermal-trim-OTP-and-tsadc-nodes.patch
 	config
         linux.preset)
 #        60-linux.hook
 #        90-linux.hook)
 
-md5sums=('9ab01a90278c3a6b8e7e84748a552764'
+md5sums=('adb5495ce6e317091541057344fcf0a6'
          'ad0019ba412a1b4f54fc413e2c5c3e76'
          'e0e2176d175d13f56da374df109e70e1'
          'e2706a83da3208d8c2735a482aab4ce9'
@@ -484,23 +490,23 @@ md5sums=('9ab01a90278c3a6b8e7e84748a552764'
          'f29db24d419d7eef14ac86afc068732f'
          'd61e30794d7476635ab1c737f2945f60'
          '5e8b415174ba6186f8412142d2234b6f'
+         '85a40e7b98addf0f7499de367fc6518f'
+         '7d653321ae7f79d08bbd58e4ac1def0b'
+         '3502eb8a17aacac3df37c941461162f8'
          '1b4d45f6a0a6d2e6e6fbd88885a05b43'
          'cf2063317eac8792e1f7ac1c5bf84a82'
          '20a8c0b0db6a4e9b74ac8d5c8e8e840a'
          '0c254aad39c67e8a714f9971556679a6'
-         '85a40e7b98addf0f7499de367fc6518f'
-         '7d653321ae7f79d08bbd58e4ac1def0b'
-         '3502eb8a17aacac3df37c941461162f8'
          '8f0c414aa221b660f0bfd8c33452c04b'
          '3aa15bccb1a46204c00c97c495ce7e66'
          'd060cc4b40e501349cfbd4e1a526efe2'
          'a3daeffd6291c149ee148eb7abacc356'
          '3110063dcae53d897161070b63910962'
          '5ad2f4fae8d1e947dd98915eefe0bbe1'
+         '13c64072621cb9a343f893b733ca1ed6'
          'ba20191bb8bf68e5c49feb8648e99a61'
          '4ab61a2a4976138ab63a23627c0d7a98'
          '6de2a1b7987d89f2b6eeb6e4677a3da0'
-         '13c64072621cb9a343f893b733ca1ed6'
          'e87c97f1ea8d7e099664dce90ba27930'
          '4aeb7369025cc001e5244f7686431fc3'
          '93531742c48d4712912a9504dd605c85'
@@ -529,11 +535,17 @@ md5sums=('9ab01a90278c3a6b8e7e84748a552764'
          'fd541b59c912162fbf486fcdfa3222db'
          '12e37c172ebf756d76a136e2501eaf2c'
          'faf12579ce0addc76ffcb7216bbc183e'
+         'fa74f63f603e36340c62a74374b63d3b'
+         'd216e3bddde4d5f2d240ba9074092ff9'
+         '57528f747e0ab943c97495621e13692f'
          'd8faddcc2fab490bb9f07a4ed335bda8'
          '1a9f78ab3b6b304114e321d5d10edc9d'
          '7c208f7ffb5c15020fe96ea54f169865'
-         '262985d544f51ae8feb49622c1e95af4'
-         '7c99bd825ee1ce4d21119e5551d83127'
+         'd907c69a4a31c618b517b9122ae4e2c1'
+         'a1e6842bb282803b52d5aff020e299e8'
+         'dc7516ebd22c5f039a0e73b5bb89b901'
+         'be833a2017b44f26eb0ae5707d65f736'
+         '0aea1db9cb233339a860d89afd80d8e2'
          '86d4a35722b5410e3b29fc92dae15d4b')
 
 prepare() {
