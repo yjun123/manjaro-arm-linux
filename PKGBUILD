@@ -5,7 +5,7 @@
 
 pkgbase=linux
 pkgver=6.15.4
-pkgrel=1
+pkgrel=2
 _newversion=false
 _stopbuild=false    # Will also stop if ${_newversion} is true
 _srcname="linux-${pkgver/%.0/}"
@@ -246,11 +246,11 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 1075-media-rkvdec-Add-HEVC-support-for-the-VDPU383-varian.patch
 1080-arm64-dtsi-rk3588s-add-vop2-clock-resets.patch
 1081-arm64-dtsi-rockchip-add-dw-dp-nodes.patch
-1082-arm64-dtsi-rockchip-Add-rkvdec2-Video-Decoder-on-rk35.patch
-#1082-arm64-dts-rockchip-Add-the-vdpu381-Video-Decoders-on.patch
-1083-arm64-dtsi-rockchip-Add-the-vdpu383-Video-Decoder-on-.patch
-#1083-arm64-dts-rockchip-Add-the-vdpu383-Video-Decoder-on-.patch
-1084-arm64-dtsi-wip-Add-missing-iommu-clocks.patch
+#1082-arm64-dtsi-rockchip-Add-rkvdec2-Video-Decoder-on-rk35.patch
+1082-arm64-dts-rockchip-Add-the-vdpu381-Video-Decoders-on.patch
+#1083-arm64-dtsi-rockchip-Add-the-vdpu383-Video-Decoder-on-.patch
+1083-arm64-dts-rockchip-Add-the-vdpu383-Video-Decoder-on-.patch
+#1084-arm64-dtsi-wip-Add-missing-iommu-clocks.patch
 1085-arm64-dtsi-rockchip-rk356x-add-rkvdec2-video-decoder-nodes.patch
 1087-arm64-dts-rockchip-rk3588s-rock5a-dts-improvements.patch
 1088-arm64-dts-rockchip-rk3588-rock5b-dts-improvements.patch
@@ -517,9 +517,8 @@ md5sums=('bdbac42cc976b88514ad9083cfee7e0f'
          '0c9f09c5d38d0f14c2226d68fd5bac2a'
          '5ad2f4fae8d1e947dd98915eefe0bbe1'
          '13c64072621cb9a343f893b733ca1ed6'
-         '2269e50431a586f589e1b8fd954ae939'
-         '261a0356592d7faca2c501ddec140998'
-         '17374d57ebb50bcb53a85b798c012cf3'
+         'ee547b715442e4cd317965acf7cde35a'
+         '4b95bfff08c932f60e91a50c82be8934'
          '4b92fdb7fe252913207fa41e5dd89561'
          'e87c97f1ea8d7e099664dce90ba27930'
          '4aeb7369025cc001e5244f7686431fc3'
@@ -561,7 +560,7 @@ md5sums=('bdbac42cc976b88514ad9083cfee7e0f'
          'dc7516ebd22c5f039a0e73b5bb89b901'
          'be833a2017b44f26eb0ae5707d65f736'
          'e387234dbf687e5da4d22eec850accb0'
-         '2286c75dc80229ee570acff020e194b6'
+         'a55008513a4487fb1dc439f471958b04'
          '86d4a35722b5410e3b29fc92dae15d4b')
 
 prepare() {
