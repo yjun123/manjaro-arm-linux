@@ -4,7 +4,7 @@
 # Contributor: Dragan Simic <dsimic@buserror.io>
 
 pkgbase=linux
-pkgver=6.15.3
+pkgver=6.15.4
 pkgrel=1
 _newversion=false
 _stopbuild=false    # Will also stop if ${_newversion} is true
@@ -143,9 +143,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 0704-media-rkvdec-Move-rkvdec_reset_decoded_fmt-helper.patch
 0705-media-rkvdec-Extract-decoded-format-enumeration-into-helper.patch
 0706-media-rkvdec-Add-image-format-concept.patch
-#0707-media-rkvdec-Fix-frame-size-enumeration.patch
 0708-media-rkvdec-h264-Limit-minimum-profile-to-constrained.patch
-0709-media-rkvdec-Initialize-the-m2m-context-before-the-controls.patch
+#0709-media-rkvdec-Initialize-the-m2m-context-before-the-controls.patch
 0710-media-rkvdec-Add-get_image_fmt-ops.patch
 0711-media-rkvdec-h264-Support-High10-and-422-profiles.patch
 0712-media-v4l2-Add-NV15-and-NV20-pixel-formats.patch
@@ -177,7 +176,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 0841-arm64-dts-rockchip-increas-alarm-cpu-temp-to-85.patch
 0842-arm64-dts-rockchip-Quartz64-B-fix-Eth-enable-hdmi-audio.patch
 0843-arm64-dts-rockchip-rock3a-fix-mdio-reset-disable-uart-bt.patch
-#0845-arm64-dts-rockchip-improve-dts-for-rock3c.patch
+0845-arm64-dts-rockchip-improve-dts-for-rock3c.patch
 0846-arm64-dts-rockchip-rk35xx-set-userled-to-mmc.patch
 0847-arm64-dts-rockchip-add-dts-for-urve-pi.patch
 0848-arm64-dts-rockchip-add-dts-for-opi-3b.patch
@@ -199,8 +198,6 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 1022-drm-rockchip-vop2-Add-core-reset-support.patch
 1025-phy-Add-HDMI-configuration-options.patch
 1026-phy-hdmi-Add-color-depth-configuration.patch
-#1027-phy-rockchip-samsung-hdptx-Fix-clock-ratio-setup.patch
-#1028-phy-rockchip-samsung-hdptx-Do-no-set-rk_hdptx_phy-ra.patch
 1029-phy-rockchip-samsung-hdptx-Drop-unused-struct-lcpll_.patch
 1030-phy-rockchip-samsung-hdptx-Drop-unused-phy_cfg-drive.patch
 1031-phy-rockchip-samsung-hdptx-Drop-superfluous-cfgs-dri.patch
@@ -228,38 +225,45 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 1054-drm-bridge-synopsys-add-cec-support.patch
 1055-net-ethernet-add-yt6801-gige-pcie-controller.patch
 1056-net-ethernet-yt6801-gige-pcie-silence-debug-msgs.patch
-1057-media-rkvdec-Switch-to-using-structs-instead-of-writ.patch
+1057-bitfield-introduce-HWORD_UPDATE-bitfield-macros.patch
 1058-media-rkvdec-Restore-iommu-addresses-on-errors.patch
-1059-rkvdec-Move-cabac-table-to-its-own-source-file.patch
-1060-rkvdec-Use-structs-to-represent-the-HW-RPS.patch
-1061-rkvdec-Move-h264-functions-to-common-file.patch
-1062-rkvdec-Add-per-variant-configuration.patch
-1063-rkvdec-Add-RCB-and-SRAM-support.patch
-1064-rkvdec-Support-per-variant-interrupt-handler.patch
-1065-rkvdec-Enable-all-clocks-without-naming-them.patch
-1066-rkvdec-Add-support-for-the-VDPU381-variant.patch
-1067-rkvdec-Add-vdpu383-h264-support.patch
-1068-media-v4l2-ctrls-Add-sps_rps_extended-control.patch
-1069-wip-rkvdec-Add-vdpu381-hevc-support.patch
-1070-arm64-dtsi-rk3588s-add-vop2-clock-resets.patch
-1070-rkvdec-Add-hevc-support-for-vdpu383.patch
-1071-arm64-dtsi-rockchip-add-dw-dp-nodes.patch
-1072-arm64-dtsi-rockchip-Add-rkvdec2-Video-Decoder-on-rk35.patch
-1073-arm64-dtsi-rockchip-Add-the-vdpu383-Video-Decoder-on-.patch
-1074-arm64-dtsi-wip-Add-missing-iommu-clocks.patch
-1075-arm64-dtsi-rockchip-rk356x-add-rkvdec2-video-decoder-nodes.patch
-#1079-arm64-dtsi-rockchip-disable-vpu121.patch
-1080-arm64-dts-rockchip-rk3588s-rock5a-dts-improvements.patch
-1081-arm64-dts-rockchip-rk3588-rock5b-dts-improvements.patch
-1082-arm64-dts-rockchip-rk3588s-rock5c-dts-improvements.patch
-1083-arm64-dts-rockchip-rk3588-rock5itx-dts-improvements.patch
-1084-arm64-dts-rockchip-rk3588s-opi5-dts-improvements.patch
-1085-arm64-dts-rockchip-rk3588-opi5plus-dts-improvements.patch
-1086-arm64-dts-rockchip-rk3588s-add-opi5pro-dts.patch
-1087-arm64-dts-rockchip-rk3588s-add-nanopi-m6-dts.patch
-1088-arm64-dts-rockchip-rk3588s-nanopc-r6s-dts-improvements.patch
-1089-arm64-dts-rockchip-rk3588-nanopc-t6-dtsi-improvements.patch
-1090-arm64-dts-rockchip-rk3588-add-rock5t-dt.patch
+1059-media-dt-bindings-rockchip-Document-RK3588-Video-Dec.patch
+1060-media-dt-bindings-rockchip-Add-RK3576-Video-Decoder-.patch
+1061-media-v4l2-ctrls-Add-sps_rps_extended-control.patch
+1062-media-uapi-HEVC-Add-v4l2_ctrl_hevc_sps_rps_extended-.patch
+1063-media-rkvdec-Unstage-the-driver.patch
+1064-media-rkvdec-Switch-to-using-structs-instead-of-writ.patch
+1065-media-rkvdec-Move-cabac-table-to-its-own-source-file.patch
+1066-media-rkvdec-Use-structs-to-represent-the-HW-RPS.patch
+1067-media-rkvdec-Move-h264-functions-to-common-file.patch
+1068-media-rkvdec-Add-per-variant-configuration.patch
+1069-media-rkvdec-Add-RCB-and-SRAM-support.patch
+1070-media-rkvdec-Support-per-variant-interrupt-handler.patch
+1071-media-rkvdec-Enable-all-clocks-without-naming-them.patch
+1072-media-rkvdec-Add-H264-support-for-the-VDPU381-varian.patch
+1073-media-rkvdec-Add-H264-support-for-the-VDPU383-varian.patch
+1074-media-rkvdec-Add-HEVC-support-for-the-VDPU381-varian.patch
+1075-media-rkvdec-Add-HEVC-support-for-the-VDPU383-varian.patch
+1080-arm64-dtsi-rk3588s-add-vop2-clock-resets.patch
+1081-arm64-dtsi-rockchip-add-dw-dp-nodes.patch
+1082-arm64-dtsi-rockchip-Add-rkvdec2-Video-Decoder-on-rk35.patch
+#1082-arm64-dts-rockchip-Add-the-vdpu381-Video-Decoders-on.patch
+1083-arm64-dtsi-rockchip-Add-the-vdpu383-Video-Decoder-on-.patch
+#1083-arm64-dts-rockchip-Add-the-vdpu383-Video-Decoder-on-.patch
+1084-arm64-dtsi-wip-Add-missing-iommu-clocks.patch
+1085-arm64-dtsi-rockchip-rk356x-add-rkvdec2-video-decoder-nodes.patch
+1087-arm64-dts-rockchip-rk3588s-rock5a-dts-improvements.patch
+1088-arm64-dts-rockchip-rk3588-rock5b-dts-improvements.patch
+1089-arm64-dts-rockchip-rk3588s-rock5c-dts-improvements.patch
+1090-arm64-dts-rockchip-rk3588-rock5itx-dts-improvements.patch
+1091-arm64-dts-rockchip-rk3588s-opi5-dts-improvements.patch
+1092-arm64-dts-rockchip-rk3588-opi5plus-dts-improvements.patch
+1093-arm64-dts-rockchip-rk3588s-add-opi5pro-dts.patch
+1094-arm64-dts-rockchip-rk3588s-add-nanopi-m6-dts.patch
+1095-arm64-dts-rockchip-rk3588s-nanopc-r6s-dts-improvements.patch
+1096-arm64-dts-rockchip-rk3588-nanopc-t6-dtsi-improvements.patch
+1097-arm64-dts-rockchip-rk3588-add-rock5t-dt.patch
+#1099-arm64-dtsi-rockchip-disable-vpu121.patch
 1139-net-ethernet-allwinner-add-gmac200-support.patch
 1140-net-ethernet-allwinner-add-gmac-support.patch
 1141-thermal-drivers-sun8i-add-initial-support-for-ths-v2.patch
@@ -295,7 +299,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 #        60-linux.hook
 #        90-linux.hook)
 
-md5sums=('68da7496780e621e62989153542ce559'
+md5sums=('bdbac42cc976b88514ad9083cfee7e0f'
          'ad0019ba412a1b4f54fc413e2c5c3e76'
          'e0e2176d175d13f56da374df109e70e1'
          'e2706a83da3208d8c2735a482aab4ce9'
@@ -419,7 +423,6 @@ md5sums=('68da7496780e621e62989153542ce559'
          'e14a03a32048be7fbd3ba65a2aceff35'
          '1e014570d99fe9beb21e53c9e2d236ff'
          'dec24607868faedcaaf97a8a4a682b4a'
-         '602eb166b00fdf80847dcc796d709cde'
          '3fc918bd6f1f4f5187e4dab4b3e93310'
          '524d77d999178363c532cbcc063ef444'
          'c7f1d6191f815be44437b9586d8f8aec'
@@ -451,6 +454,7 @@ md5sums=('68da7496780e621e62989153542ce559'
          '94a9317c40a68c10504f492a0abf72da'
          '7ff3b7e09aaefa3060fb18a6bc04d367'
          '0f38739e23894da7251ee14e35bed22b'
+         '498a42dc2c1ce466cb0af2436759a03d'
          '9a325a4e8febfdd8b13b3713be3a30a4'
          '48c85cf2e1b0df6bd0f8c73525e1d999'
          '8979801afff6e1407ecb61d7a7de8652'
@@ -492,21 +496,26 @@ md5sums=('68da7496780e621e62989153542ce559'
          '85a40e7b98addf0f7499de367fc6518f'
          '7d653321ae7f79d08bbd58e4ac1def0b'
          '3502eb8a17aacac3df37c941461162f8'
-         '13ca9390c0e0fda68414355c89526ccf'
-         '0c48cb91f67cf4b7a93080289ae1a7dd'
-         '30551819ff3f736e9454d35d23a5046a'
-         '83ae70e703b3482487374cf14417d577'
-         '66cfaa811f4dccefc2d9c541209bc0e9'
-         '19e8dc38694f81593c483787ebb4872b'
-         '3ecb7e0e40b0ec7472ee25495eba7ee7'
-         '2f9c249900bd782428dd2781a7289c35'
-         'e8097f0d55c3c06a16bab4b5d295c77a'
-         '4ec0f99c330f49c6f0befe59e2f43808'
-         '4bb0d7ee3c15cb0124352c7a7c398c27'
-         '17c876f4325d0d0f767e049d564b2129'
-         '3e13d91f246dfba871d0b607fcfc0fcd'
+         '6235556cacb0b3dfead94d0b6aad691d'
+         '792bfe1603bdad5121d98f68099f240a'
+         'ec924b584fa552b65a6c19be917bc2d5'
+         '9b9874eef458c4cf3f58b04ae83a8e90'
+         '2a028f51b0de6eae0f7b0d1838251a92'
+         '4bbc3d2da18a463c5fac072f982b7f6d'
+         '6794d4fd4bdadfd228b59a06531d7892'
+         'bc853fec39e1070a21c492c53838409a'
+         '3a78c592b5662285612af3d59f34876f'
+         'bf950605ed9890a4e8306246e21ba45e'
+         '5bccb2d4b150beebe518fdf568da347e'
+         '7f45f0f95e5b375f74acada58baaa348'
+         'a720d36eb4c0730a4e850d97d0e16cd0'
+         '3cc6a083203b325cde5c2a4875419d13'
+         '03f89029b62af79a6ad59c831be16f6f'
+         'df8a17c9558235b9276bb7ddb56a31f4'
+         '52fe1a8e935e175e7ae7cd3193174ec6'
+         '41dcf3e1ea4575cc39e8ce1640001e4d'
+         '0c9f09c5d38d0f14c2226d68fd5bac2a'
          '5ad2f4fae8d1e947dd98915eefe0bbe1'
-         '25a04188f99148e357df029079a245b9'
          '13c64072621cb9a343f893b733ca1ed6'
          '2269e50431a586f589e1b8fd954ae939'
          '261a0356592d7faca2c501ddec140998'
@@ -552,7 +561,7 @@ md5sums=('68da7496780e621e62989153542ce559'
          'dc7516ebd22c5f039a0e73b5bb89b901'
          'be833a2017b44f26eb0ae5707d65f736'
          'e387234dbf687e5da4d22eec850accb0'
-         '93a79350b5d499c7f6e7101033e5e6f9'
+         '2286c75dc80229ee570acff020e194b6'
          '86d4a35722b5410e3b29fc92dae15d4b')
 
 prepare() {
