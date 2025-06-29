@@ -5,7 +5,7 @@
 
 pkgbase=linux
 pkgver=6.15.4
-pkgrel=2
+pkgrel=3
 _newversion=false
 _stopbuild=false    # Will also stop if ${_newversion} is true
 _srcname="linux-${pkgver/%.0/}"
@@ -560,7 +560,7 @@ md5sums=('bdbac42cc976b88514ad9083cfee7e0f'
          'dc7516ebd22c5f039a0e73b5bb89b901'
          'be833a2017b44f26eb0ae5707d65f736'
          'e387234dbf687e5da4d22eec850accb0'
-         'a55008513a4487fb1dc439f471958b04'
+         '0c3f25c1b51ca1916b5758e62cf8673e'
          '86d4a35722b5410e3b29fc92dae15d4b')
 
 prepare() {
