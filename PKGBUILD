@@ -120,8 +120,8 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 0635-drvers-of-add-dt-overlay-configfs-interface.patch
 0637-drm-panfrost-enable-G31-on-H616.patch
 0640-arm64-dts-allwinner-h616.dtsi-add-audio-hdmi-vdec.patch
-0641-arm64-dts-allwinner-h616.dtsi-add-dvfs-and-h313-cpu-opp.patch
 0641-arm64-dts-allwinner-h616.dtsi-add-gpu-nodes.patch
+0641-arm64-dts-allwinner-h616.dtsi-add-dvfs-and-h313-cpu-opp.patch
 0642-arm64-dts-allwinner-h616.dtsi-add-emac1.patch
 0643-arm64-dts-allwinner-h616.dtsi-fix-x96q-failing-mmc3.patch
 0644-arm64-dts-allwinner-h616-OrangePI-Zero23-enable-ths-hdmi-audio.patch
@@ -251,7 +251,7 @@ source=("https://cdn.kernel.org/pub/linux/kernel/v6.x/linux-$pkgver.tar.xz"
 #1083-arm64-dtsi-rockchip-Add-the-vdpu383-Video-Decoder-on-.patch
 1083-arm64-dts-rockchip-Add-the-vdpu383-Video-Decoder-on-.patch
 #1084-arm64-dtsi-wip-Add-missing-iommu-clocks.patch
-1085-arm64-dtsi-rockchip-rk356x-add-rkvdec2-video-decoder-nodes.patch
+#1085-arm64-dtsi-rockchip-rk356x-add-rkvdec2-video-decoder-nodes.patch
 1087-arm64-dts-rockchip-rk3588s-rock5a-dts-improvements.patch
 1088-arm64-dts-rockchip-rk3588-rock5b-dts-improvements.patch
 1089-arm64-dts-rockchip-rk3588s-rock5c-dts-improvements.patch
@@ -399,8 +399,8 @@ md5sums=('bdbac42cc976b88514ad9083cfee7e0f'
          '4257bf04a0e285d6caeb4a3e1519226f'
          '733ce6d60ef14abdd7b9f595070d818a'
          'c5eb21b3b6f59b2a37d2cc4c8f68701f'
-         'f6b66e3e5ea6529ee335a432ad008b21'
          '9f29dc701e0419c71ef3ae865bc38a96'
+         'f6b66e3e5ea6529ee335a432ad008b21'
          'abe67e12862f6aab45af666d27a689ae'
          '2322b63bd374e80189211273b5e21785'
          'f5f429d04a1d8103610217f2f4d5f2a2'
@@ -519,7 +519,6 @@ md5sums=('bdbac42cc976b88514ad9083cfee7e0f'
          '13c64072621cb9a343f893b733ca1ed6'
          'ee547b715442e4cd317965acf7cde35a'
          '4b95bfff08c932f60e91a50c82be8934'
-         '4b92fdb7fe252913207fa41e5dd89561'
          'e87c97f1ea8d7e099664dce90ba27930'
          '4aeb7369025cc001e5244f7686431fc3'
          '93531742c48d4712912a9504dd605c85'
