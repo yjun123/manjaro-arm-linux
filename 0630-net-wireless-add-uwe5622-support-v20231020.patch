@@ -1,19 +1,113 @@
-diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/drivers/bluetooth/hci_ldisc.c linux-6.9.3/drivers/bluetooth/hci_ldisc.c
---- linux-6.9.3/drivers/bluetooth/hci_ldisc.c	2024-05-30 09:45:04.000000000 +0200
-+++ linux-6.9.3/drivers/bluetooth/hci_ldisc.c	2024-06-08 20:52:00.224744017 +0200
-@@ -658,6 +658,12 @@
- 	hdev->setup = hci_uart_setup;
- 	SET_HCIDEV_DEV(hdev, hu->tty->dev);
+
+this patch brings back 4 apis removed in 6.16 kernel which are used by uwe5622 code.
+removal: https://lore.kernel.org/all/20250420-fix_power-v2-1-9b938d2283aa@quicinc.com/
+
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.16-rc1/drivers/base/power/wakeup.c linux-6.16-rc1/drivers/base/power/wakeup.c
+--- linux-6.16-rc1/drivers/base/power/wakeup.c	2025-06-08 22:44:43.000000000 +0200
++++ linux-6.16-rc1/drivers/base/power/wakeup.c	2025-06-11 21:12:08.311538882 +0200
+@@ -77,7 +77,7 @@
+  * wakeup_source_create - Create a struct wakeup_source object.
+  * @name: Name of the new wakeup source.
+  */
+-static struct wakeup_source *wakeup_source_create(const char *name)
++struct wakeup_source *wakeup_source_create(const char *name)
+ {
+ 	struct wakeup_source *ws;
+ 	const char *ws_name;
+@@ -106,6 +106,7 @@
+ err_ws:
+ 	return NULL;
+ }
++EXPORT_SYMBOL_GPL(wakeup_source_create);
  
-+	// Set the broken Park link status quirk, specific for spreadtrum (sprd)
-+	// bluetooth devices
-+	if (hdev->manufacturer == 0xffff && hu->tty->driver &&
-+		strncmp(hu->tty->driver->name, "ttyBT", 5) == 0)
-+		set_bit(HCI_QUIRK_BROKEN_PARK_LINK_STATUS, &hdev->quirks);
+ /*
+  * Record wakeup_source statistics being deleted into a dummy wakeup_source.
+@@ -148,7 +149,7 @@
+  *
+  * Use only for wakeup source objects created with wakeup_source_create().
+  */
+-static void wakeup_source_destroy(struct wakeup_source *ws)
++void wakeup_source_destroy(struct wakeup_source *ws)
+ {
+ 	if (!ws)
+ 		return;
+@@ -157,12 +158,13 @@
+ 	wakeup_source_record(ws);
+ 	wakeup_source_free(ws);
+ }
++EXPORT_SYMBOL_GPL(wakeup_source_destroy);
+ 
+ /**
+  * wakeup_source_add - Add given object to the list of wakeup sources.
+  * @ws: Wakeup source object to add to the list.
+  */
+-static void wakeup_source_add(struct wakeup_source *ws)
++void wakeup_source_add(struct wakeup_source *ws)
+ {
+ 	unsigned long flags;
+ 
+@@ -177,12 +179,13 @@
+ 	list_add_rcu(&ws->entry, &wakeup_sources);
+ 	raw_spin_unlock_irqrestore(&events_lock, flags);
+ }
++EXPORT_SYMBOL_GPL(wakeup_source_add);
+ 
+ /**
+  * wakeup_source_remove - Remove given object from the wakeup sources list.
+  * @ws: Wakeup source object to remove from the list.
+  */
+-static void wakeup_source_remove(struct wakeup_source *ws)
++void wakeup_source_remove(struct wakeup_source *ws)
+ {
+ 	unsigned long flags;
+ 
+@@ -201,6 +204,7 @@
+ 	 */
+ 	ws->timer.function = NULL;
+ }
++EXPORT_SYMBOL_GPL(wakeup_source_remove);
+ 
+ /**
+  * wakeup_source_register - Create wakeup source and add it to the list.
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.16-rc1/include/linux/pm_wakeup.h linux-6.16-rc1/include/linux/pm_wakeup.h
+--- linux-6.16-rc1/include/linux/pm_wakeup.h	2025-06-08 22:44:43.000000000 +0200
++++ linux-6.16-rc1/include/linux/pm_wakeup.h	2025-06-11 21:12:08.311538882 +0200
+@@ -95,6 +95,10 @@
+ }
+ 
+ /* drivers/base/power/wakeup.c */
++extern struct wakeup_source *wakeup_source_create(const char *name);
++extern void wakeup_source_destroy(struct wakeup_source *ws);
++extern void wakeup_source_add(struct wakeup_source *ws);
++extern void wakeup_source_remove(struct wakeup_source *ws);
+ extern struct wakeup_source *wakeup_source_register(struct device *dev,
+ 						    const char *name);
+ extern void wakeup_source_unregister(struct wakeup_source *ws);
+@@ -125,6 +129,17 @@
+ 	return dev->power.can_wakeup;
+ }
+ 
++static inline struct wakeup_source *wakeup_source_create(const char *name)
++{
++	return NULL;
++}
 +
- 	if (test_bit(HCI_UART_RAW_DEVICE, &hu->hdev_flags))
- 		set_bit(HCI_QUIRK_RAW_DEVICE, &hdev->quirks);
- 
++static inline void wakeup_source_destroy(struct wakeup_source *ws) {}
++
++static inline void wakeup_source_add(struct wakeup_source *ws) {}
++
++static inline void wakeup_source_remove(struct wakeup_source *ws) {}
++
+ static inline struct wakeup_source *wakeup_source_register(struct device *dev,
+ 							   const char *name)
+ {
+
+
+this add uwe5622 driver code
+
+
+
+diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/drivers/bluetooth/hci_ldisc.c linux-6.9.3/drivers/bluetooth/hci_ldisc.c
 diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/drivers/net/wireless/Kconfig linux-6.9.3/drivers/net/wireless/Kconfig
 --- linux-6.9.3/drivers/net/wireless/Kconfig	2024-06-08 20:56:19.444738614 +0200
 +++ linux-6.9.3/drivers/net/wireless/Kconfig	2024-06-08 20:54:02.871408177 +0200
@@ -45126,7 +45220,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/drivers/ne
 +#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 14, 0)
 +void sprdwl_scan_timeout(struct timer_list *t)
 +{
-+	struct sprdwl_priv *priv = from_timer(priv, t, scan_timer);
++	struct sprdwl_priv *priv = timer_container_of(priv, t, scan_timer);
 +#else
 +void sprdwl_scan_timeout(unsigned long data)
 +{
@@ -59114,7 +59208,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/drivers/ne
 +#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 14, 0)
 +void update_wmmac_edcaftime_timeout(struct timer_list *t)
 +{
-+	struct sprdwl_priv *priv = from_timer(priv, t, wmmac.wmmac_edcaf_timer);
++	struct sprdwl_priv *priv = timer_container_of(priv, t, wmmac.wmmac_edcaf_timer);
 +#else
 +void update_wmmac_edcaftime_timeout(unsigned long data)
 +{
@@ -60799,7 +60893,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/drivers/ne
 +#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 14, 0)
 +static void ba_reorder_timeout(struct timer_list *t)
 +{
-+	struct rx_ba_node *ba_node = from_timer(ba_node, t, reorder_timer);
++	struct rx_ba_node *ba_node = timer_container_of(ba_node, t, reorder_timer);
 +#else
 +static void ba_reorder_timeout(unsigned long data)
 +{
@@ -64768,7 +64862,7 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/drivers/ne
 +	struct sprdwl_tcp_ack_manage *ack_m = NULL;
 +
 +#if LINUX_VERSION_CODE >= KERNEL_VERSION(4, 14, 0)
-+	ack_info = (struct sprdwl_tcp_ack_info *)from_timer(ack_info, t, timer);
++	ack_info = (struct sprdwl_tcp_ack_info *)timer_container_of(ack_info, t, timer);
 +#else
 +	ack_info = (struct sprdwl_tcp_ack_info *)data;
 +#endif
@@ -77983,30 +78077,4 @@ diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/drivers/ne
 +
 +#endif
 diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/include/net/bluetooth/hci.h linux-6.9.3/include/net/bluetooth/hci.h
---- linux-6.9.3/include/net/bluetooth/hci.h	2024-05-30 09:45:04.000000000 +0200
-+++ linux-6.9.3/include/net/bluetooth/hci.h	2024-06-08 20:52:00.244744018 +0200
-@@ -70,6 +70,12 @@
- 
- /* HCI device quirks */
- enum {
-+	/*
-+	 * Device declares that support Park link status, but it really
-+	 * does not support it and fails to initialize
-+	 */
-+	HCI_QUIRK_BROKEN_PARK_LINK_STATUS,
-+
- 	/* When this quirk is set, the HCI Reset command is send when
- 	 * closing the transport instead of when opening it.
- 	 *
 diff --speed-large-files --no-dereference --minimal -Naur linux-6.9.3/net/bluetooth/hci_sync.c linux-6.9.3/net/bluetooth/hci_sync.c
---- linux-6.9.3/net/bluetooth/hci_sync.c	2024-05-30 09:45:04.000000000 +0200
-+++ linux-6.9.3/net/bluetooth/hci_sync.c	2024-06-08 20:52:00.244744018 +0200
-@@ -3982,7 +3982,7 @@
- 		link_policy |= HCI_LP_HOLD;
- 	if (lmp_sniff_capable(hdev))
- 		link_policy |= HCI_LP_SNIFF;
--	if (lmp_park_capable(hdev))
-+	if (lmp_park_capable(hdev) && !test_bit(HCI_QUIRK_BROKEN_PARK_LINK_STATUS, &hdev->quirks))
- 		link_policy |= HCI_LP_PARK;
- 
- 	cp.policy = cpu_to_le16(link_policy);
