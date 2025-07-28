@@ -263,20 +263,20 @@ source=("https://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
 1096-arm64-dts-rockchip-rk3588-nanopc-t6-dtsi-improvements.patch
 1097-arm64-dts-rockchip-rk3588-add-rock5t-dt.patch
 1099-arm64-dtsi-rockchip-disable-vpu121.patch
-#1100-clk-sunxi-ng-a523-Mark-MBUS-clock-as-critical.patch
+1100-clk-sunxi-ng-a523-Mark-MBUS-clock-as-critical.patch
 1101-axp20x-HACK-mfd-and-multiple-axp-on-the-bus.patch
 1103-allwinner-a523-Add-power-controllers.patch
 1104-regulator-axp20x-force-polyphase-setup-for-axp323.patch
 1140-net-drivers-stmmac-add-initial-support-for-a523-gmac1.patch
 1141-thermal-drivers-sun8i-add-initial-support-for-ths-v2.patch
 1142-add-initial-cpufreq-support.patch
-#1151-arm64-dtsi-allwinner-add-gmac1-fixup-gmac0-in-a523.patch
+1151-arm64-dtsi-allwinner-add-gmac1-fixup-gmac0-in-a523.patch
 1153-arm64-dtsi-allwinner-add-ths-support-v2.patch
 1154-arm64-dtsi-allwinner-add-cpufreq-support.patch
 1155-arm64-dtsi-allwinner-add-gpu-support.patch
 1170-arm64-dts-allwinner-h728-x96q-pro-plus-improvements.patch
 1172-arm64-dts-allwinner-t527-add-orangepi-4a-dts.patch
-#1173-arm64-dts-allwinner-a527-Radxa-A5E-improvements.patch
+1173-arm64-dts-allwinner-a527-Radxa-A5E-improvements.patch
 1205-thermal-rockchip-rename-rk_tsadcv3_tshut_mode.patch
 1206-thermal-rockchip-Support-RK3576-SoC-in-the-thermal-driver.patch
 1207-thermal-rockchip-support-reading-trim-values-from-OTP.patch
@@ -284,6 +284,7 @@ source=("https://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
 1211-drm-rockchip-dw_hdmi_qp-provide-ref-clock-rate-in-dw_hdmi_qp_plat_data.patch
 1212-drm-bridge-dw-hdmi-qp-fixup-timer-base-setup.patch
 1213-net-phy-realtek-reset-after-clock-enable.patch
+1214-mmc-core-add-force-io-to-1.8v-quirk.patch
 1260-arm64-dtsi-rockchip-fix-hdmi-output-on-rk3576.patch
 1265-arm64-dtsi-rk3576-add-sdio-node.patch
 1266-arm64-dtsi-rockchip-Add-thermal-nodes-to-RK3576.patch
@@ -505,17 +506,20 @@ md5sums=('ec86c51e1de3c9535a066c9c87cc5b5e'
          '2d8abeb75fb7e2887df8adf319d81976'
          '0ebc406ec892d060cf073c968ee695a6'
          'e090aaa01e51fb7899c23093c970c0ed'
+         '1bae78382a2f4d7ea7ced8230af9b204'
          'b6ed48d9144aae58964ec058214e4429'
          '0611260b581eab21230592f129811b44'
          '05a29ce2f04250c9db78c1e0cb17e56c'
          'c2433dccbf49896f9ea109108e69a41c'
          '4289244783840e6ec809300dbc981918'
          '2359c12aacf040124ff5a68b0bcf348a'
+         '9010b2154fe2c9b5c5b56f198987288c'
          '6bb9a0762fcc7b600d726db1e7466fc4'
          'dfc0a51a332c23d6ef41db60268ce5ec'
          'c3983a09481b1717f2417b73263783d9'
          'e91fa37dfe50e4d5c3156e97f2cca235'
          '8cc812d646a10c5ec6c5282461e643a5'
+         '640981f67803e3fbd08ab498e3f1b96e'
          'e735c34cbaf507a68fcf3d25334413da'
          '2542e93893b9655af88a6f314f55211e'
          '8869630655b15dee3abb2a357007e028'
@@ -523,6 +527,7 @@ md5sums=('ec86c51e1de3c9535a066c9c87cc5b5e'
          '5dcec57d1d25d8dad20a66349ac0abcd'
          '01d8e852243ca83bf4a758b275bc2bd1'
          '98ac6e449b13696c5a5217689b6c1c7c'
+         '6d337c843f9277bf4e405ecd9f48fdb6'
          '95d6ed35d7750be162d0e68e8a8e6014'
          'a1e6842bb282803b52d5aff020e299e8'
          'dc7516ebd22c5f039a0e73b5bb89b901'
@@ -530,7 +535,7 @@ md5sums=('ec86c51e1de3c9535a066c9c87cc5b5e'
          '951f28a0ad253c8e05046bc1b73fb083'
          '1f61fd7ece5404b5adf3a456eca27cbf'
          '6df21ef00c4502631b600dc9d9567aa7'
-         '4a6cb61b0cd076565f0218528913f685'
+         'f141008cbab59082c1b0d94883058296'
          '404eee114bc48a0014d8c007287f2dd9'
          '86d4a35722b5410e3b29fc92dae15d4b')
 
