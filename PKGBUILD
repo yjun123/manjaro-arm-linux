@@ -674,8 +674,8 @@ _package() {
 
   # rather than use another hook (90-linux.hook) rely on mkinitcpio's 90-mkinitcpio-install.hook
   # which avoids a double run of mkinitcpio that can occur
-  install -d "${pkgdir}/usr/lib/firmware/"
-  echo "dummy file to trigger mkinitcpio to run" > "${pkgdir}/usr/lib/firmware/${_kernver}"
+  install -d "${pkgdir}/usr/lib/initcpio/"
+  echo "dummy file to trigger mkinitcpio to run" > "${pkgdir}/usr/lib/initcpio/${_kernver}"
 }
 
 _package-headers() {
