@@ -298,7 +298,7 @@ source=("https://git.kernel.org/torvalds/t/${_srcname}.tar.gz"
 #        60-linux.hook
 #        90-linux.hook)
 
-md5sums=('ec86c51e1de3c9535a066c9c87cc5b5e'
+md5sums=('08ab460ca3a1d9210f5b7c2549b6bad3'
          '67fd36bdd6b72b2cca18fe617f86a47e'
          'ad0019ba412a1b4f54fc413e2c5c3e76'
          'e0e2176d175d13f56da374df109e70e1'
@@ -536,7 +536,7 @@ md5sums=('ec86c51e1de3c9535a066c9c87cc5b5e'
          '1f61fd7ece5404b5adf3a456eca27cbf'
          '6df21ef00c4502631b600dc9d9567aa7'
          'f141008cbab59082c1b0d94883058296'
-         '404eee114bc48a0014d8c007287f2dd9'
+         'fcb78ef09e5865d021d1ddfece83c93d'
          '86d4a35722b5410e3b29fc92dae15d4b')
 
 prepare() {
